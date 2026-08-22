@@ -1,0 +1,291 @@
+@import "tailwindcss";
+
+@theme {
+  --color-abyss: #04070a;
+  --color-ink: #0a1219;
+  --color-surface: #101920;
+  --color-fg: #eef4f7;
+  --color-muted: #8ea3b1;
+  --color-pearl: #b9d0d9;
+  --color-champagne: #d0c1ab;
+  --color-line: rgb(185 208 217 / 0.13);
+  --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.875rem;
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --shadow-border: 0 0 0 1px rgb(185 208 217 / 0.12);
+  --shadow-border-hover: 0 0 0 1px rgb(185 208 217 / 0.22);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--color-abyss);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.022em;
+    text-wrap: balance;
+    line-height: 1.12;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-pearl) 32%, transparent);
+    color: var(--color-fg);
+  }
+}
+
+@layer utilities {
+  .grain {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    opacity: 0.045;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.55'/></svg>");
+  }
+
+  .kicker {
+    font-size: 0.6875rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--color-pearl);
+  }
+
+  .measure {
+    max-width: 36rem;
+  }
+
+  .section-y {
+    padding-block: clamp(5.5rem, 9vw, 8.5rem);
+  }
+
+  .caustics {
+    background:
+      radial-gradient(ellipse at 22% 8%, rgb(185 208 217 / 0.1), transparent 44%),
+      radial-gradient(ellipse at 78% 0%, rgb(208 193 171 / 0.05), transparent 40%),
+      linear-gradient(115deg, transparent 42%, rgb(185 208 217 / 0.04) 50%, transparent 58%);
+    background-size: 120% 120%, 100% 100%, 220% 220%;
+    animation: caustic-drift 38s var(--ease-out-soft) infinite alternate;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(2px);
+    transition:
+      opacity 800ms var(--ease-out-soft),
+      transform 800ms var(--ease-out-soft),
+      filter 800ms var(--ease-out-soft);
+  }
+
+  .reveal.is-in {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .hero-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(4px);
+    animation: hero-rise 1100ms var(--ease-out-soft) forwards;
+  }
+
+  .water-column {
+    background: linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--color-pearl) 68%, white) 0%,
+      color-mix(in oklab, var(--color-pearl) 38%, #1d4d62) 12%,
+      #143544 26%,
+      #0b2230 48%,
+      #07141c 72%,
+      var(--color-abyss) 100%
+    );
+  }
+
+  .survey-light {
+    background: radial-gradient(
+      260px circle at var(--lx, 50%) var(--ly, 42%),
+      rgb(238 244 247 / 0.16),
+      transparent 62%
+    );
+  }
+
+  .hide-scroll {
+    scrollbar-width: none;
+  }
+  .hide-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .marine-flake {
+    animation-name: marine-fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  .cinema {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: var(--color-abyss);
+  }
+
+  .cinema-stage {
+    position: absolute;
+    inset: 0;
+  }
+
+  .cinema-contain .cinema-still {
+    object-fit: contain;
+    padding: 3rem;
+    background: var(--color-ink);
+  }
+
+  .cinema-still,
+  .cinema-video {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    outline: none;
+  }
+
+  .cinema-still {
+    filter: saturate(0.96) contrast(1.04);
+  }
+
+  .cinema-video {
+    opacity: 0;
+    mix-blend-mode: soft-light;
+    transition: opacity 900ms var(--ease-out-soft);
+  }
+
+  .cinema-video-normal {
+    mix-blend-mode: normal;
+  }
+
+  .cinema-ken {
+    inset: -2.5%;
+    will-change: transform;
+    animation: cinema-ken 88s ease-in-out infinite alternate;
+  }
+
+  .cinema-veil {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+  }
+
+  .veil-hero {
+    background:
+      linear-gradient(to top, var(--color-abyss) 0%, rgb(4 7 10 / 0.2) 38%, rgb(4 7 10 / 0.55) 100%),
+      linear-gradient(to right, rgb(4 7 10 / 0.45) 0%, transparent 22%, transparent 78%, rgb(4 7 10 / 0.4) 100%);
+  }
+
+  .veil-panel {
+    background:
+      linear-gradient(to top, var(--color-abyss) 0%, rgb(4 7 10 / 0.78) 28%, rgb(4 7 10 / 0.18) 62%, rgb(4 7 10 / 0.22) 100%),
+      linear-gradient(to right, rgb(4 7 10 / 0.28) 0%, transparent 42%, transparent 100%);
+  }
+
+  .veil-soft {
+    background: linear-gradient(
+      to top,
+      var(--color-abyss) 0%,
+      rgb(4 7 10 / 0.35) 36%,
+      rgb(4 7 10 / 0.18) 100%
+    );
+  }
+
+  .frame {
+    outline: 1px solid rgb(238 244 247 / 0.08);
+    outline-offset: -1px;
+  }
+}
+
+@keyframes caustic-drift {
+  from {
+    background-position: 0% 0%, 100% 0%, 0% 40%;
+  }
+  to {
+    background-position: 8% 5%, 90% 4%, 28% 55%;
+  }
+}
+
+@keyframes hero-rise {
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@keyframes cinema-ken {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.028);
+  }
+}
+
+@keyframes marine-fall {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(10px, 115vh, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .caustics,
+  .hero-word,
+  .marine-flake,
+  .cinema-ken {
+    animation: none;
+  }
+  .hero-word {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
