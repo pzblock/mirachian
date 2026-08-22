@@ -1,12 +1,12 @@
 import { Reveal } from "./Reveal";
 
 const FRAMES = [
-  { src: "/images/sub.jpg", cap: "The craft, below the light" },
-  { src: "/images/viewport.jpg", cap: "Through the viewport" },
-  { src: "/images/trench.jpg", cap: "Twilight water" },
-  { src: "/images/scuba.jpg", cap: "The scuba passage" },
-  { src: "/images/vessel.jpg", cap: "Ninety feet of support" },
-  { src: "/images/wp-form-c.jpg", cap: "On the working line" },
+  { src: "/images/cs7/op-028.jpg", cap: "The craft, below the light" },
+  { src: "/images/cs7/cs7-lounge.jpg", cap: "Inside the sphere" },
+  { src: "/images/cs7/op-010.jpg", cap: "On the working line" },
+  { src: "/images/cs7/cs7-hatch-open.jpg", cap: "The hatch" },
+  { src: "/images/cs7/op-021.jpg", cap: "Over the reef" },
+  { src: "/images/cs7/cs7-camera.jpg", cap: "The eye" },
   { src: "/images/silverbars.jpg", cap: "From these waters" },
 ] as const;
 

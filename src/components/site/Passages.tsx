@@ -18,7 +18,11 @@ export function Passages() {
       </div>
 
       <article id="passage-submersible" className="relative min-h-[88svh] overflow-hidden">
-        <Cinema still="/images/sub.jpg" alt="The submersible in still water" veil="panel" />
+        <Cinema
+          still="/images/cs7/op-023.jpg"
+          alt="The submersible among the reef"
+          veil="panel"
+        />
         <div className="caustics pointer-events-none absolute inset-0 z-[2] opacity-[0.12]" aria-hidden />
         <div className="relative z-10 mx-auto flex min-h-[88svh] max-w-6xl items-end px-5 py-20 md:px-8 md:py-24">
           <Reveal className="max-w-xl">
@@ -34,7 +38,7 @@ export function Passages() {
             <ul className="mt-10 space-y-3 text-sm text-fg">
               <li className="border-l border-pearl/70 pl-5">Maximum four guests per dive</li>
               <li className="border-l border-pearl/70 pl-5">Cinema-grade imaging of unvisited terrain</li>
-              <li className="border-l border-pearl/70 pl-5">Depth beyond 1,000 meters</li>
+              <li className="border-l border-pearl/70 pl-5">Rated to 1,140 meters</li>
               <li className="border-l border-pearl/70 pl-5">Conservative weather discipline</li>
             </ul>
             <p className="mt-10 text-sm text-champagne">
@@ -52,12 +56,9 @@ export function Passages() {
 
       <article id="passage-scuba" className="relative min-h-[88svh] overflow-hidden">
         <Cinema
-          still="/images/scuba.jpg"
-          video="/videos/water-column.mp4"
-          alt="A diver working clear Keys water"
+          still="/images/cs7/op-010.jpg"
+          alt="A diver alongside the submersible in clear water"
           veil="panel"
-          videoOpacity={0.1}
-          rate={0.48}
         />
         <div className="relative z-10 mx-auto flex min-h-[88svh] max-w-6xl items-end justify-end px-5 py-20 md:px-8 md:py-24">
           <Reveal className="max-w-xl">

@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { BioParticles } from "@/components/site/BioParticles";
 import { Craft } from "@/components/site/Craft";
 import { CursorGlow } from "@/components/site/CursorGlow";
 import { Descend } from "@/components/site/Descend";
@@ -7,7 +8,6 @@ import { Footer } from "@/components/site/Footer";
 import { Hero } from "@/components/site/Hero";
 import { Itinerary } from "@/components/site/Itinerary";
 import { Ledger } from "@/components/site/Ledger";
-import { MarineSnow } from "@/components/site/MarineSnow";
 import { Passages } from "@/components/site/Passages";
 import { Proof } from "@/components/site/Proof";
 import { Reserve } from "@/components/site/Reserve";
@@ -20,7 +20,7 @@ function Home() {
   return (
     <main className="bg-abyss">
       <div className="grain" aria-hidden />
-      <MarineSnow />
+      <BioParticles />
       <CursorGlow />
       <SiteNav />
       <Hero />

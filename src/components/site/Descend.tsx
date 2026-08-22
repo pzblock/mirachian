@@ -18,13 +18,13 @@ const ZONES: Zone[] = [
     m: 0,
     title: "Surface",
     body: "Key West light. The support vessel. Transfer is calm, briefed, and private.",
-    img: "/images/vessel.jpg",
+    img: "/images/cs7/op-009.jpg",
   },
   {
     m: 30,
     title: "The reef line",
     body: "Where scuba still belongs — clarity, coral, and the last of ordinary tourism.",
-    img: "/images/wp-form-e.jpg",
+    img: "/images/cs7/op-010.jpg",
   },
   {
     m: 200,
@@ -36,19 +36,19 @@ const ZONES: Zone[] = [
     m: 600,
     title: "The drop",
     body: "South of Key West the seafloor falls into a corridor few platforms can enter.",
-    img: "/images/hero.jpg",
+    img: "/images/cs7/op-021.jpg",
   },
   {
     m: 1000,
     title: "The frontier",
     body: "Fewer people have been here than have been to space. This is the ledger scuba cannot open.",
-    img: "/images/wp-form-c.jpg",
+    img: "/images/cs7/op-028.jpg",
   },
   {
     m: 1140,
     title: "Mirachian depth",
     body: "Four guests. One pilot. Cinema-grade capture. Deliberate, quiet, beyond the crowd.",
-    img: "/images/viewport.jpg",
+    img: "/images/cs7/cs7-lounge.jpg",
   },
 ];
 
@@ -148,7 +148,7 @@ export function Descend() {
         }}
       />
 
-      <div className="relative mx-auto max-w-6xl px-5 section-y md:px-8">
+      <div className="relative z-10 mx-auto max-w-6xl px-5 section-y md:px-8">
         <Reveal>
           <p className="kicker">Interactive depth</p>
           <h2 className="mt-5 max-w-2xl font-display text-[clamp(2rem,4vw,3.3rem)] text-fg">

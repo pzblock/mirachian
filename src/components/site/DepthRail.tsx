@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const MAX_M = 1140;
+
 const ZONES = [
   { p: 0, label: "Surface" },
   { p: 0.22, label: "Reef" },
@@ -21,7 +23,7 @@ export function DepthRail() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const meters = Math.round(p * 1700);
+  const meters = Math.round((p * MAX_M) / 10) * 10;
   const zone = [...ZONES].reverse().find((z) => p >= z.p - 0.001) ?? ZONES[0];
 
   return (

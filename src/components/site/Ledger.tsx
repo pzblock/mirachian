@@ -6,7 +6,7 @@ const FACTS = [
   { k: "150 km", v: "The channel between Key West and the Cuban shelf." },
   { k: "500 yrs", v: "Spanish treasure fleets ran this water, season after season." },
   { k: "1,000+", v: "Ships lost to storm, reef, and war. Many still unfound." },
-  { k: "1,000 m+", v: "Where the ledger actually lives — below any recreational line." },
+  { k: "1,140 m", v: "Where the ledger actually lives — the rated depth of the craft." },
 ] as const;
 
 export function Ledger() {

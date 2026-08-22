@@ -82,9 +82,9 @@ export function Proof() {
         <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <Stat value={4} label="Guests in the sphere. Never more." start={start} />
           <Stat
-            value={1000}
-            suffix="m+"
-            label="Operating depth beyond sport diving."
+            value={1140}
+            suffix="m"
+            label="Rated operating depth of the craft."
             start={start}
           />
           <Stat

@@ -28,8 +28,8 @@ export function Hero() {
         className="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
       >
         <Cinema
-          still="/images/wp-form-b.jpg"
-          alt="The Florida Keys from above, looking toward the Straits"
+          still="/images/cs7/op-021.jpg"
+          alt="The submersible over the reef, seen from the air"
           veil="hero"
         />
       </div>
@@ -43,7 +43,7 @@ export function Hero() {
           </p>
         </div>
 
-        <h1 className="max-w-3xl font-display text-[clamp(2.7rem,7.4vw,5.8rem)] leading-[0.96] text-fg">
+        <h1 className="max-w-[12ch] font-display text-[clamp(2.7rem,7.4vw,5.8rem)] leading-[0.96] text-fg">
           {WORDS.map((w, i) => (
             <span
               key={w}

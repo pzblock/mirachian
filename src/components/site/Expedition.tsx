@@ -37,10 +37,9 @@ export function Expedition() {
 
       <div className="relative min-h-[72svh] overflow-hidden md:min-h-[82svh]">
         <Cinema
-          still="/images/wp-form-b.jpg"
-          alt="The Florida Keys from the air, looking toward the Straits"
+          still="/images/cs7/op-009.jpg"
+          alt="The submersible leaving the stern for the drop"
           veil="soft"
-          ken
         />
         <div className="relative z-10 mx-auto flex min-h-[72svh] max-w-6xl items-end px-5 py-14 md:min-h-[82svh] md:px-8 md:py-20">
           <p className="max-w-3xl font-display text-[clamp(1.7rem,3.4vw,3rem)] leading-[1.14] text-fg">
@@ -58,7 +57,7 @@ export function Expedition() {
             buried, or resting at depths far beyond ordinary diving. Currents,
             distance, and the limits of earlier technology kept them there. A
             luxury submersible changes the equation: safe, peaceful, precise
-            exploration below 1,000 meters, with cinema-grade imaging of terrain
+            exploration to 1,140 meters, with cinema-grade imaging of terrain
             almost no one has seen.
           </p>
         </Reveal>

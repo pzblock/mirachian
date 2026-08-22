@@ -146,15 +146,56 @@
     display: none;
   }
 
-  .marine-flake {
-    animation-name: marine-fall;
-    animation-timing-function: linear;
+  .bio-field {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 6;
+    overflow: hidden;
+    transition: opacity 700ms var(--ease-out-soft);
+  }
+
+  .bio-speck {
+    position: absolute;
+    border-radius: 999px;
+    mix-blend-mode: screen;
+    animation-name: bio-drift, bio-breathe;
+    animation-timing-function: linear, ease-in-out;
     animation-iteration-count: infinite;
+  }
+
+  .bio-pearl {
+    background: radial-gradient(
+      circle,
+      rgb(185 208 217 / 0.7) 0%,
+      rgb(185 208 217 / 0.18) 38%,
+      transparent 70%
+    );
+  }
+
+  .bio-aqua {
+    background: radial-gradient(
+      circle,
+      rgb(154 214 210 / 0.55) 0%,
+      rgb(154 214 210 / 0.14) 40%,
+      transparent 70%
+    );
+  }
+
+  .bio-ice {
+    background: radial-gradient(
+      circle,
+      rgb(196 228 232 / 0.5) 0%,
+      rgb(196 228 232 / 0.12) 42%,
+      transparent 70%
+    );
   }
 
   .cinema {
     position: absolute;
     inset: 0;
+    z-index: 0;
+    isolation: isolate;
     overflow: hidden;
     background: var(--color-abyss);
   }
@@ -259,12 +300,37 @@
   }
 }
 
-@keyframes marine-fall {
+@keyframes bio-drift {
   0% {
     transform: translate3d(0, 0, 0);
   }
+  25% {
+    transform: translate3d(var(--sx, 10px), 16vh, 0);
+  }
+  50% {
+    transform: translate3d(calc(var(--sx, 10px) * -0.55), 34vh, 0);
+  }
+  75% {
+    transform: translate3d(calc(var(--sx, 10px) * 0.4), 54vh, 0);
+  }
   100% {
-    transform: translate3d(10px, 115vh, 0);
+    transform: translate3d(var(--sx, 10px), 78vh, 0);
+  }
+}
+
+@keyframes bio-breathe {
+  0%,
+  100% {
+    opacity: var(--o, 0.22);
+  }
+  50% {
+    opacity: calc(var(--o, 0.22) * 1.65);
+  }
+}
+
+@media (max-width: 767px) {
+  .bio-speck:nth-child(n + 22) {
+    display: none;
   }
 }
 
@@ -274,9 +340,12 @@
   }
   .caustics,
   .hero-word,
-  .marine-flake,
+  .bio-speck,
   .cinema-ken {
     animation: none;
+  }
+  .bio-field {
+    display: none;
   }
   .hero-word {
     opacity: 1;
