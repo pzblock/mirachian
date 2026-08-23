@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { useReducedMotion } from "@/lib/motion";
+import { WaterSnow } from "./WaterSnow";
 
-type Veil = "hero" | "panel" | "soft" | "none";
+type Veil = "hero" | "panel" | "panel-end" | "soft" | "none";
 
 export function Cinema({
   still,
@@ -16,6 +17,10 @@ export function Cinema({
   fit = "cover",
   rate = 0.55,
   blend = "soft",
+  objectPosition,
+  snow = false,
+  hoverStill,
+  priority = false,
 }: {
   still: string;
   video?: string;
@@ -28,6 +33,10 @@ export function Cinema({
   fit?: "cover" | "contain";
   rate?: number;
   blend?: "soft" | "normal";
+  objectPosition?: string;
+  snow?: boolean;
+  hoverStill?: string;
+  priority?: boolean;
 }) {
   const vref = useRef<HTMLVideoElement>(null);
   const reduce = useReducedMotion();
@@ -53,7 +62,22 @@ export function Cinema({
           fit === "contain" && "cinema-contain",
         )}
       >
-        <img src={still} alt={alt} className="cinema-still" />
+        <img
+          src={still}
+          alt={alt}
+          className="cinema-still"
+          decoding={priority ? "sync" : "async"}
+          fetchPriority={priority ? "high" : "low"}
+          style={objectPosition ? { objectPosition } : undefined}
+        />
+        {hoverStill ? (
+          <img
+            src={hoverStill}
+            alt=""
+            className="cinema-still cinema-lit"
+            style={objectPosition ? { objectPosition } : undefined}
+          />
+        ) : null}
         {video && !reduce ? (
           <video
             ref={vref}
@@ -71,6 +95,9 @@ export function Cinema({
         ) : null}
       </div>
       {veil !== "none" ? <div className={cn("cinema-veil", `veil-${veil}`)} aria-hidden /> : null}
+      {snow ? (
+        <WaterSnow count={70} />
+      ) : null}
     </div>
   );
 }

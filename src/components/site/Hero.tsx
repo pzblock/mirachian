@@ -28,52 +28,57 @@ export function Hero() {
         className="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
       >
         <Cinema
-          still="/images/cs7/op-021.jpg"
-          alt="The submersible over the reef, seen from the air"
+          still="/images/cs7/op-028.jpg"
+          alt="The submersible seen from below in deep blue water"
           veil="hero"
+          objectPosition="82% 8%"
+          priority
         />
       </div>
-      <div className="caustics pointer-events-none absolute inset-0 z-[2] opacity-[0.14]" aria-hidden />
+      <div className="caustics pointer-events-none absolute inset-0 z-[2] opacity-[0.06]" aria-hidden />
 
-      <div className="relative z-10 mx-auto flex min-h-dvh max-w-6xl flex-col justify-end px-5 pb-20 pt-28 md:justify-end md:px-8 md:pb-28">
-        <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
+      <div className="relative z-10 mx-auto flex min-h-dvh max-w-6xl flex-col px-5 pt-28 pb-14 md:px-8 md:pb-20">
+        <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
           <p className="kicker">Private Passage · Rare Discoveries</p>
-          <p className="font-mono text-[0.62rem] tracking-[0.18em] text-pearl/75 uppercase">
+          <p className="font-mono text-[0.62rem] tracking-[0.18em] text-pearl/80 uppercase">
             24°33′N · 81°46′W · Key West
           </p>
         </div>
 
-        <h1 className="max-w-[12ch] font-display text-[clamp(2.7rem,7.4vw,5.8rem)] leading-[0.96] text-fg">
-          {WORDS.map((w, i) => (
-            <span
-              key={w}
-              className="hero-word mr-[0.28em] last:mr-0"
-              style={{ animationDelay: `${220 + i * 110}ms` }}
+        <div className="copy-veil mt-auto max-w-xl pt-8">
+          <h1 className="max-w-[11ch] font-display text-[clamp(2.55rem,6.6vw,5.2rem)] leading-[0.98] text-fg">
+            {WORDS.map((w, i) => (
+              <span
+                key={w}
+                className="hero-word mr-[0.28em] last:mr-0"
+                style={{ animationDelay: `${220 + i * 110}ms` }}
+              >
+                {w}
+              </span>
+            ))}
+          </h1>
+
+          <p className="mt-8 max-w-md text-base leading-relaxed text-fg md:mt-10 md:text-lg">
+            Ultra-private submersible expeditions from Key West, for a maximum of
+            four guests. Each journey is a carefully guided exploration of waters
+            few will ever see — where history, uncharted terrain, and the quiet
+            possibility of discovery still converge.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-3 md:mt-10">
+            <a
+              href="#reserve"
+              className="inline-flex min-h-11 items-center border border-line px-7 py-3 text-[0.7rem] tracking-[0.2em] text-pearl uppercase transition-colors duration-200 hover:border-pearl"
             >
-              {w}
-            </span>
-          ))}
-        </h1>
-
-        <p className="mt-8 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-          Four guests. One pilot. A ninety-foot ship waiting off Key West. Below,
-          a hundred-and-fifty-kilometer channel that carried the Spanish treasure
-          fleets — and still has not finished speaking.
-        </p>
-
-        <div className="mt-12 flex flex-wrap gap-3">
-          <a
-            href="#reserve"
-            className="inline-flex min-h-11 items-center bg-pearl px-7 py-3 text-[0.7rem] tracking-[0.2em] text-abyss uppercase transition-[background-color,transform] duration-150 hover:bg-fg active:scale-[0.96]"
-          >
-            Reserve passage
-          </a>
-          <a
-            href="#descend"
-            className="inline-flex min-h-11 items-center border border-line px-7 py-3 text-[0.7rem] tracking-[0.2em] text-pearl uppercase transition-colors duration-200 hover:border-pearl"
-          >
-            Draw the depth
-          </a>
+              Reserve passage
+            </a>
+            <a
+              href="#descend"
+              className="inline-flex min-h-11 items-center border border-line px-7 py-3 text-[0.7rem] tracking-[0.2em] text-pearl uppercase transition-colors duration-200 hover:border-pearl"
+            >
+              Draw the depth
+            </a>
+          </div>
         </div>
       </div>
     </section>

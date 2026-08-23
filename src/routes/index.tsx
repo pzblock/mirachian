@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { BioParticles } from "@/components/site/BioParticles";
 import { Craft } from "@/components/site/Craft";
 import { CursorGlow } from "@/components/site/CursorGlow";
 import { Descend } from "@/components/site/Descend";
@@ -9,6 +8,7 @@ import { Hero } from "@/components/site/Hero";
 import { Itinerary } from "@/components/site/Itinerary";
 import { Ledger } from "@/components/site/Ledger";
 import { Passages } from "@/components/site/Passages";
+import { PreloadPhotos } from "@/components/site/PreloadPhotos";
 import { Proof } from "@/components/site/Proof";
 import { Reserve } from "@/components/site/Reserve";
 import { SiteNav } from "@/components/site/SiteNav";
@@ -19,8 +19,8 @@ export const Route = createFileRoute("/")({ component: Home });
 function Home() {
   return (
     <main className="bg-abyss">
+      <PreloadPhotos />
       <div className="grain" aria-hidden />
-      <BioParticles />
       <CursorGlow />
       <SiteNav />
       <Hero />

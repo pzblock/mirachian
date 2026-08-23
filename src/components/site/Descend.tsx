@@ -3,6 +3,7 @@ import { Pause, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useReducedMotion } from "@/lib/motion";
 import { Reveal } from "./Reveal";
+import { WaterSnow } from "./WaterSnow";
 
 const MAX = 1140;
 
@@ -11,44 +12,60 @@ type Zone = {
   title: string;
   body: string;
   img: string;
+  alt: string;
+  pos?: string;
+  hover?: string;
 };
 
 const ZONES: Zone[] = [
   {
     m: 0,
     title: "Surface",
-    body: "Key West light. The support vessel. Transfer is calm, briefed, and private.",
-    img: "/images/cs7/op-009.jpg",
+    body: "Key West light, a private transfer, and the first look at the craft. You are received, briefed, and put to sea.",
+    img: "/images/cs7/op-021.jpg",
+    alt: "The submersible over the reef, seen from the air",
+    pos: "50% 48%",
   },
   {
     m: 30,
     title: "The reef line",
-    body: "Where scuba still belongs — clarity, coral, and the last of ordinary tourism.",
-    img: "/images/cs7/op-010.jpg",
+    body: "Living coral and clear Keys water — where scuba still belongs, and where the ordinary sea has not yet been left behind.",
+    img: "/images/cs7/op-026.jpg",
+    alt: "The submersible settling over living coral",
+    pos: "50% 50%",
   },
   {
     m: 200,
     title: "Twilight",
-    body: "Color leaves. Recreational diving has already ended. The passage has not.",
-    img: "/images/trench.jpg",
+    body: "Color leaves. Recreational diving has already ended. The Pourtalès slope and the deeper channel are only beginning.",
+    img: "/images/wp/wp-bg-61.jpg",
+    alt: "The submersible in deeper blue as the light leaves",
+    pos: "50% 42%",
   },
   {
     m: 600,
     title: "The drop",
-    body: "South of Key West the seafloor falls into a corridor few platforms can enter.",
-    img: "/images/cs7/op-021.jpg",
+    body: "Open-water ground few platforms can enter. Persistent currents bury and expose sites over decades. This is where the chart goes blank.",
+    img: "/images/trench.jpg",
+    alt: "Open water falling into the deeper channel",
+    pos: "50% 50%",
   },
   {
     m: 1000,
     title: "The frontier",
-    body: "Fewer people have been here than have been to space. This is the ledger scuba cannot open.",
-    img: "/images/cs7/op-028.jpg",
+    body: "A wreck on the channel floor. Hover — the light finds the hull. Fewer people have been here than have been to space.",
+    img: "/images/seabed.jpg",
+    hover: "/images/seabed2.jpg",
+    alt: "A wreck on the seafloor — hover to bring up the light",
+    pos: "50% 50%",
   },
   {
     m: 1140,
     title: "Mirachian depth",
-    body: "Four guests. One pilot. Cinema-grade capture. Deliberate, quiet, beyond the crowd.",
-    img: "/images/cs7/cs7-lounge.jpg",
+    body: "The rated depth of the craft. Cinema-grade capture. Four guests, one pilot, and a methodical search across square miles of slope and channel.",
+    img: "/images/cs7/cs7-underwater.jpg",
+    alt: "The Cruise Sub in open water at working depth",
+    pos: "42% 38%",
   },
 ];
 
@@ -67,6 +84,7 @@ export function Descend() {
   const [m, setM] = useState(0);
   const [playing, setPlaying] = useState(false);
   const column = useRef<HTMLDivElement>(null);
+  const stage = useRef<HTMLElement>(null);
   const playRef = useRef<number>(0);
 
   const zone = useMemo(() => {
@@ -81,6 +99,14 @@ export function Descend() {
     cancelAnimationFrame(playRef.current);
     setPlaying(false);
   }, []);
+
+  const showZone = (depth: number) => {
+    stopPlay();
+    setM(depth);
+    if (typeof window !== "undefined" && window.matchMedia("(max-width: 1023px)").matches) {
+      stage.current?.scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" });
+    }
+  };
 
   const play = () => {
     if (playing) {
@@ -120,47 +146,25 @@ export function Descend() {
   const ata = pressureAta(m);
   const light = lightPct(m);
   const temp = tempC(m);
+  const depthP = m / MAX;
+  const grade = Math.round(3 + depthP * 9);
 
   return (
-    <section id="descend" className="relative overflow-hidden">
-      {ZONES.map((z) => (
-        <img
-          key={z.img}
-          src={z.img}
-          alt=""
-          className={cn(
-            "absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]",
-            zone.img === z.img ? "opacity-45" : "opacity-0",
-          )}
-        />
-      ))}
-      <div
-        className="absolute inset-0 transition-colors duration-1000"
-        style={{
-          background: `linear-gradient(to bottom, rgb(4 7 10 / ${0.42 + (m / MAX) * 0.42}), rgb(4 7 10 / ${0.68 + (m / MAX) * 0.26}))`,
-        }}
-      />
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(to right, rgb(4 7 10 / 0.45) 0%, transparent 28%, transparent 78%, rgb(4 7 10 / 0.35) 100%)",
-        }}
-      />
-
-      <div className="relative z-10 mx-auto max-w-6xl px-5 section-y md:px-8">
+    <section id="descend" className="relative">
+      <div className="mx-auto max-w-6xl px-5 section-y md:px-8">
         <Reveal>
           <p className="kicker">Interactive depth</p>
           <h2 className="mt-5 max-w-2xl font-display text-[clamp(2rem,4vw,3.3rem)] text-fg">
-            Draw the line yourself.
+            Draw the depth yourself.
           </h2>
-          <p className="mt-6 max-w-xl text-muted">
-            Drag the water column — or play the descent. This is the difference
-            between a dive trip and a Mirachian passage.
+          <p className="mt-6 max-w-xl leading-relaxed text-muted">
+            Drag the water column — or play the descent. Sport diving ends near
+            forty meters. The Pourtalès slope and the deeper channels fall well
+            below a thousand. That is the water we came for.
           </p>
         </Reveal>
 
-        <div className="mt-16 grid items-stretch gap-12 lg:grid-cols-12">
+        <div className="mt-16 grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-5">
             <p className="font-display text-[clamp(3.4rem,8vw,6.4rem)] leading-none text-fg tabular-nums">
               {m}
@@ -195,7 +199,7 @@ export function Descend() {
           </div>
 
           <div className="lg:col-span-7">
-            <div className="flex gap-8">
+            <div className="flex gap-6 md:gap-8">
               <div
                 ref={column}
                 role="slider"
@@ -223,7 +227,7 @@ export function Descend() {
                     setM((v) => Math.max(0, v - 20));
                   }
                 }}
-                className="water-column relative hidden h-[440px] w-10 shrink-0 cursor-ns-resize overflow-hidden lg:block"
+                className="water-column relative hidden h-[520px] w-10 shrink-0 cursor-ns-resize overflow-hidden lg:block"
               >
                 <span
                   className="absolute inset-x-0 h-px bg-pearl"
@@ -234,31 +238,71 @@ export function Descend() {
                   style={{ top: `${(m / MAX) * 100}%` }}
                 />
               </div>
-              <div className="flex min-w-0 flex-1 flex-col justify-between py-1">
-                {ZONES.map((z) => (
-                  <button
-                    key={z.m}
-                    type="button"
-                    onClick={() => {
-                      stopPlay();
-                      setM(z.m);
+
+              <div className="min-w-0 flex-1">
+                <figure
+                  ref={stage}
+                  className="group/wreck relative h-[42svh] overflow-hidden bg-ink sm:h-[48svh] lg:h-[520px] lg:aspect-auto"
+                >
+                  {ZONES.map((z) => (
+                    <img
+                      key={z.img}
+                      src={z.img}
+                      alt={z.alt}
+                      className={cn(
+                        "absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                        zone.img === z.img ? "opacity-100" : "opacity-0",
+                      )}
+                      style={{ objectPosition: z.pos ?? "50% 50%" }}
+                    />
+                  ))}
+                  {zone.hover ? (
+                    <img
+                      src={zone.hover}
+                      alt=""
+                      className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-700 group-hover/wreck:opacity-100"
+                      style={{ objectPosition: zone.pos ?? "50% 50%" }}
+                    />
+                  ) : null}
+                  <div
+                    className="pointer-events-none absolute inset-0 transition-colors duration-700"
+                    style={{
+                      background: `color-mix(in oklab, var(--color-abyss) ${grade}%, transparent)`,
                     }}
-                    className={cn(
-                      "flex min-h-11 items-baseline justify-between gap-4 border-b border-line py-2.5 text-left last:border-0 transition-colors duration-200",
-                      zone.m === z.m ? "text-fg" : "text-muted hover:text-pearl",
-                    )}
-                  >
-                    <span className="font-display text-lg md:text-xl">{z.title}</span>
-                    <span className="font-mono text-[0.65rem] tracking-wider uppercase tabular-nums">
-                      {z.m}m
+                    aria-hidden
+                  />
+                  {zone.m === 200 ? <WaterSnow count={70} /> : null}
+                  <figcaption className="descend-caption absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-4 px-4 py-4 md:px-5 md:py-5">
+                    <span className="font-display text-lg text-fg md:text-xl">{zone.title}</span>
+                    <span className="font-mono text-[0.65rem] tracking-wider text-pearl uppercase tabular-nums">
+                      {zone.m}m
                     </span>
-                  </button>
-                ))}
+                  </figcaption>
+                </figure>
+
+                <div className="mt-5 flex flex-col">
+                  {ZONES.map((z) => (
+                    <button
+                      key={z.m}
+                      type="button"
+                      onClick={() => showZone(z.m)}
+                      className={cn(
+                        "flex min-h-11 items-baseline justify-between gap-4 border-b border-line py-2.5 text-left last:border-0 transition-colors duration-200",
+                        zone.m === z.m ? "text-fg" : "text-muted hover:text-pearl",
+                      )}
+                    >
+                      <span className="font-display text-lg md:text-xl">{z.title}</span>
+                      <span className="font-mono text-[0.65rem] tracking-wider uppercase tabular-nums">
+                        {z.m}m
+                      </span>
+                    </button>
+                  ))}
+                </div>
+                <p className="mt-5 hidden text-[0.7rem] tracking-[0.12em] text-muted uppercase lg:block">
+                  Drag the column · Sport diving ends near 40m
+                </p>
               </div>
             </div>
-            <p className="mt-5 hidden text-[0.7rem] tracking-[0.12em] text-muted uppercase lg:block">
-              Drag the column · Sport diving ends near 40m
-            </p>
           </div>
         </div>
       </div>

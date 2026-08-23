@@ -8,9 +8,9 @@ const PIECES = [
     id: "sphere",
     kicker: "The sphere",
     title: "Four guests. One pilot. Still water.",
-    body: "An acrylic viewport that makes depth feel composed, not theatrical. You sit. The sea does the moving. The day is filmed as it happens.",
-    img: "/images/cs7/cs7-lounge.jpg",
-    alt: "The submersible cabin — lounge seating and wide acrylic views",
+    body: "An acrylic viewport that makes extraordinary depth feel composed. You sit. The sea does the moving. Cinema-grade imaging records the day as it happens — quiet, precise, and yours to keep.",
+    img: "/images/cs7/cs7-seats.jpg",
+    alt: "The passenger sphere — seats, viewport, still water beyond",
     fit: "cover" as const,
     specs: [
       ["Guests", "Four, never five"],
@@ -27,6 +27,7 @@ const PIECES = [
     img: "/images/vessel.jpg",
     alt: "The support vessel at dusk",
     fit: "cover" as const,
+    pos: "50% 52%",
     specs: [
       ["Length", "90 ft"],
       ["Range", "2,700 nm"],
@@ -38,7 +39,7 @@ const PIECES = [
     id: "eye",
     kicker: "The eye",
     title: "Cinema-grade capture, purpose-built.",
-    body: "A custom imaging array for terrain no one has filmed this way — quiet, precise, and made for the record of the day. You leave with more than a memory.",
+    body: "A custom imaging array for terrain no one has filmed this way. Quiet, precise, and made for the record of the day — so that whatever is encountered is preserved with the highest fidelity.",
     img: "/images/cs7/cs7-camera.jpg",
     alt: "Cinema imaging array on the submersible",
     fit: "cover" as const,
@@ -57,16 +58,17 @@ export function Craft() {
 
   return (
     <section id="craft">
-      <div className="mx-auto max-w-6xl px-5 section-y md:px-8">
+      <div className="mx-auto max-w-6xl px-5 section-lead md:px-8">
         <Reveal>
           <p className="kicker">Craft</p>
           <h2 className="mt-5 max-w-2xl font-display text-[clamp(2rem,4vw,3.2rem)] text-fg">
-            Built for the work. Finished for the guest.
+            Elite luxury. Uncompromising safety.
           </h2>
-          <p className="mt-6 max-w-2xl text-muted">
+          <p className="mt-6 max-w-2xl leading-relaxed text-muted">
             A dedicated support vessel and a deep-rated submersible, operated as
-            one expedition system — with cinema-grade imaging designed for these
-            waters.
+            one expedition system. Cinema-grade imaging. Conservative weather
+            discipline. Pairing exceptional experience with the proficiency that
+            makes extraordinary depth feel effortless.
           </p>
         </Reveal>
 
@@ -89,27 +91,28 @@ export function Craft() {
         </div>
       </div>
 
-      <div className="relative min-h-[82svh] overflow-hidden">
-        {PIECES.map((p) => (
-          <div
-            key={p.id}
-            className={cn(
-              "absolute inset-0 transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
-              id === p.id ? "opacity-100" : "pointer-events-none opacity-0",
-            )}
-          >
-            <Cinema still={p.img} alt={p.alt} veil="panel" fit={p.fit} />
-          </div>
-        ))}
-        <div className="relative z-10 mx-auto flex min-h-[82svh] max-w-6xl items-end px-5 py-16 md:px-8 md:py-24">
-          <div className="max-w-xl">
+      <div className="cine-frame md:min-h-[82svh]">
+        <div className="cine-media">
+          <Cinema
+            key={piece.img}
+            still={piece.img}
+            alt={piece.alt}
+            veil="panel"
+            fit={piece.fit}
+            objectPosition={
+              piece.id === "sphere" ? "48% 36%" : piece.id === "vessel" ? "50% 52%" : undefined
+            }
+          />
+        </div>
+        <div className="cine-copy mx-auto max-w-6xl px-5 py-10 md:min-h-[82svh] md:px-8 md:py-24">
+          <div className="copy-veil max-w-xl">
             <p className="kicker">{piece.kicker}</p>
             <h3 className="mt-4 font-display text-3xl text-fg md:text-[2.6rem]">{piece.title}</h3>
-            <p className="mt-6 leading-relaxed text-muted">{piece.body}</p>
+            <p className="mt-6 leading-relaxed text-fg">{piece.body}</p>
             <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-5 border-t border-line pt-7">
               {piece.specs.map(([k, v]) => (
                 <div key={k}>
-                  <dt className="text-[0.62rem] tracking-[0.16em] text-muted uppercase">{k}</dt>
+                  <dt className="text-[0.62rem] tracking-[0.16em] text-pearl uppercase">{k}</dt>
                   <dd className="mt-1.5 text-sm text-fg">{v}</dd>
                 </div>
               ))}

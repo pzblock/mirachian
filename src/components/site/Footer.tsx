@@ -38,8 +38,7 @@ export function Footer() {
         <p className="mt-2 max-w-3xl">
           Expeditions are hosted by Mirachian Expeditions, utilizing the certified
           vessels of Mirachian Group. An inquiry is not a booking until terms are
-          accepted and a deposit is placed. Historical material from these waters
-          is approached as survey, not salvage.
+          accepted and a deposit is placed.
         </p>
       </div>
     </footer>

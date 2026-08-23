@@ -35,7 +35,7 @@ export function DepthRail() {
         <p className="font-mono text-[0.65rem] tracking-[0.14em] text-pearl uppercase tabular-nums">
           {meters}m
         </p>
-        <p className="text-[0.55rem] tracking-[0.18em] text-muted uppercase">{zone.label}</p>
+        <p className="text-[0.55rem] tracking-[0.18em] text-pearl/80 uppercase">{zone.label}</p>
       </div>
       <div className="relative h-8 w-px bg-line">
         <span

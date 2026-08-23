@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { DepthRail } from "./DepthRail";
+import { Mark } from "./Mark";
 
 const LINKS = [
   { href: "#voyage", label: "Voyage" },
@@ -26,29 +27,17 @@ export function SiteNav() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-500",
         scrolled || open
-          ? "border-b border-line bg-abyss/90 backdrop-blur-md"
-          : "border-b border-transparent",
+          ? "border-b border-line bg-abyss/92 backdrop-blur-md"
+          : "border-b border-transparent nav-top",
       )}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5 md:px-8">
-        <a href="#top" className="flex items-center gap-3">
-          <span className="inline-flex size-8 items-center justify-center" aria-hidden>
-            <svg viewBox="0 0 32 32" className="size-7 text-pearl">
-              <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" strokeWidth="1.4" />
-              <circle cx="16" cy="16" r="6.2" fill="none" stroke="currentColor" strokeWidth="1.1" />
-              <line
-                x1="9.6"
-                y1="16"
-                x2="22.4"
-                y2="16"
-                stroke="currentColor"
-                strokeWidth="1.1"
-                strokeLinecap="square"
-              />
-            </svg>
+        <a href="#top" className="group/mark flex items-center gap-3">
+          <span className="inline-flex size-8 items-center justify-center text-pearl" aria-hidden>
+            <Mark className="size-7" />
           </span>
           <span className="flex flex-col leading-none">
-            <span className="font-display text-[1.05rem] tracking-[0.34em] text-fg uppercase">
+            <span className="mark-word font-display text-[1.05rem] tracking-[0.34em] text-fg uppercase transition-colors duration-500">
               Mirachian
             </span>
             <span className="mt-1 text-[0.58rem] tracking-[0.38em] text-pearl uppercase">
@@ -61,7 +50,7 @@ export function SiteNav() {
             <a
               key={link.href}
               href={link.href}
-              className="text-[0.7rem] tracking-[0.22em] text-muted uppercase transition-colors duration-200 hover:text-pearl"
+              className="text-[0.7rem] tracking-[0.22em] text-pearl uppercase transition-colors duration-200 hover:text-fg"
             >
               {link.label}
             </a>

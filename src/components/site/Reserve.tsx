@@ -100,10 +100,10 @@ export function Reserve() {
           <h2 className="mt-5 font-display text-[clamp(2rem,4vw,3.2rem)] text-fg">
             Begin with interest. Then a private conversation.
           </h2>
-          <p className="mt-6 max-w-md text-muted">
-            Capacity is limited. This form opens a conversation — not a cabin. A
-            deposit holds the place. The voyage itself is confirmed when
-            arrangements are complete.
+          <p className="mt-6 max-w-md leading-relaxed text-muted">
+            Capacity is limited by design. This form opens a private conversation
+            — not a cabin. A deposit holds the place. The expedition itself is
+            confirmed when arrangements are complete.
           </p>
           <ol className="mt-12 space-y-6 text-sm text-muted">
             {[

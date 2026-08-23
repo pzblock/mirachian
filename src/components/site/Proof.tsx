@@ -73,10 +73,11 @@ export function Proof() {
             More people have traveled to space than have physically descended to
             1,000 meters.
           </h2>
-          <p className="mt-6 max-w-2xl text-muted">
+          <p className="mt-6 max-w-2xl leading-relaxed text-muted">
             Submersible travel is quieter — and many orders of magnitude safer —
-            than the myth suggests. The rarity is access, not danger. That is the
-            whole point of a Mirachian passage.
+            than the myth suggests. The rarity is access, not danger. That is why
+            a Mirachian expedition is reserved for four guests, never more, and
+            for those who recognize that true adventure is most uncommon.
           </p>
         </Reveal>
         <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">

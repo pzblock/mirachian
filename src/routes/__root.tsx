@@ -1,6 +1,7 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
+import { CRITICAL_PHOTOS } from "@/lib/photos";
 import appCss from "../styles.css?url";
 
 const APP_NAME = "Mirachian";
@@ -29,6 +30,11 @@ export const Route = createRootRoute({
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap",
       },
+      ...CRITICAL_PHOTOS.map((href) => ({
+        rel: "preload" as const,
+        as: "image",
+        href,
+      })),
     ],
   }),
   component: () => (
