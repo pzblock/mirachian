@@ -47,6 +47,20 @@ const BEATS = [
   },
 ] as const;
 
+function BeatCopy({
+  beat,
+}: {
+  beat: (typeof BEATS)[number];
+}) {
+  return (
+    <>
+      <p className="kicker">{beat.t}</p>
+      <h3 className="mt-4 font-display text-3xl text-fg md:text-[2.6rem]">{beat.title}</h3>
+      <p className="mt-6 leading-relaxed text-fg">{beat.body}</p>
+    </>
+  );
+}
+
 export function Itinerary() {
   const [i, setI] = useState(0);
   const beat = BEATS[i] ?? BEATS[0];
@@ -61,14 +75,14 @@ export function Itinerary() {
           </h2>
         </Reveal>
 
-        <div className="mt-12 flex gap-2 overflow-x-auto hide-scroll pb-1">
+        <div className="day-tabs mt-10 grid grid-cols-3 gap-2 md:mt-12 md:flex md:flex-wrap">
           {BEATS.map((b, idx) => (
             <button
               key={b.t}
               type="button"
               onClick={() => setI(idx)}
               className={cn(
-                "min-h-11 shrink-0 border px-4 text-[0.68rem] tracking-[0.14em] uppercase transition-colors duration-200",
+                "min-h-11 border px-2 text-[0.62rem] leading-tight tracking-[0.1em] uppercase transition-colors duration-200 md:shrink-0 md:px-4 md:text-[0.68rem] md:tracking-[0.14em]",
                 i === idx ? "border-pearl text-fg" : "border-line text-muted hover:border-pearl/50",
               )}
             >
@@ -91,9 +105,7 @@ export function Itinerary() {
         </div>
         <div className="cine-copy mx-auto max-w-6xl px-5 py-10 md:min-h-[78svh] md:px-8 md:py-24">
           <div className="copy-veil max-w-xl">
-            <p className="kicker">{beat.t}</p>
-            <h3 className="mt-4 font-display text-3xl text-fg md:text-[2.6rem]">{beat.title}</h3>
-            <p className="mt-6 leading-relaxed text-fg">{beat.body}</p>
+            <BeatCopy beat={beat} />
             <div className="mt-10 flex gap-3">
               <button
                 type="button"

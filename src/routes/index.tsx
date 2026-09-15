@@ -28,9 +28,9 @@ function Home() {
       <Hero />
       <Proof />
       <Expedition />
+      <Passages />
       <Descend />
       <Ledger />
-      <Passages />
       <Craft />
       <Itinerary />
       <Stills />

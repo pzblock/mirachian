@@ -4,36 +4,15 @@ import { Reveal } from "./Reveal";
 export function Expedition() {
   return (
     <section id="voyage">
-      <div className="mx-auto grid max-w-6xl gap-14 px-5 section-y md:grid-cols-12 md:px-8">
-        <div className="md:col-span-5">
-          <Reveal>
-            <p className="kicker">Voyage</p>
-            <h2 className="mt-5 font-display text-[clamp(2rem,4.2vw,3.4rem)] text-fg">
-              Join us on the frontier
-              <br />
-              of the unexplored.
-            </h2>
-          </Reveal>
-        </div>
-        <div className="md:col-span-7">
-          <Reveal delay={80}>
-            <p className="text-lg leading-relaxed text-muted">
-              Mirachian Undersea offers ultra-private submersible expeditions from
-              Key West, accommodating a maximum of four guests. Aboard a
-              comfortable, deep-rated craft — capable of safely reaching depths far
-              beyond the limits of scuba — each journey is a bespoke exploration of
-              waters few will ever see, where history, uncharted terrain, and the
-              quiet possibility of discovery converge.
-            </p>
-            <p className="mt-6 leading-relaxed text-muted">
-              Every element of the expedition, from the vessel itself to the
-              proficiency that supports it, is arranged to feel effortless,
-              intimate, and entirely exclusive. The access is unprecedented:
-              discreet, meticulous, and reserved for those who recognize that true
-              adventure is most uncommon.
-            </p>
-          </Reveal>
-        </div>
+      <div className="mx-auto max-w-6xl px-5 section-y md:px-8">
+        <Reveal>
+          <p className="kicker">Voyage</p>
+          <h2 className="mt-5 max-w-xl font-display text-[clamp(2rem,4.2vw,3.4rem)] text-fg">
+            Join us on the frontier
+            <br />
+            of the unexplored.
+          </h2>
+        </Reveal>
       </div>
 
       <div className="cine-frame md:min-h-[82svh]">

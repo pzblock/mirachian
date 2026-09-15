@@ -31,7 +31,6 @@ export function Hero() {
           still="/images/cs7/op-028.jpg"
           alt="The submersible seen from below in deep blue water"
           veil="hero"
-          objectPosition="82% 8%"
           priority
         />
       </div>
@@ -71,13 +70,13 @@ export function Hero() {
           <div className="mt-7 flex flex-wrap gap-3 md:mt-8">
             <a
               href="#reserve"
-              className="inline-flex min-h-11 items-center border border-pearl/45 bg-abyss/45 px-7 py-3 text-[0.7rem] tracking-[0.2em] text-fg uppercase backdrop-blur-[2px] transition-colors duration-200 hover:border-pearl"
+              className="inline-flex min-h-11 items-center border border-pearl bg-pearl px-7 py-3 text-[0.7rem] tracking-[0.2em] text-abyss uppercase transition-colors duration-200 hover:bg-fg hover:border-fg"
             >
               Reserve passage
             </a>
             <a
               href="#descend"
-              className="inline-flex min-h-11 items-center border border-pearl/45 bg-abyss/45 px-7 py-3 text-[0.7rem] tracking-[0.2em] text-fg uppercase backdrop-blur-[2px] transition-colors duration-200 hover:border-pearl"
+              className="inline-flex min-h-11 items-center border border-pearl/45 bg-transparent px-7 py-3 text-[0.7rem] tracking-[0.2em] text-fg uppercase backdrop-blur-[2px] transition-colors duration-200 hover:border-pearl"
             >
               Draw the depth
             </a>

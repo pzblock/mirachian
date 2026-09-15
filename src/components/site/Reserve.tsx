@@ -111,8 +111,8 @@ export function Reserve() {
 
   return (
     <section id="reserve" className="bg-ink">
-      <div className="mx-auto grid max-w-6xl gap-16 px-5 section-y md:grid-cols-12 md:px-8">
-        <div className="md:col-span-5">
+      <div className="mx-auto grid max-w-6xl gap-10 px-5 section-y md:grid-cols-12 md:gap-16 md:px-8">
+        <div className="order-2 md:order-1 md:col-span-5">
           <p className="kicker">Reserve</p>
           <h2 className="mt-5 font-display text-[clamp(2rem,4vw,3.2rem)] text-fg">
             Begin with interest. Then a private conversation.
@@ -123,7 +123,7 @@ export function Reserve() {
             refundable until the booking is confirmed. The expedition itself is
             settled when arrangements are complete.
           </p>
-          <ol className="mt-12 space-y-6 text-sm text-muted">
+          <ol className="mt-12 hidden space-y-6 text-sm text-muted md:block">
             {[
               ["Inquire", "The shape of your party, and the water that calls you."],
               [
@@ -142,8 +142,8 @@ export function Reserve() {
           </ol>
         </div>
 
-        <div className="md:col-span-7">
-          <div className="border border-line bg-abyss/60 p-7 md:p-11">
+        <div className="order-1 md:order-2 md:col-span-7">
+          <div className="border border-line bg-abyss/60 p-5 md:p-11">
             {done ? (
               <div>
                 <p className="kicker">Received</p>
@@ -165,7 +165,37 @@ export function Reserve() {
               </div>
             ) : (
               <>
-                <div className="mb-10 flex gap-2" aria-hidden>
+                <ol className="mb-6 grid grid-cols-4 gap-2 md:hidden">
+                  {(
+                    [
+                      ["01", "Inquire"],
+                      ["02", "Reserve"],
+                      ["03", "Settle"],
+                      ["04", "Sail"],
+                    ] as const
+                  ).map(([n, t], idx) => (
+                    <li
+                      key={t}
+                      className={cn(
+                        "border-t pt-2",
+                        idx < step ? "border-pearl" : "border-line",
+                      )}
+                    >
+                      <span className="font-mono text-[0.58rem] tracking-[0.14em] text-pearl">
+                        {n}
+                      </span>
+                      <p
+                        className={cn(
+                          "mt-1 font-display text-[0.82rem] leading-tight",
+                          idx < step ? "text-fg" : "text-muted",
+                        )}
+                      >
+                        {t}
+                      </p>
+                    </li>
+                  ))}
+                </ol>
+                <div className="mb-8 hidden gap-2 md:mb-10 md:flex" aria-hidden>
                   {[1, 2, 3, 4].map((n) => (
                     <span
                       key={n}
@@ -176,17 +206,17 @@ export function Reserve() {
 
                 {step === 1 && (
                   <fieldset>
-                    <legend className="font-display text-2xl text-fg">
+                    <legend className="font-display text-xl text-fg md:text-2xl">
                       What draws you to the passage?
                     </legend>
-                    <div className="mt-7 grid gap-3">
+                    <div className="mt-5 grid gap-2 md:mt-7 md:gap-3">
                       {TRACKS.map((t) => (
                         <button
                           key={t.id}
                           type="button"
                           onClick={() => setTrack(t.id)}
                           className={cn(
-                            "min-h-14 border px-4 py-3 text-left transition-colors duration-200",
+                            "min-h-12 border px-4 py-2.5 text-left transition-colors duration-200 md:min-h-14 md:py-3",
                             track === t.id
                               ? "border-pearl bg-surface text-fg"
                               : "border-line text-muted hover:border-pearl/50",
@@ -199,15 +229,15 @@ export function Reserve() {
                         </button>
                       ))}
                     </div>
-                    <p className="mt-9 text-sm text-muted">What interests you most?</p>
-                    <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                    <p className="mt-6 text-sm text-muted md:mt-9">What interests you most?</p>
+                    <div className="mt-3 grid grid-cols-2 gap-2">
                       {INTERESTS.map((item) => (
                         <button
                           key={item.id}
                           type="button"
                           onClick={() => setInterest(item.id)}
                           className={cn(
-                            "min-h-11 border px-4 text-left text-sm",
+                            "min-h-11 border px-3 text-left text-sm md:px-4",
                             interest === item.id
                               ? "border-pearl text-fg"
                               : "border-line text-muted",
@@ -217,7 +247,7 @@ export function Reserve() {
                         </button>
                       ))}
                     </div>
-                    <div className="mt-10 flex justify-end">
+                    <div className="mt-6 flex justify-end md:mt-10">
                       <button
                         type="button"
                         disabled={!track}

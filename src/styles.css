@@ -150,6 +150,23 @@
     padding-block: clamp(3.25rem, 8vw, 8.5rem);
   }
 
+  .section-y-foot {
+    padding-top: clamp(3.25rem, 8vw, 8.5rem);
+    padding-bottom: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-y-foot {
+      padding-bottom: 5.5rem;
+    }
+  }
+
+  .legal-copy {
+    font-size: 0.8125rem;
+    line-height: 1.75;
+    color: color-mix(in oklab, var(--color-pearl) 72%, var(--color-muted));
+  }
+
   .caustics {
     background:
       radial-gradient(ellipse at 22% 8%, rgb(185 208 217 / 0.1), transparent 44%),
@@ -212,6 +229,32 @@
   }
   .hide-scroll::-webkit-scrollbar {
     display: none;
+  }
+
+  .proof-stat {
+    display: block;
+    animation: proof-rise 900ms var(--ease-out-soft);
+  }
+
+  .stills-rail {
+    scroll-padding-inline: 1.25rem;
+  }
+
+  @media (max-width: 767px) {
+    .stills-rail {
+      -webkit-mask-image: linear-gradient(
+        to right,
+        #000 0%,
+        #000 calc(100% - 2.75rem),
+        transparent 100%
+      );
+      mask-image: linear-gradient(
+        to right,
+        #000 0%,
+        #000 calc(100% - 2.75rem),
+        transparent 100%
+      );
+    }
   }
 
   .bio-field {
@@ -453,6 +496,10 @@
     );
   }
 
+  #top .cinema-still {
+    object-position: 82% 8%;
+  }
+
   .hero-shade {
     background:
       linear-gradient(
@@ -487,7 +534,7 @@
     }
 
     #top .cinema-still {
-      object-position: 90% 0%;
+      object-position: 48% 32%;
     }
   }
 
@@ -587,6 +634,10 @@
     height: 52svh;
   }
 
+  .passages-cine .cine-media {
+    height: 32svh;
+  }
+
   .cine-copy {
     position: relative;
     z-index: 10;
@@ -597,7 +648,8 @@
     .cine-frame {
       overflow: hidden;
     }
-    .cine-media {
+    .cine-media,
+    .passages-cine .cine-media {
       position: absolute;
       inset: 0;
       height: auto;
@@ -622,6 +674,19 @@
 }
 
 @keyframes hero-rise {
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@keyframes proof-rise {
+  from {
+    opacity: 0.55;
+    transform: translateY(8px);
+    filter: blur(3px);
+  }
   to {
     opacity: 1;
     transform: none;
@@ -736,6 +801,7 @@
   }
   .caustics,
   .hero-word,
+  .proof-stat,
   .bio-speck,
   .snow-speck,
   .snow-drift,
@@ -751,7 +817,8 @@
   .bio-field {
     display: none;
   }
-  .hero-word {
+  .hero-word,
+  .proof-stat {
     opacity: 1;
     transform: none;
     filter: none;
