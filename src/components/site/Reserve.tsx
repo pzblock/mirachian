@@ -99,8 +99,8 @@ export function Reserve() {
       /* ignore */
     }
     try {
-      const result = await sendInquiry({ data: payload });
-      if (!result.ok) throw new Error("undelivered");
+      const result = await sendInquiry(payload);
+      if (!result) throw new Error("undelivered");
       setDone(true);
     } catch {
       setSendError(true);
