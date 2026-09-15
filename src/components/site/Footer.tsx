@@ -38,9 +38,9 @@ export function Footer() {
           </nav>
         </div>
       </div>
-      <div className="mx-auto max-w-6xl border-t border-line px-5 py-8 text-xs leading-relaxed text-muted md:px-8">
+      <div className="legal-copy mx-auto max-w-6xl border-t border-line px-5 py-8 md:px-8">
         <p>© Mirachian Undersea. Private expeditions from Key West. Limited capacity.</p>
-        <p className="mt-2 max-w-3xl">
+        <p className="mt-3 max-w-3xl">
           Expeditions are hosted by Mirachian Expeditions, utilizing the certified
           vessels of Mirachian Group. An inquiry is not a booking until terms are
           accepted and a $250 deposit per couple is placed. That deposit is fully

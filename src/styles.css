@@ -150,6 +150,23 @@
     padding-block: clamp(3.25rem, 8vw, 8.5rem);
   }
 
+  .section-y-foot {
+    padding-top: clamp(3.25rem, 8vw, 8.5rem);
+    padding-bottom: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-y-foot {
+      padding-bottom: 5.5rem;
+    }
+  }
+
+  .legal-copy {
+    font-size: 0.8125rem;
+    line-height: 1.75;
+    color: color-mix(in oklab, var(--color-pearl) 72%, var(--color-muted));
+  }
+
   .caustics {
     background:
       radial-gradient(ellipse at 22% 8%, rgb(185 208 217 / 0.1), transparent 44%),
@@ -513,7 +530,7 @@
     }
 
     #top .cinema-still {
-      object-position: 90% 0%;
+      object-position: 36% 28%;
     }
   }
 
@@ -613,6 +630,10 @@
     height: 52svh;
   }
 
+  .passages-cine .cine-media {
+    height: 32svh;
+  }
+
   .cine-copy {
     position: relative;
     z-index: 10;
@@ -623,7 +644,8 @@
     .cine-frame {
       overflow: hidden;
     }
-    .cine-media {
+    .cine-media,
+    .passages-cine .cine-media {
       position: absolute;
       inset: 0;
       height: auto;

@@ -15,7 +15,7 @@ function Stat({ display, label }: { display: string; label: string }) {
 export function Proof() {
   return (
     <section id="proof">
-      <div className="mx-auto max-w-6xl px-5 section-y md:px-8">
+      <div className="mx-auto max-w-6xl px-5 section-y-foot md:px-8">
         <Reveal>
           <Sounding
             heading

@@ -151,7 +151,7 @@ export function Descend() {
 
   return (
     <section id="descend" className="relative">
-      <div className="mx-auto max-w-6xl px-5 section-y md:px-8">
+      <div className="mx-auto max-w-6xl px-5 section-y-foot md:px-8">
         <Reveal>
           <p className="kicker">Interactive depth</p>
           <h2 className="mt-5 max-w-2xl font-display text-[clamp(2rem,4vw,3.3rem)] text-fg">

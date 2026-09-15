@@ -75,14 +75,14 @@ export function Itinerary() {
           </h2>
         </Reveal>
 
-        <div className="day-tabs mt-12 hidden flex-wrap gap-2 md:flex">
+        <div className="day-tabs mt-10 grid grid-cols-3 gap-2 md:mt-12 md:flex md:flex-wrap">
           {BEATS.map((b, idx) => (
             <button
               key={b.t}
               type="button"
               onClick={() => setI(idx)}
               className={cn(
-                "min-h-11 shrink-0 border px-4 text-[0.68rem] tracking-[0.14em] uppercase transition-colors duration-200",
+                "min-h-11 border px-2 text-[0.62rem] leading-tight tracking-[0.1em] uppercase transition-colors duration-200 md:shrink-0 md:px-4 md:text-[0.68rem] md:tracking-[0.14em]",
                 i === idx ? "border-pearl text-fg" : "border-line text-muted hover:border-pearl/50",
               )}
             >
@@ -92,26 +92,7 @@ export function Itinerary() {
         </div>
       </div>
 
-      <div className="md:hidden">
-        {BEATS.map((b) => (
-          <article key={b.t} className="border-t border-line">
-            <div className="relative h-[42svh] overflow-hidden">
-              <Cinema
-                still={b.img}
-                alt={b.alt}
-                veil="soft"
-                ken={"ken" in b ? b.ken : false}
-                objectPosition={"pos" in b ? b.pos : undefined}
-              />
-            </div>
-            <div className="px-5 py-8">
-              <BeatCopy beat={b} />
-            </div>
-          </article>
-        ))}
-      </div>
-
-      <div className="cine-frame hidden md:block md:min-h-[78svh]">
+      <div className="cine-frame md:min-h-[78svh]">
         <div className="cine-media">
           <Cinema
             key={beat.img}
