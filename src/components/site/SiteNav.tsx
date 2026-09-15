@@ -6,6 +6,7 @@ import { Mark } from "./Mark";
 
 const LINKS = [
   { href: "#voyage", label: "Voyage" },
+  { href: "#passages", label: "Passages" },
   { href: "#descend", label: "Depth" },
   { href: "#craft", label: "Craft" },
   { href: "#reserve", label: "Reserve" },
@@ -45,7 +46,7 @@ export function SiteNav() {
             </span>
           </span>
         </a>
-        <nav className="hidden items-center gap-10 md:flex">
+        <nav className="hidden items-center gap-8 lg:flex xl:gap-10">
           {LINKS.map((link) => (
             <a
               key={link.href}
@@ -59,7 +60,7 @@ export function SiteNav() {
         </nav>
         <button
           type="button"
-          className="inline-flex size-11 items-center justify-center text-fg md:hidden"
+          className="inline-flex size-11 items-center justify-center text-fg lg:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((v) => !v)}
         >
@@ -67,20 +68,28 @@ export function SiteNav() {
         </button>
       </div>
       {open ? (
-        <div className="border-t border-line bg-abyss/95 px-5 py-6 md:hidden">
-          <nav className="flex flex-col gap-2">
-            {LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="min-h-11 py-2 text-sm tracking-[0.18em] text-fg uppercase"
-                onClick={() => setOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-        </div>
+        <>
+          <button
+            type="button"
+            aria-label="Close menu"
+            className="fixed inset-0 top-[3.6rem] z-40 bg-abyss/72 lg:hidden"
+            onClick={() => setOpen(false)}
+          />
+          <div className="relative z-50 border-t border-line bg-abyss/95 px-5 py-6 lg:hidden">
+            <nav className="flex flex-col gap-2">
+              {LINKS.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="min-h-11 py-2 text-sm tracking-[0.18em] text-fg uppercase"
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+        </>
       ) : null}
     </header>
   );

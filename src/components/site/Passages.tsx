@@ -18,7 +18,7 @@ export function Passages() {
         </Reveal>
       </div>
 
-      <article id="passage-submersible" className="cine-frame md:min-h-[88svh]">
+      <article id="passage-submersible" className="cine-frame md:min-h-[72svh]">
         <div className="cine-media">
           <Cinema
             still="/images/cs7/op-025.jpg"
@@ -28,35 +28,35 @@ export function Passages() {
             snow
           />
         </div>
-        <div className="cine-copy mx-auto max-w-6xl px-5 py-10 md:min-h-[88svh] md:px-8 md:py-24">
+        <div className="cine-copy mx-auto max-w-6xl px-5 py-8 md:min-h-[72svh] md:px-8 md:py-16">
           <Reveal className="copy-veil max-w-xl">
             <p className="kicker">Flagship</p>
-            <h3 className="mt-4 font-display text-3xl text-fg md:text-[2.6rem]">
+            <h3 className="mt-3 font-display text-3xl text-fg md:text-[2.6rem]">
               The submersible passage
             </h3>
-            <p className="mt-6 leading-relaxed text-fg">
+            <p className="mt-5 leading-relaxed text-fg">
               Aboard a comfortable, deep-rated craft, four guests and one pilot
               make a guided descent far beyond the limits of recreational diving.
               Wide views, deliberate movement, and cinema-grade imaging of
               unvisited terrain — including the Pourtalès slope and the deeper
               channels below 1,000 meters.
             </p>
-            <ul className="mt-10 space-y-3 text-sm text-fg">
+            <ul className="mt-6 space-y-2.5 text-sm text-fg">
               <li className="border-l border-pearl/70 pl-5">Maximum four guests per dive</li>
               <li className="border-l border-pearl/70 pl-5">Cinema-grade imaging of unvisited terrain</li>
               <li className="border-l border-pearl/70 pl-5">Rated to 1,140 meters</li>
               <li className="border-l border-pearl/70 pl-5">Conservative weather discipline</li>
             </ul>
-            <p className="mt-10 text-sm text-champagne">
+            <p className="mt-6 text-sm text-champagne">
               From $18,500 a couple. Terms may be arranged privately.
             </p>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
+            <p className="mt-2.5 max-w-sm text-sm leading-relaxed text-muted">
               A $250 deposit per couple holds the place. Fully refundable until
               the booking is confirmed.
             </p>
             <a
               href="#reserve"
-              className="mt-8 inline-flex min-h-11 w-fit items-center border border-line px-7 py-3 text-[0.7rem] tracking-[0.2em] text-pearl uppercase transition-colors duration-200 hover:border-pearl"
+              className="mt-6 inline-flex min-h-11 w-fit items-center border border-line px-7 py-3 text-[0.7rem] tracking-[0.2em] text-pearl uppercase transition-colors duration-200 hover:border-pearl"
             >
               Inquire — submersible
             </a>
@@ -64,7 +64,7 @@ export function Passages() {
         </div>
       </article>
 
-      <article id="passage-scuba" className="cine-frame md:min-h-[88svh]">
+      <article id="passage-scuba" className="cine-frame md:min-h-[72svh]">
         <div className="cine-media">
           <Cinema
             still="/images/scuba.jpg"
@@ -74,32 +74,32 @@ export function Passages() {
             snow
           />
         </div>
-        <div className="cine-copy mx-auto max-w-6xl justify-end px-5 py-10 md:min-h-[88svh] md:px-8 md:py-24">
+        <div className="cine-copy mx-auto max-w-6xl justify-end px-5 py-8 md:min-h-[72svh] md:px-8 md:py-16">
           <Reveal className="copy-veil max-w-xl">
             <p className="kicker">Private diving</p>
-            <h3 className="mt-4 font-display text-3xl text-fg md:text-[2.6rem]">
+            <h3 className="mt-3 font-display text-3xl text-fg md:text-[2.6rem]">
               The scuba passage
             </h3>
-            <p className="mt-6 leading-relaxed text-fg">
+            <p className="mt-5 leading-relaxed text-fg">
               The same expedition, the same ship. Your day on fins — two couples
               only — held to the same standard as the deep craft. Clear Keys
               water and private sites, while the sphere works the drop.
             </p>
-            <ul className="mt-10 space-y-3 text-sm text-fg">
+            <ul className="mt-6 space-y-2.5 text-sm text-fg">
               <li className="border-l border-pearl/70 pl-5">Two couples, never a crowd</li>
               <li className="border-l border-pearl/70 pl-5">Clear Keys water, private sites</li>
               <li className="border-l border-pearl/70 pl-5">Observer places on the ship</li>
             </ul>
-            <p className="mt-10 text-sm text-champagne">
+            <p className="mt-6 text-sm text-champagne">
               From $11,500 a couple. Observer places from $3,950.
             </p>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
+            <p className="mt-2.5 max-w-sm text-sm leading-relaxed text-muted">
               A $250 deposit per couple holds the place. Fully refundable until
               the booking is confirmed.
             </p>
             <a
               href="#reserve"
-              className="mt-8 inline-flex min-h-11 w-fit items-center border border-line px-7 py-3 text-[0.7rem] tracking-[0.18em] text-pearl uppercase transition-colors duration-200 hover:border-pearl"
+              className="mt-6 inline-flex min-h-11 w-fit items-center border border-line px-7 py-3 text-[0.7rem] tracking-[0.18em] text-pearl uppercase transition-colors duration-200 hover:border-pearl"
             >
               Inquire — scuba
             </a>

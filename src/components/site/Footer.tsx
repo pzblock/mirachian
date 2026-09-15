@@ -20,6 +20,9 @@ export function Footer() {
             <a href="#voyage" className="hover:text-pearl">
               Voyage
             </a>
+            <a href="#passages" className="hover:text-pearl">
+              Passages
+            </a>
             <a href="#descend" className="hover:text-pearl">
               Depth
             </a>

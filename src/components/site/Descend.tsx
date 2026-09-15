@@ -164,42 +164,66 @@ export function Descend() {
           </p>
         </Reveal>
 
-        <div className="mt-16 grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
-          <div className="lg:col-span-5">
-            <p className="font-display text-[clamp(3.4rem,8vw,6.4rem)] leading-none text-fg tabular-nums">
-              {m}
-              <span className="ml-1 font-display text-2xl text-pearl md:text-3xl">m</span>
-            </p>
-            <p className="mt-6 font-display text-2xl text-champagne md:text-3xl">{zone.title}</p>
-            <p className="mt-4 max-w-sm text-muted">{zone.body}</p>
+        <div className="mt-16 grid items-center gap-8 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-4 lg:flex lg:justify-center">
+            <div className="w-full max-w-sm">
+              <p className="font-display text-[clamp(3.4rem,8vw,6.4rem)] leading-none text-fg tabular-nums">
+                {m}
+                <span className="ml-1 font-display text-2xl text-pearl md:text-3xl">m</span>
+              </p>
+              <p className="mt-5 font-display text-2xl text-champagne md:text-3xl">{zone.title}</p>
+              <p className="mt-3 max-w-sm text-muted">{zone.body}</p>
 
-            <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-line pt-7">
-              <div>
-                <dt className="text-[0.62rem] tracking-[0.16em] text-muted uppercase">Pressure</dt>
-                <dd className="mt-1.5 font-mono text-sm text-fg tabular-nums">{ata.toFixed(1)} ata</dd>
-              </div>
-              <div>
-                <dt className="text-[0.62rem] tracking-[0.16em] text-muted uppercase">Light</dt>
-                <dd className="mt-1.5 font-mono text-sm text-fg tabular-nums">{light}%</dd>
-              </div>
-              <div>
-                <dt className="text-[0.62rem] tracking-[0.16em] text-muted uppercase">Temp</dt>
-                <dd className="mt-1.5 font-mono text-sm text-fg tabular-nums">{temp.toFixed(1)}°C</dd>
-              </div>
-            </dl>
+              <dl className="mt-7 grid grid-cols-3 gap-4 border-t border-line pt-5">
+                <div>
+                  <dt className="text-[0.62rem] tracking-[0.16em] text-muted uppercase">Pressure</dt>
+                  <dd className="mt-1.5 font-mono text-sm text-fg tabular-nums">{ata.toFixed(1)} ata</dd>
+                </div>
+                <div>
+                  <dt className="text-[0.62rem] tracking-[0.16em] text-muted uppercase">Light</dt>
+                  <dd className="mt-1.5 font-mono text-sm text-fg tabular-nums">{light}%</dd>
+                </div>
+                <div>
+                  <dt className="text-[0.62rem] tracking-[0.16em] text-muted uppercase">Temp</dt>
+                  <dd className="mt-1.5 font-mono text-sm text-fg tabular-nums">{temp.toFixed(1)}°C</dd>
+                </div>
+              </dl>
 
-            <button
-              type="button"
-              onClick={play}
-              className="mt-10 inline-flex min-h-11 items-center gap-2 border border-line px-5 text-[0.7rem] tracking-[0.18em] text-pearl uppercase transition-colors duration-200 hover:border-pearl"
-            >
-              {playing ? <Pause size={14} /> : <Play size={14} className="ml-px" />}
-              {playing ? "Hold" : m >= MAX - 10 ? "Replay descent" : "Play the descent"}
-            </button>
+              <button
+                type="button"
+                onClick={play}
+                className="mt-7 inline-flex min-h-11 items-center gap-2 border border-line px-5 text-[0.7rem] tracking-[0.18em] text-pearl uppercase transition-colors duration-200 hover:border-pearl"
+              >
+                {playing ? <Pause size={14} /> : <Play size={14} className="ml-px" />}
+                {playing ? "Hold" : m >= MAX - 10 ? "Replay descent" : "Play the descent"}
+              </button>
+
+              <div className="mt-6 hidden lg:flex lg:flex-col">
+                {ZONES.map((z) => (
+                  <button
+                    key={z.m}
+                    type="button"
+                    onClick={() => showZone(z.m)}
+                    className={cn(
+                      "flex min-h-10 items-baseline justify-between gap-4 border-b border-line py-2 text-left last:border-0 transition-colors duration-200",
+                      zone.m === z.m ? "text-fg" : "text-muted hover:text-pearl",
+                    )}
+                  >
+                    <span className="font-display text-lg">{z.title}</span>
+                    <span className="font-mono text-[0.65rem] tracking-wider uppercase tabular-nums">
+                      {z.m}m
+                    </span>
+                  </button>
+                ))}
+              </div>
+              <p className="mt-4 hidden text-[0.7rem] tracking-[0.12em] text-muted uppercase lg:block">
+                Drag the column · Sport diving ends near 40m
+              </p>
+            </div>
           </div>
 
-          <div className="lg:col-span-7">
-            <div className="flex gap-6 md:gap-8">
+          <div className="lg:col-span-8">
+            <div className="flex items-center gap-6 md:gap-8">
               <div
                 ref={column}
                 role="slider"
@@ -280,7 +304,7 @@ export function Descend() {
                   </figcaption>
                 </figure>
 
-                <div className="mt-5 flex flex-col">
+                <div className="mt-5 flex flex-col lg:hidden">
                   {ZONES.map((z) => (
                     <button
                       key={z.m}
@@ -298,9 +322,6 @@ export function Descend() {
                     </button>
                   ))}
                 </div>
-                <p className="mt-5 hidden text-[0.7rem] tracking-[0.12em] text-muted uppercase lg:block">
-                  Drag the column · Sport diving ends near 40m
-                </p>
               </div>
             </div>
           </div>
