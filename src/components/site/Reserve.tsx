@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { CONTACT_EMAIL } from "@/lib/contact";
+import { sendInquiry } from "@/lib/inquire";
 
 type Track = "submersible" | "scuba" | "both" | "learn";
 type Party = "couple" | "two-couples" | "advisor" | "other";
@@ -62,34 +64,49 @@ export function Reserve() {
   const [slot, setSlot] = useState("");
   const [preferEmail, setPreferEmail] = useState(false);
   const [done, setDone] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState(false);
 
   useEffect(() => {
     setDates(futureDates());
   }, []);
 
-  const submit = () => {
+  const submit = async () => {
+    if (sending) return;
+    setSending(true);
+    setSendError(false);
     const payload = {
       track,
       interest,
       guests,
       party,
       timing,
-      name,
-      email,
-      phone,
-      note,
+      name: name.trim(),
+      email: email.trim(),
+      phone: phone.trim(),
+      note: note.trim(),
       date: preferEmail ? null : date,
       slot: preferEmail ? null : slot,
       preferEmail,
-      at: new Date().toISOString(),
     };
     try {
       const prev = JSON.parse(localStorage.getItem("mirachian-inquiries") || "[]") as unknown[];
-      localStorage.setItem("mirachian-inquiries", JSON.stringify([payload, ...prev].slice(0, 40)));
+      localStorage.setItem(
+        "mirachian-inquiries",
+        JSON.stringify([{ ...payload, at: new Date().toISOString() }, ...prev].slice(0, 40)),
+      );
     } catch {
       /* ignore */
     }
-    setDone(true);
+    try {
+      const result = await sendInquiry({ data: payload });
+      if (!result.ok) throw new Error("undelivered");
+      setDone(true);
+    } catch {
+      setSendError(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -102,13 +119,17 @@ export function Reserve() {
           </h2>
           <p className="mt-6 max-w-md leading-relaxed text-muted">
             Capacity is limited by design. This form opens a private conversation
-            — not a cabin. A deposit holds the place. The expedition itself is
-            confirmed when arrangements are complete.
+            — not a cabin. A $250 deposit per couple holds the place, and is fully
+            refundable until the booking is confirmed. The expedition itself is
+            settled when arrangements are complete.
           </p>
           <ol className="mt-12 space-y-6 text-sm text-muted">
             {[
               ["Inquire", "The shape of your party, and the water that calls you."],
-              ["Reserve", "A deposit holds your place. Terms follow in writing."],
+              [
+                "Reserve",
+                "A $250 deposit per couple holds your place. Fully refundable until the booking is confirmed.",
+              ],
               ["Settle", "When the passage is arranged, the calendar opens."],
               ["Sail", "Priority follows completion — not who asked first."],
             ].map(([t, b], i) => (
@@ -130,8 +151,11 @@ export function Reserve() {
                   Thank you — we will be in touch.
                 </h3>
                 <p className="mt-5 text-muted">
-                  Your interest was delivered. We will follow with details matched
-                  to what you shared
+                  Your interest was delivered to{" "}
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="text-pearl hover:text-fg">
+                    {CONTACT_EMAIL}
+                  </a>
+                  . We will follow with details matched to what you shared
                   {preferEmail
                     ? " by email."
                     : date
@@ -298,8 +322,8 @@ export function Reserve() {
                       Where should we reach you?
                     </legend>
                     <p className="mt-3 text-sm text-muted">
-                      We will follow privately with details matched to what you
-                      shared — not a generic brochure.
+                      We will follow privately at {CONTACT_EMAIL} with details
+                      matched to what you shared — not a generic brochure.
                     </p>
                     <label className="mt-7 block text-[0.7rem] tracking-[0.14em] text-muted uppercase">
                       First name
@@ -409,6 +433,16 @@ export function Reserve() {
                       />
                       Prefer email first
                     </label>
+                    {sendError ? (
+                      <p className="mt-6 text-sm text-muted">
+                        The card could not be delivered just now. Please write us
+                        directly at{" "}
+                        <a href={`mailto:${CONTACT_EMAIL}`} className="text-pearl hover:text-fg">
+                          {CONTACT_EMAIL}
+                        </a>
+                        .
+                      </p>
+                    ) : null}
                     <div className="mt-10 flex justify-between">
                       <button
                         type="button"
@@ -419,11 +453,11 @@ export function Reserve() {
                       </button>
                       <button
                         type="button"
-                        disabled={!preferEmail && (!date || !slot)}
-                        onClick={submit}
+                        disabled={sending || (!preferEmail && (!date || !slot))}
+                        onClick={() => void submit()}
                         className="min-h-11 bg-pearl px-7 text-[0.7rem] tracking-[0.16em] text-abyss uppercase disabled:opacity-40"
                       >
-                        Request appointment
+                        {sending ? "Sending…" : "Request appointment"}
                       </button>
                     </div>
                   </fieldset>

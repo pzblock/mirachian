@@ -50,6 +50,10 @@ export function Passages() {
             <p className="mt-10 text-sm text-champagne">
               From $18,500 a couple. Terms may be arranged privately.
             </p>
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
+              A $250 deposit per couple holds the place. Fully refundable until
+              the booking is confirmed.
+            </p>
             <a
               href="#reserve"
               className="mt-8 inline-flex min-h-11 w-fit items-center border border-line px-7 py-3 text-[0.7rem] tracking-[0.2em] text-pearl uppercase transition-colors duration-200 hover:border-pearl"
@@ -88,6 +92,10 @@ export function Passages() {
             </ul>
             <p className="mt-10 text-sm text-champagne">
               From $11,500 a couple. Observer places from $3,950.
+            </p>
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
+              A $250 deposit per couple holds the place. Fully refundable until
+              the booking is confirmed.
             </p>
             <a
               href="#reserve"

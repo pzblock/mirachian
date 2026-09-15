@@ -1,3 +1,5 @@
+import { CONTACT_EMAIL } from "@/lib/contact";
+
 export function Footer() {
   return (
     <footer className="border-t border-line">
@@ -11,8 +13,8 @@ export function Footer() {
           </p>
         </div>
         <div className="flex flex-col gap-4 text-[0.7rem] tracking-[0.14em] text-muted uppercase">
-          <a href="mailto:info@mirachianundersea.com" className="hover:text-pearl">
-            info@mirachianundersea.com
+          <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-pearl">
+            {CONTACT_EMAIL}
           </a>
           <nav className="flex flex-wrap gap-6">
             <a href="#voyage" className="hover:text-pearl">
@@ -38,7 +40,8 @@ export function Footer() {
         <p className="mt-2 max-w-3xl">
           Expeditions are hosted by Mirachian Expeditions, utilizing the certified
           vessels of Mirachian Group. An inquiry is not a booking until terms are
-          accepted and a deposit is placed.
+          accepted and a $250 deposit per couple is placed. That deposit is fully
+          refundable until the reservation is confirmed.
         </p>
       </div>
     </footer>

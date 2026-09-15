@@ -8,6 +8,7 @@ import { Hero } from "@/components/site/Hero";
 import { Itinerary } from "@/components/site/Itinerary";
 import { Ledger } from "@/components/site/Ledger";
 import { Passages } from "@/components/site/Passages";
+import { FaviconPulse } from "@/components/site/FaviconPulse";
 import { PreloadPhotos } from "@/components/site/PreloadPhotos";
 import { Proof } from "@/components/site/Proof";
 import { Reserve } from "@/components/site/Reserve";
@@ -19,6 +20,7 @@ export const Route = createFileRoute("/")({ component: Home });
 function Home() {
   return (
     <main className="bg-abyss">
+      <FaviconPulse />
       <PreloadPhotos />
       <div className="grain" aria-hidden />
       <CursorGlow />
