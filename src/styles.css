@@ -101,21 +101,44 @@
     box-shadow: 0 10px 32px rgb(4 7 10 / 0.22);
   }
 
-  .aside-plate {
-    max-width: 40rem;
-    padding: 1.7rem 1.55rem 1.8rem 1.65rem;
-    background: rgb(35 74 106 / 0.4);
-    border-left: 1px solid var(--color-champagne);
-    box-shadow: 0 14px 40px rgb(4 7 10 / 0.28);
+  .sounding {
+    padding-block: 0.25rem 0.5rem;
   }
 
-  .aside-plate-wide {
-    max-width: 48rem;
+  .sounding-head {
+    padding-bottom: 1.15rem;
+    border-bottom: 1px solid var(--color-champagne);
+  }
+
+  .sounding-body {
+    display: grid;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+  }
+
+  .sounding-mark {
+    font-family: var(--font-display);
+    font-size: clamp(4.4rem, 12vw, 7.25rem);
+    font-weight: 500;
+    line-height: 0.82;
+    letter-spacing: -0.045em;
+    color: var(--color-fg);
+  }
+
+  .sounding-unit {
+    margin-left: 0.08em;
+    font-size: 0.28em;
+    letter-spacing: 0.12em;
+    color: var(--color-champagne);
+    vertical-align: super;
   }
 
   @media (min-width: 768px) {
-    .aside-plate {
-      padding: 2.15rem 2.4rem 2.25rem 2.5rem;
+    .sounding-body {
+      grid-template-columns: minmax(11rem, 0.4fr) minmax(0, 1fr);
+      gap: 2.5rem 3.25rem;
+      align-items: start;
+      padding-top: 1.85rem;
     }
   }
 

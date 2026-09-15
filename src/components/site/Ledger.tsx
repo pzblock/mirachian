@@ -1,5 +1,6 @@
 import { Cinema } from "./Cinema";
 import { Reveal } from "./Reveal";
+import { Sounding } from "./Sounding";
 
 const ACCOUNT = [
   {
@@ -146,22 +147,18 @@ export function Ledger() {
             </div>
           ))}
         </dl>
+      </div>
 
+      <div className="mx-auto max-w-6xl px-5 pb-20 pt-4 md:px-8 md:pb-24 md:pt-6">
         <Reveal>
-          <aside className="aside-plate mt-14">
-            <p className="kicker">Did you know</p>
-            <p className="mt-4 font-display text-2xl text-fg">
-              The Valbanera, 1919
-            </p>
-            <p className="mt-4 text-sm leading-relaxed text-pearl/90">
-              In September 1919 the Spanish steamship Valbanera — sometimes
-              called the “poor man’s Titanic” — was lost in a hurricane near
-              Rebecca Shoal and Halfmoon Shoal, about thirty-seven nautical miles
-              west of Key West. She was carrying immigrants from Spain and the
-              Canary Islands bound for Cuba. All 488 passengers and crew
-              perished. No bodies were ever recovered from the wreck.
-            </p>
-          </aside>
+          <Sounding mark="488" title="The Valbanera, 1919">
+            In September 1919 the Spanish steamship Valbanera — sometimes called
+            the “poor man’s Titanic” — was lost in a hurricane near Rebecca Shoal
+            and Halfmoon Shoal, about thirty-seven nautical miles west of Key
+            West. She was carrying immigrants from Spain and the Canary Islands
+            bound for Cuba. All 488 passengers and crew perished. No bodies were
+            ever recovered from the wreck.
+          </Sounding>
         </Reveal>
       </div>
     </section>

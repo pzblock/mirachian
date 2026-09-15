@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Reveal } from "./Reveal";
+import { Sounding } from "./Sounding";
 
 function useCount(to: number, start: boolean, duration = 1800) {
   const [n, setN] = useState(0);
@@ -68,19 +69,17 @@ export function Proof() {
     <section id="proof" ref={ref}>
       <div className="mx-auto max-w-6xl px-5 section-y md:px-8">
         <Reveal>
-          <aside className="aside-plate aside-plate-wide">
-            <p className="kicker">Did you know</p>
-            <h2 className="mt-5 max-w-3xl font-display text-[clamp(1.7rem,3.4vw,2.75rem)] text-fg">
-              More people have traveled to space than have physically descended to
-              1,000 meters.
-            </h2>
-            <p className="mt-6 max-w-2xl leading-relaxed text-pearl/90">
-              Submersible travel is quieter — and many orders of magnitude safer —
-              than the myth suggests. The rarity is access, not danger. That is why
-              a Mirachian expedition is reserved for four guests, never more, and
-              for those who recognize that true adventure is most uncommon.
-            </p>
-          </aside>
+          <Sounding
+            heading
+            mark="1,000"
+            unit="m"
+            title="More people have traveled to space than have physically descended to 1,000 meters."
+          >
+            Submersible travel is quieter — and many orders of magnitude safer —
+            than the myth suggests. The rarity is access, not danger. That is why
+            a Mirachian expedition is reserved for four guests, never more, and
+            for those who recognize that true adventure is most uncommon.
+          </Sounding>
         </Reveal>
         <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <Stat value={4} label="Guests in the sphere. Never more." start={start} />
