@@ -7,6 +7,7 @@
   --color-fg: #eef4f7;
   --color-muted: #8ea3b1;
   --color-pearl: #b9d0d9;
+  --color-navy: #234a6a;
   --color-champagne: #d0c1ab;
   --color-line: rgb(185 208 217 / 0.13);
   --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
@@ -78,6 +79,26 @@
     letter-spacing: 0.26em;
     text-transform: uppercase;
     color: var(--color-pearl);
+  }
+
+  .hero-meta-pair {
+    display: flex;
+    width: min(100%, 22.75rem);
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .hero-meta {
+    display: flex;
+    min-height: 2.4rem;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0.45rem 1rem;
+    text-align: center;
+    background: rgb(35 74 106 / 0.58);
+    border-left: 1px solid var(--color-champagne);
+    box-shadow: 0 10px 32px rgb(4 7 10 / 0.22);
   }
 
   .measure {
@@ -386,9 +407,47 @@
     background: linear-gradient(
       to top,
       var(--color-abyss) 0%,
-      rgb(4 7 10 / 0.35) 8%,
-      transparent 22%
+      rgb(4 7 10 / 0.55) 8%,
+      transparent 20%
     );
+  }
+
+  .hero-shade {
+    background:
+      linear-gradient(
+        to top,
+        var(--color-abyss) 0%,
+        rgb(4 7 10 / 0.82) 18%,
+        rgb(4 7 10 / 0.52) 40%,
+        rgb(4 7 10 / 0.22) 62%,
+        transparent 80%
+      ),
+      linear-gradient(
+        to right,
+        rgb(4 7 10 / 0.58) 0%,
+        rgb(4 7 10 / 0.28) 36%,
+        rgb(4 7 10 / 0.06) 58%,
+        transparent 72%
+      );
+  }
+
+  @media (max-width: 767px) {
+    .hero-shade {
+      background: linear-gradient(
+        to top,
+        var(--color-abyss) 0%,
+        rgb(4 7 10 / 0.94) 18%,
+        rgb(4 7 10 / 0.82) 42%,
+        rgb(4 7 10 / 0.58) 64%,
+        rgb(4 7 10 / 0.28) 82%,
+        rgb(4 7 10 / 0.08) 94%,
+        transparent 100%
+      );
+    }
+
+    #top .cinema-still {
+      object-position: 90% 0%;
+    }
   }
 
   .veil-panel {
@@ -472,9 +531,10 @@
   .hero-word,
   .on-photo {
     text-shadow:
-      0 0 1px rgb(0 0 0 / 0.95),
-      0 1px 2px rgb(0 0 0 / 0.85),
-      0 2px 16px rgb(0 0 0 / 0.5);
+      0 0 1px rgb(0 0 0 / 1),
+      0 1px 2px rgb(0 0 0 / 0.9),
+      0 4px 18px rgb(0 0 0 / 0.65),
+      0 10px 32px rgb(0 0 0 / 0.35);
   }
 
   .cine-frame {
