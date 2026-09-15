@@ -53,50 +53,42 @@ const MARKS = [
 export function Ledger() {
   return (
     <section id="ledger">
-      <div className="mx-auto grid max-w-6xl gap-14 px-5 section-y md:grid-cols-12 md:px-8">
-        <div className="md:col-span-5">
-          <Reveal>
-            <p className="kicker">Why these waters</p>
-            <h2 className="mt-5 font-display text-[clamp(2rem,4.2vw,3.4rem)] text-fg">
-              The lost sterncastle
-            </h2>
-          </Reveal>
-        </div>
-        <div className="md:col-span-7">
-          <Reveal delay={80}>
-            <p className="text-lg leading-relaxed text-muted">
-              On the fourth of September 1622, the Tierra Firme fleet weighed
-              anchor in Havana and stood out for Spain. Twenty-eight ships
-              carried the accumulated treasure of a season’s work in the New
-              World. Silver from the mountain of Potosí filled their holds in
-              heavy bars. Gold, copper, indigo, tobacco, and the dark-green
-              emeralds of Colombia traveled with them.
-            </p>
-          </Reveal>
-        </div>
+      <div className="mx-auto max-w-6xl px-5 section-lead md:px-8">
+        <Reveal>
+          <p className="kicker">Why these waters</p>
+          <h2 className="mt-5 max-w-xl font-display text-[clamp(2rem,4.2vw,3.4rem)] text-fg">
+            The lost sterncastle
+          </h2>
+          <p className="mt-8 max-w-3xl text-lg leading-relaxed text-muted">
+            On the fourth of September 1622, the Tierra Firme fleet weighed
+            anchor in Havana and stood out for Spain. Twenty-eight ships carried
+            the accumulated treasure of a season’s work in the New World. Silver
+            from the mountain of Potosí filled their holds in heavy bars. Gold,
+            copper, indigo, tobacco, and the dark-green emeralds of Colombia
+            traveled with them.
+          </p>
+        </Reveal>
       </div>
 
       <ol className="mx-auto max-w-6xl px-5 md:px-8">
         {ACCOUNT.map((beat) => (
           <Reveal key={beat.n}>
-            <li className="relative grid gap-5 border-t border-line py-12 md:grid-cols-12 md:gap-10 md:py-16">
-              <p className="font-mono text-[0.62rem] tracking-[0.18em] text-pearl uppercase md:col-span-4">
+            <li className="grid grid-cols-[2.25rem_minmax(0,1fr)] gap-x-4 border-t border-line py-8 md:grid-cols-[3.25rem_minmax(0,42rem)] md:gap-x-8 md:py-10">
+              <p className="pt-1.5 font-mono text-[0.62rem] tracking-[0.2em] text-pearl">
                 {beat.n}
               </p>
-              <div className="md:col-span-8">
-                <h3 className="font-display text-2xl text-champagne md:text-[1.85rem]">
+              <div>
+                <h3 className="font-display text-[1.45rem] leading-snug text-champagne md:text-[1.7rem]">
                   {beat.title}
                 </h3>
                 {"bodies" in beat ? (
-                  <div className="mt-5 max-w-2xl space-y-5 leading-relaxed text-muted">
+                  <div className="mt-4 space-y-4 leading-relaxed text-muted">
                     {beat.bodies.map((p) => (
                       <p key={p.slice(0, 24)}>{p}</p>
                     ))}
                   </div>
                 ) : (
-                  <div className="mt-5 max-w-2xl leading-relaxed text-muted">
-                    {beat.body}
-                  </div>
+                  <div className="mt-4 leading-relaxed text-muted">{beat.body}</div>
                 )}
               </div>
             </li>
@@ -104,7 +96,7 @@ export function Ledger() {
         ))}
       </ol>
 
-      <article className="group/wreck cine-frame md:min-h-[78svh]">
+      <article className="group/wreck cine-frame mt-4 md:mt-8 md:min-h-[70svh]">
         <div className="cine-media">
           <Cinema
             still="/images/silverbars.jpg"
@@ -114,7 +106,7 @@ export function Ledger() {
             ken
           />
         </div>
-        <div className="cine-copy mx-auto max-w-6xl px-5 py-10 md:min-h-[78svh] md:px-8 md:py-20">
+        <div className="cine-copy mx-auto max-w-6xl px-5 py-10 md:min-h-[70svh] md:px-8 md:py-16">
           <div className="copy-veil max-w-xl">
             <p className="kicker">The unfinished cargo</p>
             <p className="mt-4 font-display text-2xl text-fg md:text-[2.45rem]">
@@ -130,43 +122,23 @@ export function Ledger() {
         </div>
       </article>
 
-      <div className="mx-auto max-w-6xl px-5 py-24 md:px-8 md:py-28">
-        <div className="grid gap-12 md:grid-cols-12 md:gap-10">
-          <Reveal className="md:col-span-7">
-            <p className="leading-relaxed text-muted">
-              Other vessels of the same fleet settled farther out. A private
-              submersible can leave Key West with only a few people aboard and
-              descend far beyond the limits of any scuba team. Historical
-              research and patient, methodical search shape the route. Every
-              moment can be recorded in cinema-grade clarity. The larger
-              experience is the descent itself: the scale of the water, the
-              knowledge of how much remains scattered and unseen, and the rare
-              privilege of moving through it.
-            </p>
-          </Reveal>
-          <aside className="md:col-span-5">
-            <Reveal delay={80}>
-              <div className="border border-line p-7 md:p-8">
-                <p className="kicker">Did you know</p>
-                <p className="mt-5 font-display text-2xl text-fg">
-                  The Valbanera, 1919
-                </p>
-                <p className="mt-5 text-sm leading-relaxed text-muted">
-                  In September 1919 the Spanish steamship Valbanera — sometimes
-                  called the “poor man’s Titanic” — was lost in a hurricane near
-                  Rebecca Shoal and Halfmoon Shoal, about thirty-seven nautical
-                  miles west of Key West. She was carrying immigrants from Spain
-                  and the Canary Islands bound for Cuba. All 488 passengers and
-                  crew perished. No bodies were ever recovered from the wreck.
-                </p>
-              </div>
-            </Reveal>
-          </aside>
-        </div>
+      <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-20">
+        <Reveal>
+          <p className="max-w-3xl leading-relaxed text-muted">
+            Other vessels of the same fleet settled farther out. A private
+            submersible can leave Key West with only a few people aboard and
+            descend far beyond the limits of any scuba team. Historical research
+            and patient, methodical search shape the route. Every moment can be
+            recorded in cinema-grade clarity. The larger experience is the
+            descent itself: the scale of the water, the knowledge of how much
+            remains scattered and unseen, and the rare privilege of moving
+            through it.
+          </p>
+        </Reveal>
 
-        <dl className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <dl className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {MARKS.map(([k, v]) => (
-            <div key={k} className="border-t border-line pt-7">
+            <div key={k} className="border-t border-line pt-6">
               <dt className="font-display text-2xl text-fg md:text-3xl">{k}</dt>
               <dd className="mt-3 max-w-[18ch] text-sm leading-relaxed text-muted">
                 {v}
@@ -174,6 +146,23 @@ export function Ledger() {
             </div>
           ))}
         </dl>
+
+        <Reveal>
+          <div className="mt-12 max-w-2xl border-t border-line pt-7">
+            <p className="kicker">Did you know</p>
+            <p className="mt-4 font-display text-2xl text-fg">
+              The Valbanera, 1919
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-muted">
+              In September 1919 the Spanish steamship Valbanera — sometimes
+              called the “poor man’s Titanic” — was lost in a hurricane near
+              Rebecca Shoal and Halfmoon Shoal, about thirty-seven nautical miles
+              west of Key West. She was carrying immigrants from Spain and the
+              Canary Islands bound for Cuba. All 488 passengers and crew
+              perished. No bodies were ever recovered from the wreck.
+            </p>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
