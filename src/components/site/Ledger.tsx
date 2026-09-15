@@ -148,12 +148,12 @@ export function Ledger() {
         </dl>
 
         <Reveal>
-          <div className="mt-12 max-w-2xl border-t border-line pt-7">
+          <aside className="aside-plate mt-14">
             <p className="kicker">Did you know</p>
             <p className="mt-4 font-display text-2xl text-fg">
               The Valbanera, 1919
             </p>
-            <p className="mt-4 text-sm leading-relaxed text-muted">
+            <p className="mt-4 text-sm leading-relaxed text-pearl/90">
               In September 1919 the Spanish steamship Valbanera — sometimes
               called the “poor man’s Titanic” — was lost in a hurricane near
               Rebecca Shoal and Halfmoon Shoal, about thirty-seven nautical miles
@@ -161,7 +161,7 @@ export function Ledger() {
               Canary Islands bound for Cuba. All 488 passengers and crew
               perished. No bodies were ever recovered from the wreck.
             </p>
-          </div>
+          </aside>
         </Reveal>
       </div>
     </section>

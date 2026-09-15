@@ -101,6 +101,24 @@
     box-shadow: 0 10px 32px rgb(4 7 10 / 0.22);
   }
 
+  .aside-plate {
+    max-width: 40rem;
+    padding: 1.7rem 1.55rem 1.8rem 1.65rem;
+    background: rgb(35 74 106 / 0.4);
+    border-left: 1px solid var(--color-champagne);
+    box-shadow: 0 14px 40px rgb(4 7 10 / 0.28);
+  }
+
+  .aside-plate-wide {
+    max-width: 48rem;
+  }
+
+  @media (min-width: 768px) {
+    .aside-plate {
+      padding: 2.15rem 2.4rem 2.25rem 2.5rem;
+    }
+  }
+
   .measure {
     max-width: 36rem;
   }
