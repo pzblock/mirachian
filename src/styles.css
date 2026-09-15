@@ -496,6 +496,10 @@
     );
   }
 
+  #top .cinema-still {
+    object-position: 82% 8%;
+  }
+
   .hero-shade {
     background:
       linear-gradient(
@@ -530,7 +534,7 @@
     }
 
     #top .cinema-still {
-      object-position: 36% 28%;
+      object-position: 48% 32%;
     }
   }
 

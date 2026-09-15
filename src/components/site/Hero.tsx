@@ -31,7 +31,6 @@ export function Hero() {
           still="/images/cs7/op-028.jpg"
           alt="The submersible seen from below in deep blue water"
           veil="hero"
-          objectPosition="82% 8%"
           priority
         />
       </div>
