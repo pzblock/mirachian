@@ -44,11 +44,11 @@ export function Stills() {
         </div>
       </div>
 
-      <div className="mt-6 flex gap-4 overflow-x-auto overscroll-x-contain px-5 pb-2 hide-scroll snap-x snap-mandatory md:gap-5 md:px-8">
+      <div className="stills-rail mt-6 flex gap-4 overflow-x-auto overscroll-x-contain px-5 pb-2 hide-scroll snap-x snap-mandatory md:gap-5 md:px-8">
         {FRAMES.map((f) => (
           <figure
             key={f.src}
-            className="w-[74vw] shrink-0 snap-start sm:w-[48vw] md:w-[34vw] lg:w-[22vw]"
+            className="w-[86vw] shrink-0 snap-start md:w-[34vw] lg:w-[22vw]"
           >
             <div className="relative overflow-hidden">
               <img

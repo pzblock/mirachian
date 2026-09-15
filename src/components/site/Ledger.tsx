@@ -74,7 +74,7 @@ export function Ledger() {
       <ol className="mx-auto max-w-6xl px-5 md:px-8">
         {ACCOUNT.map((beat) => (
           <Reveal key={beat.n}>
-            <li className="grid grid-cols-[2.25rem_minmax(0,1fr)] gap-x-4 border-t border-line py-8 md:grid-cols-[3.25rem_minmax(0,42rem)] md:gap-x-8 md:py-10">
+            <li className="grid grid-cols-[1.65rem_minmax(0,1fr)] gap-x-3 border-t border-line py-8 md:grid-cols-[3.25rem_minmax(0,42rem)] md:gap-x-8 md:py-10">
               <p className="pt-1.5 font-mono text-[0.62rem] tracking-[0.2em] text-pearl">
                 {beat.n}
               </p>

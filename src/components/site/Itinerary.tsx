@@ -47,6 +47,20 @@ const BEATS = [
   },
 ] as const;
 
+function BeatCopy({
+  beat,
+}: {
+  beat: (typeof BEATS)[number];
+}) {
+  return (
+    <>
+      <p className="kicker">{beat.t}</p>
+      <h3 className="mt-4 font-display text-3xl text-fg md:text-[2.6rem]">{beat.title}</h3>
+      <p className="mt-6 leading-relaxed text-fg">{beat.body}</p>
+    </>
+  );
+}
+
 export function Itinerary() {
   const [i, setI] = useState(0);
   const beat = BEATS[i] ?? BEATS[0];
@@ -61,7 +75,7 @@ export function Itinerary() {
           </h2>
         </Reveal>
 
-        <div className="mt-12 flex gap-2 overflow-x-auto hide-scroll pb-1">
+        <div className="day-tabs mt-12 hidden flex-wrap gap-2 md:flex">
           {BEATS.map((b, idx) => (
             <button
               key={b.t}
@@ -78,7 +92,26 @@ export function Itinerary() {
         </div>
       </div>
 
-      <div className="cine-frame md:min-h-[78svh]">
+      <div className="md:hidden">
+        {BEATS.map((b) => (
+          <article key={b.t} className="border-t border-line">
+            <div className="relative h-[42svh] overflow-hidden">
+              <Cinema
+                still={b.img}
+                alt={b.alt}
+                veil="soft"
+                ken={"ken" in b ? b.ken : false}
+                objectPosition={"pos" in b ? b.pos : undefined}
+              />
+            </div>
+            <div className="px-5 py-8">
+              <BeatCopy beat={b} />
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div className="cine-frame hidden md:block md:min-h-[78svh]">
         <div className="cine-media">
           <Cinema
             key={beat.img}
@@ -91,9 +124,7 @@ export function Itinerary() {
         </div>
         <div className="cine-copy mx-auto max-w-6xl px-5 py-10 md:min-h-[78svh] md:px-8 md:py-24">
           <div className="copy-veil max-w-xl">
-            <p className="kicker">{beat.t}</p>
-            <h3 className="mt-4 font-display text-3xl text-fg md:text-[2.6rem]">{beat.title}</h3>
-            <p className="mt-6 leading-relaxed text-fg">{beat.body}</p>
+            <BeatCopy beat={beat} />
             <div className="mt-10 flex gap-3">
               <button
                 type="button"
