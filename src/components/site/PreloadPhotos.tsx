@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { SITE_PHOTOS } from "@/lib/photos";
 import { Mark } from "./Mark";
+import { Mirachian } from "./Mirachian";
 
 export function PreloadPhotos() {
   const [ready, setReady] = useState(false);
@@ -68,7 +69,7 @@ export function PreloadPhotos() {
           <Mark className="size-16 md:size-[4.5rem]" />
         </span>
         <p className="font-display text-[0.82rem] tracking-[0.42em] text-fg uppercase">
-          Mirachian
+          <Mirachian />
         </p>
         <p className="kicker">Loading…</p>
         <span className="loader-bar">

@@ -662,6 +662,317 @@
       background: transparent;
     }
   }
+
+  .mirachian-word {
+    position: relative;
+    display: inline-block;
+    isolation: isolate;
+    transition:
+      color 520ms var(--ease-out-soft),
+      text-shadow 520ms var(--ease-out-soft);
+  }
+
+  .mirachian-word::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: -0.12em -0.08em;
+    z-index: -1;
+    background: linear-gradient(
+      105deg,
+      transparent 28%,
+      rgb(185 208 217 / 0.16) 44%,
+      rgb(208 193 171 / 0.42) 50%,
+      rgb(238 244 247 / 0.14) 56%,
+      transparent 72%
+    );
+    background-size: 240% 100%;
+    background-position: 130% 0;
+    mix-blend-mode: screen;
+    opacity: 0;
+    transition:
+      background-position 900ms var(--ease-out-soft),
+      opacity 420ms var(--ease-out-soft);
+  }
+
+  .mirachian-word::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.04em;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-champagne),
+      color-mix(in oklab, var(--color-pearl) 70%, var(--color-champagne)),
+      transparent
+    );
+    transform: scaleX(0);
+    transform-origin: left;
+    opacity: 0;
+    transition:
+      transform 620ms var(--ease-out-soft),
+      opacity 420ms var(--ease-out-soft);
+  }
+
+  .mirachian-word:hover,
+  .mirachian-word:focus-visible,
+  .mirachian-word:active,
+  .group\/mark:hover .mirachian-word,
+  .group\/mark:focus-visible .mirachian-word {
+    color: var(--color-champagne);
+    text-shadow:
+      0 0 14px rgb(208 193 171 / 0.28),
+      0 0 32px rgb(185 208 217 / 0.1);
+  }
+
+  .mirachian-word:hover::before,
+  .mirachian-word:focus-visible::before,
+  .mirachian-word:active::before,
+  .group\/mark:hover .mirachian-word::before,
+  .group\/mark:focus-visible .mirachian-word::before {
+    opacity: 1;
+    background-position: -20% 0;
+  }
+
+  .mirachian-word:hover::after,
+  .mirachian-word:focus-visible::after,
+  .mirachian-word:active::after,
+  .group\/mark:hover .mirachian-word::after,
+  .group\/mark:focus-visible .mirachian-word::after {
+    transform: scaleX(1);
+    opacity: 0.8;
+  }
+
+  .hover-edge {
+    transition:
+      border-color 450ms var(--ease-out-soft),
+      transform 450ms var(--ease-out-soft),
+      background-color 450ms var(--ease-out-soft),
+      box-shadow 450ms var(--ease-out-soft);
+  }
+
+  .hover-row {
+    transition:
+      border-color 450ms var(--ease-out-soft),
+      background-color 450ms var(--ease-out-soft),
+      box-shadow 450ms var(--ease-out-soft);
+  }
+
+  .hover-spec {
+    transition: transform 400ms var(--ease-out-soft);
+  }
+
+  .hover-spec dt {
+    transition: color 400ms var(--ease-out-soft);
+  }
+
+  .hover-rail {
+    transition:
+      border-color 400ms var(--ease-out-soft),
+      color 400ms var(--ease-out-soft),
+      transform 400ms var(--ease-out-soft);
+  }
+
+  .hover-frame {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .hover-frame img {
+    transition:
+      transform 700ms var(--ease-out-soft),
+      filter 700ms var(--ease-out-soft);
+  }
+
+  .hover-frame::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    background: linear-gradient(to top, rgb(208 193 171 / 0.14), transparent 46%);
+    box-shadow: inset 0 0 0 1px rgb(208 193 171 / 0.38);
+    transition: opacity 500ms var(--ease-out-soft);
+  }
+
+  .cta-fill,
+  .cta-ghost {
+    transition:
+      background-color 280ms var(--ease-out-soft),
+      border-color 280ms var(--ease-out-soft),
+      color 280ms var(--ease-out-soft),
+      box-shadow 280ms var(--ease-out-soft),
+      transform 160ms ease-out;
+  }
+
+  .nav-link {
+    position: relative;
+    display: inline-block;
+    transition: color 280ms var(--ease-out-soft);
+  }
+
+  .nav-link::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.22em;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-champagne), transparent);
+    transform: scaleX(0);
+    transform-origin: center;
+    opacity: 0;
+    transition:
+      transform 420ms var(--ease-out-soft),
+      opacity 420ms var(--ease-out-soft);
+  }
+
+  .chip {
+    transition:
+      border-color 280ms var(--ease-out-soft),
+      background-color 280ms var(--ease-out-soft),
+      color 280ms var(--ease-out-soft),
+      box-shadow 280ms var(--ease-out-soft),
+      transform 160ms ease-out;
+  }
+
+  .field-line {
+    transition:
+      border-color 280ms var(--ease-out-soft),
+      box-shadow 280ms var(--ease-out-soft),
+      background-color 280ms var(--ease-out-soft);
+  }
+
+  .zone-line {
+    transition:
+      color 280ms var(--ease-out-soft),
+      border-color 280ms var(--ease-out-soft),
+      box-shadow 280ms var(--ease-out-soft);
+  }
+
+  .cta-fill:focus-visible,
+  .cta-ghost:focus-visible,
+  .nav-link:focus-visible,
+  .chip:focus-visible,
+  .zone-line:focus-visible {
+    outline: 1px solid var(--color-champagne);
+    outline-offset: 3px;
+  }
+
+  .cta-fill:active:not(:disabled),
+  .cta-ghost:active:not(:disabled),
+  .chip:active:not(:disabled) {
+    transform: scale(0.96);
+  }
+
+  .field-line:focus,
+  .field-line:focus-visible {
+    border-color: var(--color-champagne);
+    box-shadow: 0 0 0 1px color-mix(in oklab, var(--color-champagne) 32%, transparent);
+  }
+
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after,
+  .nav-link:active::after {
+    transform: scaleX(1);
+    opacity: 0.85;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .hover-edge:hover {
+      border-color: var(--color-champagne);
+      transform: translateY(-3px);
+      background-image: linear-gradient(to bottom, rgb(208 193 171 / 0.07), transparent 72%);
+      box-shadow: 0 16px 36px rgb(4 7 10 / 0.28);
+    }
+
+    .hover-row:hover {
+      border-color: color-mix(in oklab, var(--color-champagne) 60%, var(--color-line));
+      background-image: linear-gradient(90deg, rgb(208 193 171 / 0.06), transparent 55%);
+      box-shadow: inset 2px 0 0 var(--color-champagne);
+    }
+
+    .hover-spec:hover {
+      transform: translateX(3px);
+    }
+
+    .hover-spec:hover dt {
+      color: var(--color-champagne);
+    }
+
+    .hover-rail:hover {
+      border-color: var(--color-champagne);
+      color: var(--color-fg);
+      transform: translateX(3px);
+    }
+
+    .hover-frame:hover img {
+      transform: scale(1.035);
+      filter: brightness(1.05) saturate(1.03);
+    }
+
+    .hover-frame:hover::after {
+      opacity: 1;
+    }
+
+    .cta-fill:hover:not(:disabled) {
+      box-shadow:
+        0 0 0 1px color-mix(in oklab, var(--color-champagne) 40%, transparent),
+        0 12px 28px rgb(208 193 171 / 0.16);
+    }
+
+    .cta-ghost:hover:not(:disabled) {
+      border-color: var(--color-champagne);
+      box-shadow: 0 10px 24px rgb(4 7 10 / 0.22);
+    }
+
+    .chip:hover:not(:disabled) {
+      border-color: color-mix(in oklab, var(--color-champagne) 58%, var(--color-line));
+      box-shadow: 0 8px 22px rgb(4 7 10 / 0.2);
+    }
+
+    .field-line:hover:not(:focus) {
+      border-color: color-mix(in oklab, var(--color-pearl) 55%, var(--color-line));
+    }
+
+    .zone-line:hover {
+      box-shadow: inset 2px 0 0 var(--color-champagne);
+    }
+  }
+
+  @media (hover: none) {
+    .hover-edge:active {
+      border-color: var(--color-champagne);
+      background-image: linear-gradient(to bottom, rgb(208 193 171 / 0.07), transparent 72%);
+    }
+
+    .hover-row:active {
+      border-color: color-mix(in oklab, var(--color-champagne) 60%, var(--color-line));
+      box-shadow: inset 2px 0 0 var(--color-champagne);
+    }
+
+    .hover-rail:active {
+      border-color: var(--color-champagne);
+      color: var(--color-fg);
+    }
+
+    .hover-frame:active img {
+      transform: scale(1.02);
+    }
+
+    .hover-frame:active::after {
+      opacity: 1;
+    }
+
+    .zone-line:active {
+      box-shadow: inset 2px 0 0 var(--color-champagne);
+    }
+  }
 }
 
 @keyframes caustic-drift {
@@ -827,5 +1138,26 @@
     opacity: 1;
     transform: none;
     filter: none;
+  }
+  .mirachian-word::before,
+  .mirachian-word::after,
+  .nav-link::after,
+  .hover-frame::after {
+    transition: opacity 200ms ease, color 200ms ease, border-color 200ms ease !important;
+  }
+  .mirachian-word::before {
+    opacity: 0 !important;
+  }
+  .hover-edge,
+  .hover-row,
+  .hover-spec,
+  .hover-rail,
+  .hover-frame img,
+  .cta-fill,
+  .cta-ghost,
+  .chip,
+  .nav-link,
+  .zone-line {
+    transform: none !important;
   }
 }

@@ -13,8 +13,8 @@ const PIECES = [
     alt: "The passenger sphere — seats, viewport, still water beyond",
     fit: "cover" as const,
     specs: [
-      ["Guests", "Four, never five"],
-      ["Pilot", "One, always"],
+      ["Guests", "Four"],
+      ["Pilot", "One"],
       ["Depth", "1,140 m"],
       ["Tone", "Quiet. Deliberate."],
     ],
@@ -79,10 +79,10 @@ export function Craft() {
               type="button"
               onClick={() => setId(p.id)}
               className={cn(
-                "min-h-11 border px-5 text-[0.7rem] tracking-[0.16em] uppercase transition-colors duration-200",
+                "chip min-h-11 border px-5 text-[0.7rem] tracking-[0.16em] uppercase",
                 id === p.id
                   ? "border-pearl bg-surface text-fg"
-                  : "border-line text-muted hover:border-pearl/50",
+                  : "border-line text-muted",
               )}
             >
               {p.kicker}
@@ -111,7 +111,7 @@ export function Craft() {
             <p className="mt-6 leading-relaxed text-fg">{piece.body}</p>
             <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-5 border-t border-line pt-7">
               {piece.specs.map(([k, v]) => (
-                <div key={k}>
+                <div key={k} className="hover-spec">
                   <dt className="text-[0.62rem] tracking-[0.16em] text-pearl uppercase">{k}</dt>
                   <dd className="mt-1.5 text-sm text-fg">{v}</dd>
                 </div>
@@ -138,7 +138,7 @@ export function Craft() {
             "Briefings before every working day",
             "Track-appropriate guest screening",
           ].map((item) => (
-            <p key={item} className="border-l border-pearl/70 pl-5 text-sm leading-relaxed text-muted">
+            <p key={item} className="hover-rail border-l border-pearl/70 pl-5 text-sm leading-relaxed text-muted">
               {item}
             </p>
           ))}

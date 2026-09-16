@@ -82,8 +82,8 @@ export function Itinerary() {
               type="button"
               onClick={() => setI(idx)}
               className={cn(
-                "min-h-11 border px-2 text-[0.62rem] leading-tight tracking-[0.1em] uppercase transition-colors duration-200 md:shrink-0 md:px-4 md:text-[0.68rem] md:tracking-[0.14em]",
-                i === idx ? "border-pearl text-fg" : "border-line text-muted hover:border-pearl/50",
+                "chip min-h-11 border px-2 text-[0.62rem] leading-tight tracking-[0.1em] uppercase md:shrink-0 md:px-4 md:text-[0.68rem] md:tracking-[0.14em]",
+                i === idx ? "border-pearl text-fg" : "border-line text-muted",
               )}
             >
               {b.t}
@@ -111,7 +111,7 @@ export function Itinerary() {
                 type="button"
                 disabled={i === 0}
                 onClick={() => setI((n) => Math.max(0, n - 1))}
-                className="min-h-11 border border-line px-5 text-[0.7rem] tracking-[0.16em] text-muted uppercase disabled:opacity-30"
+                className="cta-ghost min-h-11 border border-line px-5 text-[0.7rem] tracking-[0.16em] text-muted uppercase disabled:opacity-30"
               >
                 Previous
               </button>
@@ -119,7 +119,7 @@ export function Itinerary() {
                 type="button"
                 disabled={i === BEATS.length - 1}
                 onClick={() => setI((n) => Math.min(BEATS.length - 1, n + 1))}
-                className="min-h-11 bg-pearl px-5 text-[0.7rem] tracking-[0.16em] text-abyss uppercase disabled:opacity-30"
+                className="cta-fill min-h-11 bg-pearl px-5 text-[0.7rem] tracking-[0.16em] text-abyss uppercase disabled:opacity-30"
               >
                 Next
               </button>

@@ -63,7 +63,7 @@ export function Expedition() {
             },
           ].map((item, i) => (
             <Reveal key={item.title} delay={i * 80}>
-              <article className="border-t border-line pt-7">
+              <article className="hover-edge border-t border-line pt-7">
                 <h3 className="font-display text-xl text-champagne">{item.title}</h3>
                 <p className="mt-4 text-sm leading-relaxed text-muted">{item.body}</p>
               </article>
