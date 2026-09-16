@@ -208,6 +208,7 @@
   .tagline {
     color: var(--color-fg);
     letter-spacing: inherit;
+    transition: text-shadow 480ms var(--ease-out-soft);
   }
 
   h1.tagline {
