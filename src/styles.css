@@ -893,7 +893,7 @@
 
     .hover-row:hover {
       border-color: color-mix(in oklab, var(--color-champagne) 60%, var(--color-line));
-      background-image: linear-gradient(90deg, rgb(208 193 171 / 0.06), transparent 55%);
+      background-image: linear-gradient(90deg, rgb(208 193 171 / 0.05), transparent 22%);
       box-shadow: inset 2px 0 0 var(--color-champagne);
     }
 
