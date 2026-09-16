@@ -13,16 +13,16 @@ function PassageOffer({
   label: string;
 }) {
   return (
-    <>
-      <p className="mt-6 text-sm text-champagne">{price}</p>
+    <div className="hover-row mt-6">
+      <p className="text-sm text-champagne">{price}</p>
       <p className="mt-2.5 max-w-sm text-sm leading-relaxed text-muted">{terms}</p>
       <a
         href={href}
-        className="mt-6 inline-flex min-h-11 w-fit items-center border border-line px-7 py-3 text-[0.7rem] tracking-[0.2em] text-pearl uppercase transition-colors duration-200 hover:border-pearl"
+        className="cta-ghost mt-6 inline-flex min-h-11 w-fit items-center border border-line px-7 py-3 text-[0.7rem] tracking-[0.2em] text-pearl uppercase"
       >
         {label}
       </a>
-    </>
+    </div>
   );
 }
 
@@ -76,10 +76,10 @@ export function Passages() {
               label="Inquire — submersible"
             />
             <ul className="mt-6 space-y-2.5 text-sm text-fg">
-              <li className="border-l border-pearl/70 pl-5">Maximum four guests per dive</li>
-              <li className="border-l border-pearl/70 pl-5">Cinema-grade imaging of unvisited terrain</li>
-              <li className="border-l border-pearl/70 pl-5">Rated to 1,140 meters</li>
-              <li className="border-l border-pearl/70 pl-5">Conservative weather discipline</li>
+              <li className="hover-rail border-l border-pearl/70">Maximum four guests per dive</li>
+              <li className="hover-rail border-l border-pearl/70">Cinema-grade imaging of unvisited terrain</li>
+              <li className="hover-rail border-l border-pearl/70">Rated to 1,140 meters</li>
+              <li className="hover-rail border-l border-pearl/70">Conservative weather discipline</li>
             </ul>
           </Reveal>
         </div>
@@ -116,9 +116,9 @@ export function Passages() {
               label="Inquire — scuba"
             />
             <ul className="mt-6 space-y-2.5 text-sm text-fg">
-              <li className="border-l border-pearl/70 pl-5">Two couples, never a crowd</li>
-              <li className="border-l border-pearl/70 pl-5">Clear Keys water, private sites</li>
-              <li className="border-l border-pearl/70 pl-5">Observer places on the ship</li>
+              <li className="hover-rail border-l border-pearl/70">Two couples, never a crowd</li>
+              <li className="hover-rail border-l border-pearl/70">Clear Keys water, private sites</li>
+              <li className="hover-rail border-l border-pearl/70">Observer places on the ship</li>
             </ul>
           </Reveal>
         </div>

@@ -133,7 +133,7 @@ export function Reserve() {
               ["Settle", "When the passage is arranged, the calendar opens."],
               ["Sail", "Priority follows completion — not who asked first."],
             ].map(([t, b], i) => (
-              <li key={t} className="border-l border-line pl-5">
+              <li key={t} className="hover-rail border-l border-line">
                 <span className="font-display text-pearl">0{i + 1} · </span>
                 <span className="font-display text-fg">{t}</span>
                 <p className="mt-1.5">{b}</p>
@@ -152,7 +152,7 @@ export function Reserve() {
                 </h3>
                 <p className="mt-5 text-muted">
                   Your interest was delivered to{" "}
-                  <a href={`mailto:${CONTACT_EMAIL}`} className="text-pearl hover:text-fg">
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="nav-link text-pearl hover:text-fg">
                     {CONTACT_EMAIL}
                   </a>
                   . We will follow with details matched to what you shared
@@ -216,10 +216,10 @@ export function Reserve() {
                           type="button"
                           onClick={() => setTrack(t.id)}
                           className={cn(
-                            "min-h-12 border px-4 py-2.5 text-left transition-colors duration-200 md:min-h-14 md:py-3",
+                            "chip min-h-12 border px-4 py-2.5 text-left md:min-h-14 md:py-3",
                             track === t.id
                               ? "border-pearl bg-surface text-fg"
-                              : "border-line text-muted hover:border-pearl/50",
+                              : "border-line text-muted",
                           )}
                         >
                           <span className="block text-sm tracking-[0.08em] uppercase">
@@ -237,7 +237,7 @@ export function Reserve() {
                           type="button"
                           onClick={() => setInterest(item.id)}
                           className={cn(
-                            "min-h-11 border px-3 text-left text-sm md:px-4",
+                            "chip min-h-11 border px-3 text-left text-sm md:px-4",
                             interest === item.id
                               ? "border-pearl text-fg"
                               : "border-line text-muted",
@@ -252,7 +252,7 @@ export function Reserve() {
                         type="button"
                         disabled={!track}
                         onClick={() => setStep(2)}
-                        className="min-h-11 bg-pearl px-7 text-[0.7rem] tracking-[0.16em] text-abyss uppercase disabled:opacity-40"
+                        className="cta-fill min-h-11 bg-pearl px-7 text-[0.7rem] tracking-[0.16em] text-abyss uppercase disabled:opacity-40"
                       >
                         Continue
                       </button>
@@ -273,7 +273,7 @@ export function Reserve() {
                           type="button"
                           onClick={() => setGuests(g)}
                           className={cn(
-                            "min-h-11 min-w-11 border px-4 text-sm",
+                            "chip min-h-11 min-w-11 border px-4 text-sm",
                             guests === g ? "border-pearl text-fg" : "border-line text-muted",
                           )}
                         >
@@ -296,7 +296,7 @@ export function Reserve() {
                           type="button"
                           onClick={() => setParty(pid)}
                           className={cn(
-                            "min-h-11 border px-4 text-left text-sm",
+                            "chip min-h-11 border px-4 text-left text-sm",
                             party === pid ? "border-pearl text-fg" : "border-line text-muted",
                           )}
                         >
@@ -319,7 +319,7 @@ export function Reserve() {
                           type="button"
                           onClick={() => setTiming(tid)}
                           className={cn(
-                            "min-h-11 border px-4 text-left text-sm",
+                            "chip min-h-11 border px-4 text-left text-sm",
                             timing === tid ? "border-pearl text-fg" : "border-line text-muted",
                           )}
                         >
@@ -331,14 +331,14 @@ export function Reserve() {
                       <button
                         type="button"
                         onClick={() => setStep(1)}
-                        className="min-h-11 text-[0.7rem] tracking-[0.16em] text-muted uppercase"
+                        className="nav-link min-h-11 text-[0.7rem] tracking-[0.16em] text-muted uppercase hover:text-pearl"
                       >
                         Back
                       </button>
                       <button
                         type="button"
                         onClick={() => setStep(3)}
-                        className="min-h-11 bg-pearl px-7 text-[0.7rem] tracking-[0.16em] text-abyss uppercase"
+                        className="cta-fill min-h-11 bg-pearl px-7 text-[0.7rem] tracking-[0.16em] text-abyss uppercase"
                       >
                         Continue
                       </button>
@@ -361,7 +361,7 @@ export function Reserve() {
                         required
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="mt-2 min-h-11 w-full border border-line bg-transparent px-3 text-fg outline-none focus:border-pearl"
+                        className="field-line mt-2 min-h-11 w-full border border-line bg-transparent px-3 text-fg outline-none"
                       />
                     </label>
                     <label className="mt-5 block text-[0.7rem] tracking-[0.14em] text-muted uppercase">
@@ -371,7 +371,7 @@ export function Reserve() {
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="mt-2 min-h-11 w-full border border-line bg-transparent px-3 text-fg outline-none focus:border-pearl"
+                        className="field-line mt-2 min-h-11 w-full border border-line bg-transparent px-3 text-fg outline-none"
                       />
                     </label>
                     <label className="mt-5 block text-[0.7rem] tracking-[0.14em] text-muted uppercase">
@@ -380,7 +380,7 @@ export function Reserve() {
                         type="tel"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                        className="mt-2 min-h-11 w-full border border-line bg-transparent px-3 text-fg outline-none focus:border-pearl"
+                        className="field-line mt-2 min-h-11 w-full border border-line bg-transparent px-3 text-fg outline-none"
                       />
                     </label>
                     <label className="mt-5 block text-[0.7rem] tracking-[0.14em] text-muted uppercase">
@@ -389,14 +389,14 @@ export function Reserve() {
                         value={note}
                         onChange={(e) => setNote(e.target.value)}
                         rows={3}
-                        className="mt-2 w-full border border-line bg-transparent px-3 py-2 text-sm font-sans tracking-normal text-fg normal-case outline-none focus:border-pearl"
+                        className="field-line mt-2 w-full border border-line bg-transparent px-3 py-2 text-sm font-sans tracking-normal text-fg normal-case outline-none"
                       />
                     </label>
                     <div className="mt-10 flex justify-between">
                       <button
                         type="button"
                         onClick={() => setStep(2)}
-                        className="min-h-11 text-[0.7rem] tracking-[0.16em] text-muted uppercase"
+                        className="nav-link min-h-11 text-[0.7rem] tracking-[0.16em] text-muted uppercase hover:text-pearl"
                       >
                         Back
                       </button>
@@ -404,7 +404,7 @@ export function Reserve() {
                         type="button"
                         disabled={!name.trim() || !email.includes("@")}
                         onClick={() => setStep(4)}
-                        className="min-h-11 bg-pearl px-7 text-[0.7rem] tracking-[0.16em] text-abyss uppercase disabled:opacity-40"
+                        className="cta-fill min-h-11 bg-pearl px-7 text-[0.7rem] tracking-[0.16em] text-abyss uppercase disabled:opacity-40"
                       >
                         Continue
                       </button>
@@ -428,7 +428,7 @@ export function Reserve() {
                           disabled={preferEmail}
                           onClick={() => setDate(d.iso)}
                           className={cn(
-                            "min-h-11 border px-3 text-xs",
+                            "chip min-h-11 border px-3 text-xs",
                             date === d.iso ? "border-pearl text-fg" : "border-line text-muted",
                             preferEmail && "opacity-40",
                           )}
@@ -445,7 +445,7 @@ export function Reserve() {
                           disabled={preferEmail}
                           onClick={() => setSlot(t)}
                           className={cn(
-                            "min-h-11 border px-4 text-sm",
+                            "chip min-h-11 border px-4 text-sm",
                             slot === t ? "border-pearl text-fg" : "border-line text-muted",
                             preferEmail && "opacity-40",
                           )}
@@ -467,7 +467,7 @@ export function Reserve() {
                       <p className="mt-6 text-sm text-muted">
                         The card could not be delivered just now. Please write us
                         directly at{" "}
-                        <a href={`mailto:${CONTACT_EMAIL}`} className="text-pearl hover:text-fg">
+                        <a href={`mailto:${CONTACT_EMAIL}`} className="nav-link text-pearl hover:text-fg">
                           {CONTACT_EMAIL}
                         </a>
                         .
@@ -477,7 +477,7 @@ export function Reserve() {
                       <button
                         type="button"
                         onClick={() => setStep(3)}
-                        className="min-h-11 text-[0.7rem] tracking-[0.16em] text-muted uppercase"
+                        className="nav-link min-h-11 text-[0.7rem] tracking-[0.16em] text-muted uppercase hover:text-pearl"
                       >
                         Back
                       </button>
@@ -485,7 +485,7 @@ export function Reserve() {
                         type="button"
                         disabled={sending || (!preferEmail && (!date || !slot))}
                         onClick={() => void submit()}
-                        className="min-h-11 bg-pearl px-7 text-[0.7rem] tracking-[0.16em] text-abyss uppercase disabled:opacity-40"
+                        className="cta-fill min-h-11 bg-pearl px-7 text-[0.7rem] tracking-[0.16em] text-abyss uppercase disabled:opacity-40"
                       >
                         {sending ? "Sending…" : "Request appointment"}
                       </button>

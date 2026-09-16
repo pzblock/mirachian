@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { DepthRail } from "./DepthRail";
 import { Mark } from "./Mark";
+import { Mirachian } from "./Mirachian";
 
 const LINKS = [
   { href: "#voyage", label: "Voyage" },
@@ -69,9 +70,7 @@ export function SiteNav() {
               <Mark className="size-7" />
             </span>
             <span className="flex flex-col leading-none">
-              <span className="mark-word font-display text-[1.05rem] tracking-[0.34em] text-fg uppercase transition-colors duration-500">
-                Mirachian
-              </span>
+              <Mirachian className="mark-word font-display text-[1.05rem] tracking-[0.34em] text-fg uppercase transition-colors duration-500" />
               <span className="mt-1 text-[0.58rem] tracking-[0.38em] text-pearl uppercase">
                 Undersea
               </span>
@@ -82,7 +81,7 @@ export function SiteNav() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-[0.7rem] tracking-[0.22em] text-pearl uppercase transition-colors duration-200 hover:text-fg"
+                className="nav-link text-[0.7rem] tracking-[0.22em] text-pearl uppercase hover:text-fg"
               >
                 {link.label}
               </a>
@@ -112,7 +111,7 @@ export function SiteNav() {
               <a
                 key={link.href}
                 href={link.href}
-                className="min-h-11 py-2 text-sm tracking-[0.18em] text-fg uppercase"
+                className="nav-link min-h-11 py-2 text-sm tracking-[0.18em] text-fg uppercase"
                 onClick={() => setOpen(false)}
               >
                 {link.label}

@@ -60,7 +60,7 @@ export function Stills() {
         <div className="mt-12 grid gap-5 md:grid-cols-2 md:gap-6">
           {FEATURED.map((f) => (
             <figure key={f.src}>
-              <div className="relative overflow-hidden">
+              <div className="hover-frame relative overflow-hidden">
                 <img
                   src={f.src}
                   alt={f.cap}
@@ -87,7 +87,7 @@ export function Stills() {
               data-frame
               className="w-[64vw] shrink-0 snap-start md:w-[34vw] lg:w-[22vw]"
             >
-              <div className="relative overflow-hidden">
+              <div className="hover-frame relative overflow-hidden">
                 <img
                   src={f.src}
                   alt={f.cap}
@@ -125,7 +125,7 @@ export function Stills() {
               aria-label="Previous frame"
               disabled={active === 0}
               onClick={() => go(Math.max(0, active - 1))}
-              className="inline-flex size-11 items-center justify-center border border-line text-pearl disabled:opacity-30"
+              className="cta-ghost inline-flex size-11 items-center justify-center border border-line text-pearl disabled:opacity-30"
             >
               <ChevronLeft size={18} />
             </button>
@@ -134,7 +134,7 @@ export function Stills() {
               aria-label="Next frame"
               disabled={active === FRAMES.length - 1}
               onClick={() => go(Math.min(FRAMES.length - 1, active + 1))}
-              className="inline-flex size-11 items-center justify-center border border-line text-pearl disabled:opacity-30"
+              className="cta-ghost inline-flex size-11 items-center justify-center border border-line text-pearl disabled:opacity-30"
             >
               <ChevronRight size={18} />
             </button>

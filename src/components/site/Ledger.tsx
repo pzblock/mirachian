@@ -74,7 +74,7 @@ export function Ledger() {
       <ol className="mx-auto max-w-6xl px-5 md:px-8">
         {ACCOUNT.map((beat) => (
           <Reveal key={beat.n}>
-            <li className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-6 border-t border-line py-8 md:grid-cols-[auto_minmax(0,42rem)] md:gap-x-10 md:py-10">
+            <li className="hover-row grid grid-cols-[auto_minmax(0,1fr)] gap-x-6 border-t border-line py-8 md:grid-cols-[auto_minmax(0,42rem)] md:gap-x-10 md:py-10">
               <p className="pt-1.5 font-mono text-[0.62rem] tracking-[0.2em] text-pearl">
                 {beat.n}
               </p>
@@ -139,7 +139,7 @@ export function Ledger() {
 
         <dl className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {MARKS.map(([k, v]) => (
-            <div key={k} className="border-t border-line pt-6">
+            <div key={k} className="hover-edge border-t border-line pt-6">
               <dt className="font-display text-2xl text-fg md:text-3xl">{k}</dt>
               <dd className="mt-3 max-w-[18ch] text-sm leading-relaxed text-muted">
                 {v}

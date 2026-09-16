@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { useReducedMotion } from "@/lib/motion";
 import { Reveal } from "./Reveal";
 import { WaterSnow } from "./WaterSnow";
+import { withMirachian } from "./Mirachian";
 
 const MAX = 1140;
 
@@ -171,7 +172,9 @@ export function Descend() {
                 {m}
                 <span className="ml-1 font-display text-2xl text-pearl md:text-3xl">m</span>
               </p>
-              <p className="mt-5 font-display text-2xl text-champagne md:text-3xl">{zone.title}</p>
+              <p className="mt-5 font-display text-2xl text-champagne md:text-3xl">
+                {withMirachian(zone.title)}
+              </p>
               <p className="mt-3 max-w-sm text-muted">{zone.body}</p>
 
               <dl className="mt-7 grid grid-cols-3 gap-4 border-t border-line pt-5">
@@ -192,7 +195,7 @@ export function Descend() {
               <button
                 type="button"
                 onClick={play}
-                className="mt-7 inline-flex min-h-11 items-center gap-2 border border-line px-5 text-[0.7rem] tracking-[0.18em] text-pearl uppercase transition-colors duration-200 hover:border-pearl"
+                className="cta-ghost mt-7 inline-flex min-h-11 items-center gap-2 border border-line px-5 text-[0.7rem] tracking-[0.18em] text-pearl uppercase"
               >
                 {playing ? <Pause size={14} /> : <Play size={14} className="ml-px" />}
                 {playing ? "Hold" : m >= MAX - 10 ? "Replay descent" : "Play the descent"}
@@ -205,11 +208,11 @@ export function Descend() {
                     type="button"
                     onClick={() => showZone(z.m)}
                     className={cn(
-                      "flex min-h-10 items-baseline justify-between gap-4 border-b border-line py-2 text-left last:border-0 transition-colors duration-200",
+                      "zone-line flex min-h-10 items-baseline justify-between gap-4 border-b border-line py-2 text-left last:border-0",
                       zone.m === z.m ? "text-fg" : "text-muted hover:text-pearl",
                     )}
                   >
-                    <span className="font-display text-lg">{z.title}</span>
+                    <span className="font-display text-lg">{withMirachian(z.title)}</span>
                     <span className="font-mono text-[0.65rem] tracking-wider uppercase tabular-nums">
                       {z.m}m
                     </span>
@@ -297,7 +300,9 @@ export function Descend() {
                   />
                   {zone.m === 200 ? <WaterSnow count={70} /> : null}
                   <figcaption className="descend-caption absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-4 px-4 py-4 md:px-5 md:py-5">
-                    <span className="font-display text-lg text-fg md:text-xl">{zone.title}</span>
+                    <span className="font-display text-lg text-fg md:text-xl">
+                      {withMirachian(zone.title)}
+                    </span>
                     <span className="font-mono text-[0.65rem] tracking-wider text-pearl uppercase tabular-nums">
                       {zone.m}m
                     </span>
@@ -311,11 +316,11 @@ export function Descend() {
                       type="button"
                       onClick={() => showZone(z.m)}
                       className={cn(
-                        "flex min-h-11 items-baseline justify-between gap-4 border-b border-line py-2.5 text-left last:border-0 transition-colors duration-200",
+                        "zone-line flex min-h-11 items-baseline justify-between gap-4 border-b border-line py-2.5 text-left last:border-0",
                         zone.m === z.m ? "text-fg" : "text-muted hover:text-pearl",
                       )}
                     >
-                      <span className="font-display text-lg md:text-xl">{z.title}</span>
+                      <span className="font-display text-lg md:text-xl">{withMirachian(z.title)}</span>
                       <span className="font-mono text-[0.65rem] tracking-wider uppercase tabular-nums">
                         {z.m}m
                       </span>

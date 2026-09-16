@@ -1,9 +1,10 @@
+import { Mirachian } from "./Mirachian";
 import { Reveal } from "./Reveal";
 import { Sounding } from "./Sounding";
 
 function Stat({ display, label }: { display: string; label: string }) {
   return (
-    <div className="border-t border-line pt-7">
+    <div className="hover-edge border-t border-line pt-7">
       <p className="proof-stat font-display text-4xl text-fg tabular-nums md:text-5xl">
         {display}
       </p>
@@ -25,7 +26,7 @@ export function Proof() {
           >
             Submersible travel is quieter — and many orders of magnitude safer —
             than the myth suggests. The rarity is access, not danger. That is why
-            a Mirachian expedition is reserved for four guests, never more, and
+            a <Mirachian /> expedition is reserved for four guests, never more, and
             for those who recognize that true adventure is most uncommon.
           </Sounding>
         </Reveal>

@@ -48,7 +48,7 @@ export function Hero() {
             </p>
           </div>
 
-          <h1 className="mt-4 max-w-[11ch] font-display text-[clamp(2.35rem,11vw,5.2rem)] leading-[0.98] text-fg md:mt-5">
+          <h1 className="tagline mt-4 max-w-[11ch] font-display text-[clamp(2.35rem,11vw,5.2rem)] leading-[0.98] text-fg md:mt-5">
             {WORDS.map((w, i) => (
               <span
                 key={w}
@@ -70,13 +70,13 @@ export function Hero() {
           <div className="mt-7 flex flex-wrap gap-3 md:mt-8">
             <a
               href="#reserve"
-              className="inline-flex min-h-11 items-center border border-pearl bg-pearl px-7 py-3 text-[0.7rem] tracking-[0.2em] text-abyss uppercase transition-colors duration-200 hover:bg-fg hover:border-fg"
+              className="cta-fill inline-flex min-h-11 items-center border border-pearl bg-pearl px-7 py-3 text-[0.7rem] tracking-[0.2em] text-abyss uppercase hover:bg-fg hover:border-fg"
             >
               Reserve passage
             </a>
             <a
               href="#descend"
-              className="inline-flex min-h-11 items-center border border-pearl/45 bg-transparent px-7 py-3 text-[0.7rem] tracking-[0.2em] text-fg uppercase backdrop-blur-[2px] transition-colors duration-200 hover:border-pearl"
+              className="cta-ghost inline-flex min-h-11 items-center border border-pearl/45 bg-transparent px-7 py-3 text-[0.7rem] tracking-[0.2em] text-fg uppercase backdrop-blur-[2px]"
             >
               Draw the depth
             </a>
