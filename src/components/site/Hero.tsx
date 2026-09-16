@@ -48,11 +48,11 @@ export function Hero() {
             </p>
           </div>
 
-          <h1 className="mt-4 max-w-[11ch] font-display text-[clamp(2.35rem,11vw,5.2rem)] leading-[0.98] text-fg md:mt-5">
+          <h1 className="tagline mt-4 max-w-[11ch] font-display text-[clamp(2.35rem,11vw,5.2rem)] leading-[0.98] text-fg md:mt-5">
             {WORDS.map((w, i) => (
               <span
                 key={w}
-                className="hero-word mr-[0.28em] last:mr-0"
+                className={`hero-word mr-[0.28em] last:mr-0${w === "Art" || w === "Exploration" ? " tagline-accent" : ""}`}
                 style={{ animationDelay: `${220 + i * 110}ms` }}
               >
                 {w}

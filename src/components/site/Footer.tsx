@@ -10,7 +10,10 @@ export function Footer() {
             <Mirachian />
           </p>
           <p className="mt-3 text-sm text-muted">Private Passage. Rare Discoveries.</p>
-          <p className="mt-1 text-sm text-muted">The Art of Undersea Exploration.</p>
+          <p className="tagline mt-2 font-display text-[0.95rem] tracking-[0.16em] text-pearl">
+            The <span className="tagline-accent">Art</span> of Undersea{" "}
+            <span className="tagline-accent">Exploration</span>.
+          </p>
           <p className="mt-5 font-mono text-[0.65rem] tracking-[0.14em] text-pearl/75 uppercase">
             24°33′N · 81°46′W · Key West
           </p>
@@ -47,10 +50,11 @@ export function Footer() {
           capacity.
         </p>
         <p className="mt-3 max-w-3xl">
-          Expeditions are hosted by <Mirachian /> Expeditions, utilizing the
-          certified vessels of <Mirachian /> Group. An inquiry is not a booking
-          until terms are accepted and a $250 deposit per couple is placed. That
-          deposit is fully refundable until the reservation is confirmed.
+          Expeditions are hosted by <Mirachian /> Undersea, utilizing the
+          certified vessels of <Mirachian /> Group, LLC. An inquiry is not a
+          booking until terms are accepted and a $250 deposit per couple is
+          placed. That deposit is fully refundable until the reservation is
+          confirmed.
         </p>
       </div>
     </footer>

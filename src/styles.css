@@ -19,6 +19,7 @@
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
   --shadow-border: 0 0 0 1px rgb(185 208 217 / 0.12);
   --shadow-border-hover: 0 0 0 1px rgb(185 208 217 / 0.22);
+  --rail-gap: 1.75rem;
 }
 
 @layer base {
@@ -202,6 +203,29 @@
       0 0 1px rgb(0 0 0 / 0.95),
       0 1px 2px rgb(0 0 0 / 0.9),
       0 2px 18px rgb(0 0 0 / 0.7);
+  }
+
+  .tagline {
+    letter-spacing: inherit;
+  }
+
+  h1.tagline {
+    letter-spacing: -0.018em;
+  }
+
+  .tagline-accent {
+    color: var(--color-champagne);
+    font-weight: 500;
+    transition:
+      color 480ms var(--ease-out-soft),
+      text-shadow 480ms var(--ease-out-soft);
+  }
+
+  .tagline:hover .tagline-accent,
+  .tagline:focus-visible .tagline-accent {
+    text-shadow:
+      0 0 16px rgb(208 193 171 / 0.32),
+      0 0 28px rgb(185 208 217 / 0.1);
   }
 
   .water-column {
@@ -756,10 +780,29 @@
   }
 
   .hover-row {
+    position: relative;
+    padding-left: var(--rail-gap);
     transition:
       border-color 450ms var(--ease-out-soft),
-      background-color 450ms var(--ease-out-soft),
-      box-shadow 450ms var(--ease-out-soft);
+      background-color 450ms var(--ease-out-soft);
+  }
+
+  .hover-row::before,
+  .zone-line::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    top: 0.45em;
+    bottom: 0.45em;
+    left: 0;
+    width: 1px;
+    background: var(--color-champagne);
+    opacity: 0;
+    transform: scaleY(0.78);
+    transform-origin: center;
+    transition:
+      opacity 400ms var(--ease-out-soft),
+      transform 400ms var(--ease-out-soft);
   }
 
   .hover-spec {
@@ -771,6 +814,7 @@
   }
 
   .hover-rail {
+    padding-left: var(--rail-gap);
     transition:
       border-color 400ms var(--ease-out-soft),
       color 400ms var(--ease-out-soft),
@@ -849,10 +893,11 @@
   }
 
   .zone-line {
+    position: relative;
+    padding-left: var(--rail-gap);
     transition:
       color 280ms var(--ease-out-soft),
-      border-color 280ms var(--ease-out-soft),
-      box-shadow 280ms var(--ease-out-soft);
+      border-color 280ms var(--ease-out-soft);
   }
 
   .cta-fill:focus-visible,
@@ -883,6 +928,12 @@
     opacity: 0.85;
   }
 
+  .hover-row:focus-visible::before,
+  .zone-line:focus-visible::before {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
   @media (hover: hover) and (pointer: fine) {
     .hover-edge:hover {
       border-color: var(--color-champagne);
@@ -894,7 +945,12 @@
     .hover-row:hover {
       border-color: color-mix(in oklab, var(--color-champagne) 60%, var(--color-line));
       background-image: linear-gradient(90deg, rgb(208 193 171 / 0.05), transparent 22%);
-      box-shadow: inset 2px 0 0 var(--color-champagne);
+    }
+
+    .hover-row:hover::before,
+    .zone-line:hover::before {
+      opacity: 1;
+      transform: scaleY(1);
     }
 
     .hover-spec:hover {
@@ -939,10 +995,6 @@
     .field-line:hover:not(:focus) {
       border-color: color-mix(in oklab, var(--color-pearl) 55%, var(--color-line));
     }
-
-    .zone-line:hover {
-      box-shadow: inset 2px 0 0 var(--color-champagne);
-    }
   }
 
   @media (hover: none) {
@@ -953,7 +1005,12 @@
 
     .hover-row:active {
       border-color: color-mix(in oklab, var(--color-champagne) 60%, var(--color-line));
-      box-shadow: inset 2px 0 0 var(--color-champagne);
+    }
+
+    .hover-row:active::before,
+    .zone-line:active::before {
+      opacity: 1;
+      transform: scaleY(1);
     }
 
     .hover-rail:active {
@@ -967,10 +1024,6 @@
 
     .hover-frame:active::after {
       opacity: 1;
-    }
-
-    .zone-line:active {
-      box-shadow: inset 2px 0 0 var(--color-champagne);
     }
   }
 }
@@ -1142,7 +1195,9 @@
   .mirachian-word::before,
   .mirachian-word::after,
   .nav-link::after,
-  .hover-frame::after {
+  .hover-frame::after,
+  .hover-row::before,
+  .zone-line::before {
     transition: opacity 200ms ease, color 200ms ease, border-color 200ms ease !important;
   }
   .mirachian-word::before {

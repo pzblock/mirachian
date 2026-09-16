@@ -133,7 +133,7 @@ export function Reserve() {
               ["Settle", "When the passage is arranged, the calendar opens."],
               ["Sail", "Priority follows completion — not who asked first."],
             ].map(([t, b], i) => (
-              <li key={t} className="hover-rail border-l border-line pl-5">
+              <li key={t} className="hover-rail border-l border-line">
                 <span className="font-display text-pearl">0{i + 1} · </span>
                 <span className="font-display text-fg">{t}</span>
                 <p className="mt-1.5">{b}</p>

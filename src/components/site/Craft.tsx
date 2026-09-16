@@ -138,7 +138,7 @@ export function Craft() {
             "Briefings before every working day",
             "Track-appropriate guest screening",
           ].map((item) => (
-            <p key={item} className="hover-rail border-l border-pearl/70 pl-5 text-sm leading-relaxed text-muted">
+            <p key={item} className="hover-rail border-l border-pearl/70 text-sm leading-relaxed text-muted">
               {item}
             </p>
           ))}

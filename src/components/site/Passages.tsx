@@ -76,10 +76,10 @@ export function Passages() {
               label="Inquire — submersible"
             />
             <ul className="mt-6 space-y-2.5 text-sm text-fg">
-              <li className="hover-rail border-l border-pearl/70 pl-5">Maximum four guests per dive</li>
-              <li className="hover-rail border-l border-pearl/70 pl-5">Cinema-grade imaging of unvisited terrain</li>
-              <li className="hover-rail border-l border-pearl/70 pl-5">Rated to 1,140 meters</li>
-              <li className="hover-rail border-l border-pearl/70 pl-5">Conservative weather discipline</li>
+              <li className="hover-rail border-l border-pearl/70">Maximum four guests per dive</li>
+              <li className="hover-rail border-l border-pearl/70">Cinema-grade imaging of unvisited terrain</li>
+              <li className="hover-rail border-l border-pearl/70">Rated to 1,140 meters</li>
+              <li className="hover-rail border-l border-pearl/70">Conservative weather discipline</li>
             </ul>
           </Reveal>
         </div>
@@ -116,9 +116,9 @@ export function Passages() {
               label="Inquire — scuba"
             />
             <ul className="mt-6 space-y-2.5 text-sm text-fg">
-              <li className="hover-rail border-l border-pearl/70 pl-5">Two couples, never a crowd</li>
-              <li className="hover-rail border-l border-pearl/70 pl-5">Clear Keys water, private sites</li>
-              <li className="hover-rail border-l border-pearl/70 pl-5">Observer places on the ship</li>
+              <li className="hover-rail border-l border-pearl/70">Two couples, never a crowd</li>
+              <li className="hover-rail border-l border-pearl/70">Clear Keys water, private sites</li>
+              <li className="hover-rail border-l border-pearl/70">Observer places on the ship</li>
             </ul>
           </Reveal>
         </div>
