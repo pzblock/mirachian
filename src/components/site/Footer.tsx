@@ -10,9 +10,8 @@ export function Footer() {
             <Mirachian />
           </p>
           <p className="mt-3 text-sm text-muted">Private Passage. Rare Discoveries.</p>
-          <p className="tagline mt-2 font-display text-[0.95rem] tracking-[0.16em] text-pearl">
-            The <span className="tagline-accent">Art</span> of Undersea{" "}
-            <span className="tagline-accent">Exploration</span>.
+          <p className="tagline mt-2 font-display text-[0.95rem] tracking-[0.16em] text-fg">
+            The Art of Undersea Exploration.
           </p>
           <p className="mt-5 font-mono text-[0.65rem] tracking-[0.14em] text-pearl/75 uppercase">
             24°33′N · 81°46′W · Key West

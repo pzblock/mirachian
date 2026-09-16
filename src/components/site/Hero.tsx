@@ -52,7 +52,7 @@ export function Hero() {
             {WORDS.map((w, i) => (
               <span
                 key={w}
-                className={`hero-word mr-[0.28em] last:mr-0${w === "Art" || w === "Exploration" ? " tagline-accent" : ""}`}
+                className="hero-word mr-[0.28em] last:mr-0"
                 style={{ animationDelay: `${220 + i * 110}ms` }}
               >
                 {w}

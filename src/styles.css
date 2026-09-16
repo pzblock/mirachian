@@ -206,6 +206,7 @@
   }
 
   .tagline {
+    color: var(--color-fg);
     letter-spacing: inherit;
   }
 
@@ -213,19 +214,21 @@
     letter-spacing: -0.018em;
   }
 
-  .tagline-accent {
-    color: var(--color-champagne);
-    font-weight: 500;
-    transition:
-      color 480ms var(--ease-out-soft),
-      text-shadow 480ms var(--ease-out-soft);
+  .tagline:hover,
+  .tagline:focus-visible {
+    text-shadow:
+      0 0 14px rgb(238 244 247 / 0.2),
+      0 0 28px rgb(185 208 217 / 0.14);
   }
 
-  .tagline:hover .tagline-accent,
-  .tagline:focus-visible .tagline-accent {
+  h1.tagline:hover .hero-word,
+  h1.tagline:focus-visible .hero-word {
     text-shadow:
-      0 0 16px rgb(208 193 171 / 0.32),
-      0 0 28px rgb(185 208 217 / 0.1);
+      0 0 1px rgb(0 0 0 / 0.95),
+      0 1px 2px rgb(0 0 0 / 0.9),
+      0 2px 18px rgb(0 0 0 / 0.7),
+      0 0 16px rgb(238 244 247 / 0.22),
+      0 0 32px rgb(185 208 217 / 0.12);
   }
 
   .water-column {
