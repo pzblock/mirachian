@@ -1,5 +1,6 @@
 import { Cinema } from "./Cinema";
 import { Reveal } from "./Reveal";
+import { BeatCap } from "./SectionSeam";
 
 function PassageOffer({
   price,
@@ -84,6 +85,8 @@ export function Passages() {
           </Reveal>
         </div>
       </article>
+
+      <BeatCap className="my-1 md:my-2" />
 
       <article
         id="passage-scuba"
