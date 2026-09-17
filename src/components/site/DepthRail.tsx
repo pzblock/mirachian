@@ -12,8 +12,8 @@ const ZONES = [
 ] as const;
 
 /**
- * Nav depth voice — advances with scroll, and quietly locks to the
- * active descent station when DescentPath has marked one.
+ * Nav depth voice — scroll fill + quiet lock to the active descent station.
+ * Pearl fill only (no champagne bead) so seam ticks own the continue cue.
  */
 export function DepthRail() {
   const [p, setP] = useState(0);
@@ -71,23 +71,19 @@ export function DepthRail() {
           {zone}
         </p>
       </div>
-      <div className="relative h-10 w-px bg-line">
+      <div className="relative h-9 w-px bg-line">
         {ZONES.map((z) =>
           z.p === 0 || z.p === 1 ? null : (
             <span
               key={z.label}
-              className="absolute left-1/2 h-px w-[5px] -translate-x-1/2 bg-pearl/35"
+              className="absolute left-1/2 h-px w-[4px] -translate-x-1/2 bg-pearl/28"
               style={{ top: `${z.p * 100}%` }}
             />
           ),
         )}
         <span
-          className="depth-rail-fill absolute top-0 left-0 w-px bg-pearl transition-[height] duration-500 ease-out"
+          className="depth-rail-fill absolute top-0 left-0 w-px bg-pearl/90 transition-[height] duration-500 ease-out"
           style={{ height: `${fill * 100}%` }}
-        />
-        <span
-          className="depth-rail-bead absolute left-1/2 size-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-champagne shadow-[0_0_10px_color-mix(in_oklab,var(--color-champagne)_45%,transparent)] transition-[top] duration-500 ease-out"
-          style={{ top: `${fill * 100}%` }}
         />
       </div>
     </div>
