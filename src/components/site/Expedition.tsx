@@ -1,4 +1,5 @@
 import { Cinema } from "./Cinema";
+import { BeatCap, ImageVoidFeather } from "./SectionSeam";
 import { Reveal } from "./Reveal";
 
 export function Expedition() {
@@ -23,6 +24,7 @@ export function Expedition() {
             veil="soft"
             objectPosition="78% 68%"
           />
+          <ImageVoidFeather />
         </div>
         <div className="cine-copy mx-auto max-w-6xl px-5 py-10 md:min-h-[82svh] md:px-8 md:py-20">
           <p className="copy-veil max-w-3xl font-display text-[clamp(1.55rem,3.2vw,2.7rem)] leading-[1.18] text-fg">
@@ -35,7 +37,7 @@ export function Expedition() {
 
       <div className="mx-auto max-w-6xl px-5 py-24 md:px-8 md:py-28">
         <Reveal>
-          <p className="max-w-3xl leading-relaxed text-muted">
+          <p className="max-w-3xl leading-relaxed text-muted dense-lead">
             For five centuries this relatively narrow channel carried the great
             Spanish treasure fleets. Historical records suggest well over a
             thousand vessels have been lost across the Keys and Straits; many
@@ -47,7 +49,8 @@ export function Expedition() {
             terrain almost no one has seen.
           </p>
         </Reveal>
-        <div className="mt-16 grid gap-10 md:grid-cols-3">
+        <BeatCap />
+        <div className="mt-10 grid gap-10 md:mt-12 md:grid-cols-3">
           {[
             {
               title: "Four guests. Never more.",

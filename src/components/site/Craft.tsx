@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Cinema } from "./Cinema";
+import { ImageVoidFeather } from "./SectionSeam";
 import { Reveal } from "./Reveal";
 
 const PIECES = [
@@ -103,6 +104,7 @@ export function Craft() {
               piece.id === "sphere" ? "48% 36%" : piece.id === "vessel" ? "50% 52%" : undefined
             }
           />
+          <ImageVoidFeather />
         </div>
         <div className="cine-copy mx-auto max-w-6xl px-5 py-10 md:min-h-[82svh] md:px-8 md:py-24">
           <div className="copy-veil max-w-xl">
