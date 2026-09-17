@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Craft } from "@/components/site/Craft";
 import { CursorGlow } from "@/components/site/CursorGlow";
 import { Descend } from "@/components/site/Descend";
+import { DescentPath } from "@/components/site/DescentPath";
 import { Expedition } from "@/components/site/Expedition";
 import { Footer } from "@/components/site/Footer";
 import { Hero } from "@/components/site/Hero";
@@ -26,22 +27,23 @@ function Home() {
       <div className="grain" aria-hidden />
       <CursorGlow />
       <SiteNav />
+      <DescentPath />
       <Hero />
-      <SectionSeam meters={0} zone="SURFACE" next="proof" />
+      <SectionSeam step="01" meters={0} zone="SURFACE" next="proof" />
       <Proof />
-      <SectionSeam meters={70} zone="REEF" next="voyage" />
+      <SectionSeam step="02" meters={70} zone="REEF" next="voyage" />
       <Expedition />
       <Passages />
-      <SectionSeam meters={200} zone="TWILIGHT" next="descend" />
+      <SectionSeam step="03" meters={200} zone="TWILIGHT" next="descend" />
       <Descend />
-      <SectionSeam meters={600} zone="DROP" next="ledger" />
+      <SectionSeam step="04" meters={600} zone="DROP" next="ledger" />
       <Ledger />
       <Craft />
-      <SectionSeam meters={900} zone="DROP" next="day" />
+      <SectionSeam step="05" meters={900} zone="DROP" next="day" />
       <Itinerary />
-      <SectionSeam meters={1000} zone="FRONTIER" next="stills" />
+      <SectionSeam step="06" meters={1000} zone="FRONTIER" next="stills" />
       <Stills />
-      <SectionSeam meters={1140} zone="FRONTIER" next="reserve" />
+      <SectionSeam step="07" meters={1140} zone="FRONTIER" next="reserve" />
       <Reserve />
       <Footer />
     </main>
