@@ -1,0 +1,191 @@
+/* Depth-tick seams — interactive wayfinding (Ivy DEFAULT) */
+
+.section-seam-wrap {
+  opacity: 0;
+  transform: translateY(8px);
+  filter: blur(1.5px);
+  margin-block: -0.35rem;
+  transition:
+    opacity 720ms var(--ease-out-soft),
+    transform 720ms var(--ease-out-soft),
+    filter 720ms var(--ease-out-soft);
+}
+
+.section-seam-wrap.is-in {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+@media (min-width: 768px) {
+  .section-seam-wrap {
+    margin-block: -0.65rem;
+  }
+}
+
+/* After a seam, shave the next section's lead padding (mobile-first) */
+.section-seam-wrap + section :where(.section-y, .section-y-foot, .section-lead),
+.section-seam-wrap + section.section-y {
+  padding-top: clamp(2.1rem, 5vw, 5.25rem);
+}
+
+/* Tighten pre-seam foot padding (Proof / Descend both precede seams) */
+.section-y-foot {
+  padding-bottom: 1.65rem;
+}
+
+@media (min-width: 768px) {
+  .section-y-foot {
+    padding-bottom: 3.25rem;
+  }
+}
+
+.section-seam {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.section-seam:focus-visible {
+  outline: 1px solid color-mix(in oklab, var(--color-champagne) 55%, transparent);
+  outline-offset: 6px;
+}
+
+.section-seam-hair {
+  display: block;
+  height: 1px;
+  width: 2.65rem;
+  max-width: 20vw;
+  transform-origin: center;
+  transition:
+    width 420ms var(--ease-out-soft),
+    opacity 420ms var(--ease-out-soft),
+    filter 420ms var(--ease-out-soft),
+    background 420ms var(--ease-out-soft);
+}
+
+.section-seam-hair-l {
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in oklab, var(--color-champagne) 55%, transparent)
+  );
+}
+
+.section-seam-hair-r {
+  background: linear-gradient(
+    to left,
+    transparent,
+    color-mix(in oklab, var(--color-champagne) 55%, transparent)
+  );
+}
+
+@media (min-width: 768px) {
+  .section-seam-hair {
+    width: 5.75rem;
+    max-width: none;
+  }
+}
+
+.section-seam-tick {
+  display: block;
+  width: 1px;
+  height: 0.625rem;
+  flex-shrink: 0;
+  background: var(--color-champagne);
+  box-shadow: 0 0 10px color-mix(in oklab, var(--color-champagne) 35%, transparent);
+  transition:
+    height 420ms var(--ease-out-soft),
+    background 420ms var(--ease-out-soft),
+    box-shadow 420ms var(--ease-out-soft),
+    filter 420ms var(--ease-out-soft);
+}
+
+@media (min-width: 768px) {
+  .section-seam-tick {
+    height: 11px;
+  }
+}
+
+.section-seam-dissolve {
+  height: 1.65rem;
+  background: linear-gradient(
+    to bottom,
+    rgb(4 7 10 / 0.42) 0%,
+    rgb(4 7 10 / 0.16) 55%,
+    transparent 100%
+  );
+}
+
+@media (min-width: 768px) {
+  .section-seam-dissolve {
+    height: 1.9rem;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .section-seam:hover .section-seam-hair,
+  .section-seam:focus-visible .section-seam-hair {
+    width: 3.35rem;
+    opacity: 1;
+    filter: brightness(1.18);
+  }
+
+  @media (min-width: 768px) {
+    .section-seam:hover .section-seam-hair,
+    .section-seam:focus-visible .section-seam-hair {
+      width: 7.25rem;
+    }
+  }
+
+  .section-seam:hover .section-seam-tick,
+  .section-seam:focus-visible .section-seam-tick {
+    height: 0.85rem;
+    background: color-mix(in oklab, var(--color-champagne) 78%, white);
+    box-shadow:
+      0 0 14px color-mix(in oklab, var(--color-champagne) 55%, transparent),
+      0 0 28px color-mix(in oklab, var(--color-pearl) 18%, transparent);
+    filter: brightness(1.12);
+  }
+
+  @media (min-width: 768px) {
+    .section-seam:hover .section-seam-tick,
+    .section-seam:focus-visible .section-seam-tick {
+      height: 14px;
+    }
+  }
+}
+
+@media (hover: none) {
+  .section-seam:active .section-seam-hair {
+    width: 3.2rem;
+    filter: brightness(1.15);
+  }
+
+  @media (min-width: 768px) {
+    .section-seam:active .section-seam-hair {
+      width: 6.85rem;
+    }
+  }
+
+  .section-seam:active .section-seam-tick {
+    height: 0.8rem;
+    background: color-mix(in oklab, var(--color-champagne) 78%, white);
+    box-shadow: 0 0 14px color-mix(in oklab, var(--color-champagne) 50%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-seam-wrap {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .section-seam-tick,
+  .section-seam-hair {
+    transition:
+      opacity 200ms ease,
+      background 200ms ease,
+      box-shadow 200ms ease !important;
+  }
+}
