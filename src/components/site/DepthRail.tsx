@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { DESCENT_STATIONS } from "./DescentPath";
 
 const MAX_M = 1140;
 
@@ -10,8 +11,14 @@ const ZONES = [
   { p: 1, label: "Frontier" },
 ] as const;
 
+/**
+ * Nav depth voice — advances with scroll, and quietly locks to the
+ * active descent station when DescentPath has marked one.
+ */
 export function DepthRail() {
   const [p, setP] = useState(0);
+  const [stationM, setStationM] = useState<number | null>(null);
+  const [stationZone, setStationZone] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => {
@@ -23,24 +30,64 @@ export function DepthRail() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const meters = Math.round((p * MAX_M) / 10) * 10;
-  const zone = [...ZONES].reverse().find((z) => p >= z.p - 0.001) ?? ZONES[0];
+  useEffect(() => {
+    const sync = () => {
+      const id = document.documentElement.dataset.descent;
+      const hit = DESCENT_STATIONS.find((s) => s.id === id);
+      if (hit) {
+        setStationM(hit.meters);
+        setStationZone(hit.zone);
+      } else {
+        setStationM(null);
+        setStationZone(null);
+      }
+    };
+    sync();
+    const mo = new MutationObserver(sync);
+    mo.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-descent"],
+    });
+    return () => mo.disconnect();
+  }, []);
+
+  const scrollM = Math.round((p * MAX_M) / 10) * 10;
+  const meters = stationM ?? scrollM;
+  const zone =
+    stationZone ??
+    ([...ZONES].reverse().find((z) => p >= z.p - 0.001) ?? ZONES[0]).label;
+  const fill = Math.min(1, meters / MAX_M);
 
   return (
     <div
-      className="pointer-events-none hidden items-center gap-3 md:flex"
+      className="depth-rail pointer-events-none hidden items-center gap-3 md:flex"
       aria-hidden
     >
       <div className="text-right">
-        <p className="font-mono text-[0.65rem] tracking-[0.14em] text-pearl uppercase tabular-nums">
+        <p className="font-mono text-[0.65rem] tracking-[0.14em] text-pearl uppercase tabular-nums transition-colors duration-500">
           {meters}m
         </p>
-        <p className="text-[0.55rem] tracking-[0.18em] text-pearl/80 uppercase">{zone.label}</p>
+        <p className="text-[0.55rem] tracking-[0.18em] text-pearl/80 uppercase transition-colors duration-500">
+          {zone}
+        </p>
       </div>
-      <div className="relative h-8 w-px bg-line">
+      <div className="relative h-10 w-px bg-line">
+        {ZONES.map((z) =>
+          z.p === 0 || z.p === 1 ? null : (
+            <span
+              key={z.label}
+              className="absolute left-1/2 h-px w-[5px] -translate-x-1/2 bg-pearl/35"
+              style={{ top: `${z.p * 100}%` }}
+            />
+          ),
+        )}
         <span
-          className="absolute bottom-0 left-0 w-px bg-pearl"
-          style={{ height: `${p * 100}%` }}
+          className="depth-rail-fill absolute top-0 left-0 w-px bg-pearl transition-[height] duration-500 ease-out"
+          style={{ height: `${fill * 100}%` }}
+        />
+        <span
+          className="depth-rail-bead absolute left-1/2 size-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-champagne shadow-[0_0_10px_color-mix(in_oklab,var(--color-champagne)_45%,transparent)] transition-[top] duration-500 ease-out"
+          style={{ top: `${fill * 100}%` }}
         />
       </div>
     </div>
