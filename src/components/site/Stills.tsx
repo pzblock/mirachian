@@ -60,7 +60,7 @@ export function Stills() {
         <div className="mt-12 grid gap-5 md:grid-cols-2 md:gap-6">
           {FEATURED.map((f) => (
             <figure key={f.src}>
-              <div className="hover-frame relative overflow-hidden">
+              <div className="hover-frame image-void-feather relative overflow-hidden">
                 <img
                   src={f.src}
                   alt={f.cap}
@@ -87,7 +87,7 @@ export function Stills() {
               data-frame
               className="w-[64vw] shrink-0 snap-start md:w-[34vw] lg:w-[22vw]"
             >
-              <div className="hover-frame relative overflow-hidden">
+              <div className="hover-frame image-void-feather relative overflow-hidden">
                 <img
                   src={f.src}
                   alt={f.cap}
