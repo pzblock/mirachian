@@ -44,6 +44,9 @@ main.bg-abyss {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   padding-block: 0.7rem;
+  /* Match far-right sounding guide inset */
+  padding-inline-end: clamp(0.85rem, 3.8vw, 1.85rem);
+  padding-inline-start: 0.75rem;
 }
 
 @media (min-width: 768px) {
@@ -60,35 +63,32 @@ main.bg-abyss {
 .section-seam-hair {
   display: block;
   height: 1px;
-  width: 2.5rem;
-  max-width: 20vw;
-  opacity: 0.85;
-  transform-origin: center;
+  width: 2.75rem;
+  max-width: 22vw;
+  opacity: 0.72;
+  transform-origin: right center;
   transition:
     width 400ms var(--ease-out-soft),
     opacity 400ms var(--ease-out-soft),
     filter 400ms var(--ease-out-soft);
 }
 
+/* Single arm: fades left into content, meets the right-side tick */
 .section-seam-hair-l {
   background: linear-gradient(
     to right,
     transparent,
-    color-mix(in oklab, var(--color-champagne) 52%, transparent)
+    color-mix(in oklab, var(--color-champagne) 48%, transparent)
   );
 }
 
 .section-seam-hair-r {
-  background: linear-gradient(
-    to left,
-    transparent,
-    color-mix(in oklab, var(--color-champagne) 52%, transparent)
-  );
+  display: none;
 }
 
 @media (min-width: 768px) {
   .section-seam-hair {
-    width: 5.5rem;
+    width: 4.75rem;
     max-width: none;
   }
 }
@@ -193,14 +193,14 @@ main.bg-abyss {
 @media (hover: hover) and (pointer: fine) {
   .section-seam:hover .section-seam-hair,
   .section-seam:focus-visible .section-seam-hair {
-    width: 3.15rem;
-    opacity: 1;
+    width: 3.35rem;
+    opacity: 0.95;
   }
 
   @media (min-width: 768px) {
     .section-seam:hover .section-seam-hair,
     .section-seam:focus-visible .section-seam-hair {
-      width: 6.5rem;
+      width: 5.5rem;
     }
   }
 
@@ -227,8 +227,8 @@ main.bg-abyss {
 
 @media (hover: none) {
   .section-seam:active .section-seam-hair {
-    width: 3rem;
-    opacity: 1;
+    width: 3.2rem;
+    opacity: 0.95;
   }
 
   .section-seam:active .section-seam-tick {
@@ -391,6 +391,47 @@ html[data-descent] main.bg-abyss > section.is-descent-current .kicker {
   }
 }
 
+
+/* Quiet champagne whisper — near tip / top of rail; fades past hero */
+.descent-sounding-cue {
+  position: absolute;
+  z-index: 5;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: color-mix(in oklab, var(--color-champagne) 78%, white);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-align: right;
+  opacity: 0;
+  transform: translateY(-2px);
+  pointer-events: none;
+  transition:
+    opacity 900ms var(--ease-out-soft),
+    transform 900ms var(--ease-out-soft),
+    color 400ms var(--ease-out-soft);
+}
+
+.descent-sounding-cue.is-shown {
+  opacity: 0.78;
+  transform: none;
+  animation: descent-cue-breathe 3.6s var(--ease-out-soft) infinite;
+}
+
+@keyframes descent-cue-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.88;
+  }
+}
+
 /* Seams + line = one continuum: soften local stems (global line carries descent) */
 html[data-sounding] .section-seam-stem {
   opacity: 0.35;
@@ -449,7 +490,8 @@ html[data-sounding] .section-seam-wrap.is-seam-next .section-seam-tick {
   }
 
   .descent-sounding-flow,
-  .descent-sounding-mote {
+  .descent-sounding-mote,
+  .descent-sounding-cue.is-shown {
     animation: none !important;
   }
 
@@ -459,6 +501,15 @@ html[data-sounding] .section-seam-wrap.is-seam-next .section-seam-tick {
 
   .descent-sounding-mote {
     opacity: 0.7;
+  }
+
+  .descent-sounding-cue {
+    transition: opacity 200ms ease !important;
+  }
+
+  .descent-sounding-cue.is-shown {
+    opacity: 0.72;
+    transform: none;
   }
 
   .descent-sounding--static .descent-sounding-draw {
@@ -471,3 +522,10 @@ html[data-sounding] .section-seam-wrap.is-seam-next .section-seam-tick {
     stroke: transparent;
   }
 }
+
+/* Beat caps stay editorial/center but quieter so they don't fight the right guide */
+html[data-sounding] .beat-cap-line {
+  opacity: 0.7;
+  width: min(7.5rem, 28vw);
+}
+
