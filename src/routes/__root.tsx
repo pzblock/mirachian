@@ -3,6 +3,7 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { CRITICAL_PHOTOS } from "@/lib/photos";
 import appCss from "../styles.css?url";
+import wayfindingCss from "../styles/wayfinding.css?url";
 
 const APP_NAME = "Mirachian";
 
@@ -22,6 +23,7 @@ export const Route = createRootRoute({
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg?v=navy" },,
       { rel: "stylesheet", href: appCss },
+      { rel: "stylesheet", href: wayfindingCss },
       { rel: "manifest", href: "/__grok/manifest.webmanifest" },
       { rel: "apple-touch-icon", href: "/__grok/icon-180.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
