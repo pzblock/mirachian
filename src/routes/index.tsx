@@ -27,21 +27,21 @@ function Home() {
       <CursorGlow />
       <SiteNav />
       <Hero />
-      <SectionSeam meters={0} zone="SURFACE" />
+      <SectionSeam meters={0} zone="SURFACE" next="proof" />
       <Proof />
-      <SectionSeam meters={70} zone="REEF" />
+      <SectionSeam meters={70} zone="REEF" next="voyage" />
       <Expedition />
       <Passages />
-      <SectionSeam meters={200} zone="TWILIGHT" />
+      <SectionSeam meters={200} zone="TWILIGHT" next="descend" />
       <Descend />
-      <SectionSeam meters={600} zone="DROP" />
+      <SectionSeam meters={600} zone="DROP" next="ledger" />
       <Ledger />
       <Craft />
-      <SectionSeam meters={900} zone="DROP" />
+      <SectionSeam meters={900} zone="DROP" next="day" />
       <Itinerary />
-      <SectionSeam meters={1000} zone="FRONTIER" />
+      <SectionSeam meters={1000} zone="FRONTIER" next="stills" />
       <Stills />
-      <SectionSeam meters={1140} zone="FRONTIER" />
+      <SectionSeam meters={1140} zone="FRONTIER" next="reserve" />
       <Reserve />
       <Footer />
     </main>

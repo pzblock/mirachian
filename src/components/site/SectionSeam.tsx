@@ -1,35 +1,94 @@
+import { useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
+import { useReducedMotion } from "@/lib/motion";
+
 /**
  * Depth-tick section wayfinding — Ivy DEFAULT.
  * Champagne tick + faded hairline + muted meter whisper + soft dissolve.
- * No scroll arrows / chevrons / pills. Uses existing nav depth voice.
+ * Interactive: hover/focus brightens & extends; tap scrolls to next section.
+ * Soft scroll-reveal. No chevrons / scroll pills / literal ↓.
  */
 export function SectionSeam({
   meters,
   zone,
+  next,
 }: {
   meters: number;
   zone: string;
+  /** Section id to scroll into on activate */
+  next?: string;
 }) {
+  const reduce = useReducedMotion();
+  const root = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = root.current;
+    if (!el) return;
+    if (reduce) {
+      setInView(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setInView(true);
+      },
+      { threshold: 0.28, rootMargin: "0px 0px -8% 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [reduce]);
+
+  const goNext = () => {
+    if (!next) return;
+    const target = document.getElementById(next);
+    if (!target) return;
+    target.scrollIntoView({
+      behavior: reduce ? "auto" : "smooth",
+      block: "start",
+    });
+  };
+
+  const label = next
+    ? `Continue — ${meters}M / ${zone}`
+    : `${meters}M / ${zone}`;
+
   return (
     <div
-      className="pointer-events-none relative flex select-none flex-col items-center py-5 md:py-6"
-      aria-hidden
+      ref={root}
+      className={cn(
+        "section-seam-wrap relative flex flex-col items-center",
+        inView && "is-in",
+      )}
     >
-      <div className="flex w-full items-center justify-center">
-        <span className="block h-px w-12 max-w-[22vw] bg-gradient-to-r from-transparent to-champagne/55 md:w-[108px] md:max-w-none" />
-        <span className="block h-2.5 w-px shrink-0 bg-champagne shadow-[0_0_10px_color-mix(in_oklab,var(--color-champagne)_35%,transparent)] md:h-[11px]" />
-        <span className="block h-px w-12 max-w-[22vw] bg-gradient-to-l from-transparent to-champagne/55 md:w-[108px] md:max-w-none" />
-      </div>
-      <p className="mt-[0.55rem] text-center leading-tight">
-        <span className="font-mono text-[0.65rem] tracking-[0.14em] text-pearl/70 uppercase tabular-nums">
-          {meters}M
+      <button
+        type="button"
+        onClick={goNext}
+        disabled={!next}
+        aria-label={label}
+        className={cn(
+          "section-seam group relative flex w-full select-none flex-col items-center",
+          "min-h-11 border-0 bg-transparent px-5 py-2.5 md:py-3",
+          next ? "cursor-pointer" : "cursor-default",
+          "focus-visible:outline-none",
+        )}
+      >
+        <span className="section-seam-mark flex w-full items-center justify-center" aria-hidden>
+          <span className="section-seam-hair section-seam-hair-l" />
+          <span className="section-seam-tick" />
+          <span className="section-seam-hair section-seam-hair-r" />
         </span>
-        <span className="text-[0.55rem] tracking-[0.12em] text-pearl/45"> / </span>
-        <span className="text-[0.55rem] tracking-[0.18em] text-pearl/70 uppercase">
-          {zone}
+        <span className="section-seam-whisper mt-2 text-center leading-tight">
+          <span className="font-mono text-[0.65rem] tracking-[0.14em] text-pearl/70 uppercase tabular-nums transition-colors duration-500 group-hover:text-pearl group-focus-visible:text-pearl group-active:text-pearl">
+            {meters}M
+          </span>
+          <span className="text-[0.55rem] tracking-[0.12em] text-pearl/45"> / </span>
+          <span className="text-[0.55rem] tracking-[0.18em] text-pearl/70 uppercase transition-colors duration-500 group-hover:text-pearl/85 group-focus-visible:text-pearl/85 group-active:text-pearl/85">
+            {zone}
+          </span>
         </span>
-      </p>
-      <div className="mt-[0.85rem] h-12 w-full bg-gradient-to-b from-[rgb(4_7_10_/_0.55)] via-[rgb(4_7_10_/_0.22)] to-transparent md:h-14" />
+      </button>
+      <div className="section-seam-dissolve pointer-events-none w-full" aria-hidden />
     </div>
   );
 }
