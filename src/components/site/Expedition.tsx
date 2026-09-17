@@ -16,7 +16,7 @@ export function Expedition() {
       </div>
 
       <div className="cine-frame md:min-h-[82svh]">
-        <div className="cine-media">
+        <div className="cine-media image-void-feather">
           <Cinema
             still="/images/cs7/op-023.jpg"
             alt="The submersible among reef fish in Key West water"
