@@ -1,5 +1,6 @@
 import { Cinema } from "./Cinema";
 import { Reveal } from "./Reveal";
+import { BeatCap } from "./SectionSeam";
 import { Sounding } from "./Sounding";
 
 const ACCOUNT = [
@@ -74,7 +75,7 @@ export function Ledger() {
       <ol className="mx-auto max-w-6xl px-5 md:px-8">
         {ACCOUNT.map((beat) => (
           <Reveal key={beat.n}>
-            <li className="hover-row grid grid-cols-[auto_minmax(0,1fr)] gap-x-6 border-t border-line py-8 md:grid-cols-[auto_minmax(0,42rem)] md:gap-x-10 md:py-10">
+            <li className="hover-row ledger-beat grid grid-cols-[auto_minmax(0,1fr)] gap-x-6 border-t border-line py-9 md:grid-cols-[auto_minmax(0,42rem)] md:gap-x-10 md:py-11">
               <p className="pt-1.5 font-mono text-[0.62rem] tracking-[0.2em] text-pearl">
                 {beat.n}
               </p>
@@ -96,6 +97,8 @@ export function Ledger() {
           </Reveal>
         ))}
       </ol>
+
+      <BeatCap className="mx-auto max-w-6xl px-5 md:px-8" />
 
       <article className="group/wreck cine-frame mt-4 md:mt-8 md:min-h-[70svh]">
         <div className="cine-media">
@@ -148,6 +151,8 @@ export function Ledger() {
           ))}
         </dl>
       </div>
+
+      <BeatCap className="mx-auto max-w-6xl px-5 md:px-8" />
 
       <div className="mx-auto max-w-6xl px-5 pb-20 pt-4 md:px-8 md:pb-24 md:pt-6">
         <Reveal>
