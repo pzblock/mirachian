@@ -1,4 +1,5 @@
 import { Cinema } from "./Cinema";
+import { ImageVoidFeather } from "./SectionSeam";
 import { Reveal } from "./Reveal";
 
 export function Expedition() {
@@ -16,13 +17,14 @@ export function Expedition() {
       </div>
 
       <div className="cine-frame md:min-h-[82svh]">
-        <div className="cine-media image-void-feather">
+        <div className="cine-media">
           <Cinema
             still="/images/cs7/op-023.jpg"
             alt="The submersible among reef fish in Key West water"
             veil="soft"
             objectPosition="78% 68%"
           />
+          <ImageVoidFeather />
         </div>
         <div className="cine-copy mx-auto max-w-6xl px-5 py-10 md:min-h-[82svh] md:px-8 md:py-20">
           <p className="copy-veil max-w-3xl font-display text-[clamp(1.55rem,3.2vw,2.7rem)] leading-[1.18] text-fg">
