@@ -15,9 +15,9 @@ export const DESCENT_STATIONS = [
 ] as const;
 
 /**
- * Quiet active-path observer. Marks the current station on <html>,
- * emphasizes that section, and flags the next SectionSeam as the obvious step.
- * No arrows / pills — depth language only.
+ * Quiet active-path observer. Marks current / past stations on <html>,
+ * soft-emphasizes the reading section, and flags the next seam.
+ * Depth language only — no arrows or pills.
  */
 export function DescentPath() {
   const reduce = useReducedMotion();
@@ -42,11 +42,14 @@ export function DescentPath() {
       if (id) root.dataset.descent = id;
       else delete root.dataset.descent;
 
+      const idx = DESCENT_STATIONS.findIndex((s) => s.id === id);
+
       for (const el of stations) {
+        const sIdx = DESCENT_STATIONS.findIndex((s) => s.id === el.id);
         el.classList.toggle("is-descent-current", el.id === id);
+        el.classList.toggle("is-descent-past", idx >= 0 && sIdx >= 0 && sIdx < idx);
       }
 
-      const idx = DESCENT_STATIONS.findIndex((s) => s.id === id);
       let marked = false;
       for (const seam of seams()) {
         const target = seam.dataset.seamNext ?? "";
@@ -112,7 +115,9 @@ export function DescentPath() {
       window.clearTimeout(t);
       io.disconnect();
       delete document.documentElement.dataset.descent;
-      for (const el of stations) el.classList.remove("is-descent-current");
+      for (const el of stations) {
+        el.classList.remove("is-descent-current", "is-descent-past");
+      }
       for (const seam of seams()) seam.classList.remove("is-seam-next");
     };
   }, [reduce]);
