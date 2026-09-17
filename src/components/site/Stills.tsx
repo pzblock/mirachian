@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Reveal } from "./Reveal";
+import { ImageVoidFeather } from "./SectionSeam";
 
 const FEATURED = [
   { src: "/images/cs7/cs7-in-01.jpg", cap: "The view from inside", pos: "52% 46%" },
@@ -60,13 +61,14 @@ export function Stills() {
         <div className="mt-12 grid gap-5 md:grid-cols-2 md:gap-6">
           {FEATURED.map((f) => (
             <figure key={f.src}>
-              <div className="hover-frame image-void-feather relative overflow-hidden">
+              <div className="hover-frame relative overflow-hidden">
                 <img
                   src={f.src}
                   alt={f.cap}
                   className="frame aspect-3/2 w-full object-cover"
                   style={{ objectPosition: f.pos }}
                 />
+                <ImageVoidFeather />
               </div>
               <figcaption className="mt-3.5 text-[0.68rem] tracking-[0.18em] text-muted uppercase">
                 {f.cap}
@@ -87,13 +89,14 @@ export function Stills() {
               data-frame
               className="w-[64vw] shrink-0 snap-start md:w-[34vw] lg:w-[22vw]"
             >
-              <div className="hover-frame image-void-feather relative overflow-hidden">
+              <div className="hover-frame relative overflow-hidden">
                 <img
                   src={f.src}
                   alt={f.cap}
                   className="frame aspect-4/5 w-full object-cover"
                   style={{ objectPosition: f.pos }}
                 />
+                <ImageVoidFeather />
               </div>
               <figcaption className="mt-3.5 text-[0.68rem] tracking-[0.18em] text-muted uppercase">
                 {f.cap}
