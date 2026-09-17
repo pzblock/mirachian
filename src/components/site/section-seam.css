@@ -1,1 +1,473 @@
-PLACEHOLDER_LOAD_FROM_FILE
+/* Guided descent — one quiet continuum (depth language only) */
+
+main.bg-abyss {
+  position: relative;
+}
+
+.section-seam-wrap {
+  opacity: 0;
+  transform: translateY(6px);
+  margin-block: 0.15rem;
+  transition:
+    opacity 680ms var(--ease-out-soft),
+    transform 680ms var(--ease-out-soft);
+}
+
+.section-seam-wrap.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (min-width: 768px) {
+  .section-seam-wrap {
+    margin-block: 0.35rem;
+  }
+}
+
+/* After a seam, ease into the next section */
+.section-seam-wrap + section :where(.section-y, .section-y-foot, .section-lead),
+.section-seam-wrap + section.section-y {
+  padding-top: clamp(2.4rem, 5.5vw, 5.5rem);
+}
+
+.section-y-foot {
+  padding-bottom: 1.85rem;
+}
+
+@media (min-width: 768px) {
+  .section-y-foot {
+    padding-bottom: 3.5rem;
+  }
+}
+
+.section-seam {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  padding-block: 0.7rem;
+}
+
+@media (min-width: 768px) {
+  .section-seam {
+    padding-block: 0.55rem;
+  }
+}
+
+.section-seam:focus-visible {
+  outline: 1px solid color-mix(in oklab, var(--color-champagne) 45%, transparent);
+  outline-offset: 6px;
+}
+
+.section-seam-hair {
+  display: block;
+  height: 1px;
+  width: 2.5rem;
+  max-width: 20vw;
+  opacity: 0.85;
+  transform-origin: center;
+  transition:
+    width 400ms var(--ease-out-soft),
+    opacity 400ms var(--ease-out-soft),
+    filter 400ms var(--ease-out-soft);
+}
+
+.section-seam-hair-l {
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in oklab, var(--color-champagne) 52%, transparent)
+  );
+}
+
+.section-seam-hair-r {
+  background: linear-gradient(
+    to left,
+    transparent,
+    color-mix(in oklab, var(--color-champagne) 52%, transparent)
+  );
+}
+
+@media (min-width: 768px) {
+  .section-seam-hair {
+    width: 5.5rem;
+    max-width: none;
+  }
+}
+
+.section-seam-tick-stack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.section-seam-tick {
+  display: block;
+  width: 1.5px;
+  height: 0.62rem;
+  flex-shrink: 0;
+  background: color-mix(in oklab, var(--color-champagne) 88%, transparent);
+  box-shadow: 0 0 8px color-mix(in oklab, var(--color-champagne) 28%, transparent);
+  transition:
+    height 400ms var(--ease-out-soft),
+    background 400ms var(--ease-out-soft),
+    box-shadow 400ms var(--ease-out-soft);
+}
+
+.section-seam-stem {
+  display: block;
+  width: 1px;
+  height: 0.4rem;
+  margin-top: 1px;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--color-champagne) 55%, transparent),
+    transparent
+  );
+  opacity: 0.7;
+  transition:
+    height 400ms var(--ease-out-soft),
+    opacity 400ms var(--ease-out-soft);
+}
+
+@media (min-width: 768px) {
+  .section-seam-tick {
+    height: 10px;
+  }
+  .section-seam-stem {
+    height: 0.55rem;
+  }
+}
+
+/* Soft veil into the next block — whisper, not a slab */
+.section-seam-dissolve {
+  height: 0.85rem;
+  background: linear-gradient(
+    to bottom,
+    rgb(4 7 10 / 0.22) 0%,
+    transparent 100%
+  );
+}
+
+@media (min-width: 768px) {
+  .section-seam-dissolve {
+    height: 1rem;
+  }
+}
+
+.section-seam-whisper {
+  opacity: 0.78;
+  transition: opacity 500ms var(--ease-out-soft);
+}
+
+/* Next step — calm-bright, no pulse */
+.section-seam-wrap.is-seam-next .section-seam-whisper {
+  opacity: 1;
+}
+
+.section-seam-wrap.is-seam-next .section-seam-whisper .font-mono {
+  color: var(--color-pearl);
+}
+
+.section-seam-wrap.is-seam-next .section-seam-tick {
+  height: 0.75rem;
+  background: var(--color-champagne);
+  box-shadow: 0 0 10px color-mix(in oklab, var(--color-champagne) 38%, transparent);
+}
+
+.section-seam-wrap.is-seam-next .section-seam-stem {
+  height: 0.6rem;
+  opacity: 0.9;
+}
+
+.section-seam-wrap.is-seam-next .section-seam-hair {
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .section-seam-wrap.is-seam-next .section-seam-tick {
+    height: 12px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .section-seam:hover .section-seam-hair,
+  .section-seam:focus-visible .section-seam-hair {
+    width: 3.15rem;
+    opacity: 1;
+  }
+
+  @media (min-width: 768px) {
+    .section-seam:hover .section-seam-hair,
+    .section-seam:focus-visible .section-seam-hair {
+      width: 6.5rem;
+    }
+  }
+
+  .section-seam:hover .section-seam-tick,
+  .section-seam:focus-visible .section-seam-tick {
+    height: 0.8rem;
+    background: color-mix(in oklab, var(--color-champagne) 82%, white);
+    box-shadow: 0 0 12px color-mix(in oklab, var(--color-champagne) 42%, transparent);
+  }
+
+  .section-seam:hover .section-seam-stem,
+  .section-seam:focus-visible .section-seam-stem {
+    height: 0.75rem;
+    opacity: 1;
+  }
+
+  @media (min-width: 768px) {
+    .section-seam:hover .section-seam-tick,
+    .section-seam:focus-visible .section-seam-tick {
+      height: 13px;
+    }
+  }
+}
+
+@media (hover: none) {
+  .section-seam:active .section-seam-hair {
+    width: 3rem;
+    opacity: 1;
+  }
+
+  .section-seam:active .section-seam-tick {
+    height: 0.75rem;
+    background: color-mix(in oklab, var(--color-champagne) 82%, white);
+    box-shadow: 0 0 10px color-mix(in oklab, var(--color-champagne) 40%, transparent);
+  }
+
+  .section-seam:active .section-seam-stem {
+    height: 0.7rem;
+    opacity: 1;
+  }
+}
+
+/* Progressive reveal — current calm-bright, past settle, ahead soft */
+main.bg-abyss > section {
+  transition:
+    opacity 750ms var(--ease-out-soft),
+    filter 750ms var(--ease-out-soft);
+}
+
+html[data-descent] main.bg-abyss > section:not(.is-descent-current):not(.is-descent-past) {
+  opacity: 0.9;
+}
+
+html[data-descent] main.bg-abyss > section.is-descent-past {
+  opacity: 0.78;
+}
+
+html[data-descent] main.bg-abyss > section.is-descent-current {
+  opacity: 1;
+  filter: none;
+}
+
+html[data-descent] main.bg-abyss > section.is-descent-current .kicker {
+  color: color-mix(in oklab, var(--color-pearl) 90%, white);
+}
+
+/* Sparse editorial hairline — no end-dots */
+.beat-cap {
+  display: flex;
+  justify-content: center;
+  margin-block: clamp(1.5rem, 3.5vw, 2.35rem);
+  pointer-events: none;
+}
+
+.beat-cap-line {
+  display: block;
+  height: 1px;
+  width: min(9.5rem, 36vw);
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    color-mix(in oklab, var(--color-champagne) 42%, transparent) 22%,
+    color-mix(in oklab, var(--color-champagne) 42%, transparent) 78%,
+    transparent 100%
+  );
+}
+
+.ledger-beat + .ledger-beat,
+.account-beat + .account-beat {
+  margin-top: 0.25rem;
+}
+
+.dense-lead {
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+.depth-rail-fill {
+  box-shadow: 0 0 5px color-mix(in oklab, var(--color-pearl) 22%, transparent);
+}
+
+/* ——— Champagne sounding line (scroll-tied descent guide) ——— */
+
+.descent-sounding {
+  pointer-events: none;
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 700ms var(--ease-out-soft);
+}
+
+.descent-sounding.is-ready {
+  opacity: 1;
+}
+
+.descent-sounding-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* No permanent/static track — undrawn path stays invisible.
+   Only .descent-sounding-draw (+ soft flow / tip mote) is visible. */
+
+.descent-sounding-draw {
+  fill: none;
+  stroke: color-mix(in oklab, var(--color-champagne) 62%, transparent);
+  stroke-width: 1.15;
+  stroke-linecap: round;
+  filter: drop-shadow(
+    0 0 4px color-mix(in oklab, var(--color-champagne) 28%, transparent)
+  );
+  transition: stroke 400ms var(--ease-out-soft);
+}
+
+.descent-sounding-flow {
+  fill: none;
+  stroke: color-mix(in oklab, var(--color-champagne) 78%, white);
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-dasharray: 3 22;
+  opacity: 0.55;
+  animation: descent-sounding-flow 2.8s linear infinite;
+}
+
+.descent-sounding-mote {
+  fill: color-mix(in oklab, var(--color-champagne) 88%, white);
+  opacity: 0.72;
+  filter: drop-shadow(
+    0 0 6px color-mix(in oklab, var(--color-champagne) 45%, transparent)
+  );
+  animation: descent-mote-breathe 2.4s var(--ease-out-soft) infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.descent-sounding.is-seam-hot .descent-sounding-draw {
+  stroke: color-mix(in oklab, var(--color-champagne) 78%, white);
+  filter: drop-shadow(
+    0 0 7px color-mix(in oklab, var(--color-champagne) 40%, transparent)
+  );
+}
+
+.descent-sounding.is-seam-hot .descent-sounding-mote {
+  opacity: 0.95;
+  filter: drop-shadow(
+    0 0 9px color-mix(in oklab, var(--color-champagne) 55%, transparent)
+  );
+}
+
+@keyframes descent-sounding-flow {
+  to {
+    stroke-dashoffset: -25;
+  }
+}
+
+@keyframes descent-mote-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.12);
+  }
+}
+
+/* Seams + line = one continuum: soften local stems (global line carries descent) */
+html[data-sounding] .section-seam-stem {
+  opacity: 0.35;
+  height: 0.28rem;
+}
+
+html[data-sounding] .section-seam-wrap.is-seam-next .section-seam-stem {
+  opacity: 0.55;
+}
+
+html[data-sounding] .section-seam-tick {
+  position: relative;
+  z-index: 1;
+}
+
+/* Next-seam cue gently brightens the shared continuum */
+html[data-sounding] .section-seam-wrap.is-seam-next .section-seam-tick {
+  box-shadow:
+    0 0 10px color-mix(in oklab, var(--color-champagne) 42%, transparent),
+    0 0 1px color-mix(in oklab, var(--color-champagne) 70%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-seam-wrap {
+    opacity: 1;
+    transform: none;
+  }
+
+  .section-seam-tick,
+  .section-seam-hair,
+  .section-seam-stem {
+    transition:
+      opacity 200ms ease,
+      background 200ms ease,
+      box-shadow 200ms ease !important;
+    animation: none !important;
+  }
+
+  main.bg-abyss > section {
+    transition: none;
+  }
+
+  html[data-descent] main.bg-abyss > section:not(.is-descent-current),
+  html[data-descent] main.bg-abyss > section.is-descent-past {
+    opacity: 1;
+  }
+
+  .depth-rail-fill {
+    transition: none !important;
+  }
+
+  .descent-sounding,
+  .descent-sounding.is-ready {
+    opacity: 1;
+    transition: none;
+  }
+
+  .descent-sounding-flow,
+  .descent-sounding-mote {
+    animation: none !important;
+  }
+
+  .descent-sounding-flow {
+    opacity: 0;
+  }
+
+  .descent-sounding-mote {
+    opacity: 0.7;
+  }
+
+  .descent-sounding--static .descent-sounding-draw {
+    transition: none;
+  }
+
+  /* Still no permanent full ghost line when motion is reduced */
+  .descent-sounding-track {
+    opacity: 0;
+    stroke: transparent;
+  }
+}
