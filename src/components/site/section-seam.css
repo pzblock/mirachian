@@ -1,85 +1,76 @@
-/* Depth-tick seams — guided descent wayfinding */
+/* Guided descent — one quiet continuum (depth language only) */
 
 .section-seam-wrap {
   opacity: 0;
-  transform: translateY(8px);
-  filter: blur(1.5px);
-  margin-block: -0.25rem;
+  transform: translateY(6px);
+  margin-block: 0.15rem;
   transition:
-    opacity 720ms var(--ease-out-soft),
-    transform 720ms var(--ease-out-soft),
-    filter 720ms var(--ease-out-soft);
+    opacity 680ms var(--ease-out-soft),
+    transform 680ms var(--ease-out-soft);
 }
 
 .section-seam-wrap.is-in {
   opacity: 1;
   transform: none;
-  filter: none;
 }
 
 @media (min-width: 768px) {
   .section-seam-wrap {
-    margin-block: -0.5rem;
+    margin-block: 0.35rem;
   }
 }
 
-/* After a seam, shave the next section's lead padding */
+/* After a seam, ease into the next section */
 .section-seam-wrap + section :where(.section-y, .section-y-foot, .section-lead),
 .section-seam-wrap + section.section-y {
-  padding-top: clamp(2.1rem, 5vw, 5.25rem);
+  padding-top: clamp(2.4rem, 5.5vw, 5.5rem);
 }
 
 .section-y-foot {
-  padding-bottom: 1.65rem;
+  padding-bottom: 1.85rem;
 }
 
 @media (min-width: 768px) {
   .section-y-foot {
-    padding-bottom: 3.25rem;
+    padding-bottom: 3.5rem;
   }
 }
 
 .section-seam {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
-  padding-block: 0.85rem;
+  padding-block: 0.7rem;
 }
 
 @media (min-width: 768px) {
   .section-seam {
-    padding-block: 0.65rem;
+    padding-block: 0.55rem;
   }
 }
 
 .section-seam:focus-visible {
-  outline: 1px solid color-mix(in oklab, var(--color-champagne) 55%, transparent);
+  outline: 1px solid color-mix(in oklab, var(--color-champagne) 45%, transparent);
   outline-offset: 6px;
-}
-
-.section-seam-log {
-  font-size: 0.62rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
 }
 
 .section-seam-hair {
   display: block;
   height: 1px;
-  width: 2.85rem;
-  max-width: 22vw;
+  width: 2.5rem;
+  max-width: 20vw;
+  opacity: 0.85;
   transform-origin: center;
   transition:
-    width 420ms var(--ease-out-soft),
-    opacity 420ms var(--ease-out-soft),
-    filter 420ms var(--ease-out-soft),
-    background 420ms var(--ease-out-soft);
+    width 400ms var(--ease-out-soft),
+    opacity 400ms var(--ease-out-soft),
+    filter 400ms var(--ease-out-soft);
 }
 
 .section-seam-hair-l {
   background: linear-gradient(
     to right,
     transparent,
-    color-mix(in oklab, var(--color-champagne) 62%, transparent)
+    color-mix(in oklab, var(--color-champagne) 52%, transparent)
   );
 }
 
@@ -87,13 +78,13 @@
   background: linear-gradient(
     to left,
     transparent,
-    color-mix(in oklab, var(--color-champagne) 62%, transparent)
+    color-mix(in oklab, var(--color-champagne) 52%, transparent)
   );
 }
 
 @media (min-width: 768px) {
   .section-seam-hair {
-    width: 6.25rem;
+    width: 5.5rem;
     max-width: none;
   }
 }
@@ -109,184 +100,158 @@
 .section-seam-tick {
   display: block;
   width: 1.5px;
-  height: 0.7rem;
+  height: 0.62rem;
   flex-shrink: 0;
-  background: var(--color-champagne);
-  box-shadow: 0 0 12px color-mix(in oklab, var(--color-champagne) 42%, transparent);
+  background: color-mix(in oklab, var(--color-champagne) 88%, transparent);
+  box-shadow: 0 0 8px color-mix(in oklab, var(--color-champagne) 28%, transparent);
   transition:
-    height 420ms var(--ease-out-soft),
-    background 420ms var(--ease-out-soft),
-    box-shadow 420ms var(--ease-out-soft),
-    filter 420ms var(--ease-out-soft);
+    height 400ms var(--ease-out-soft),
+    background 400ms var(--ease-out-soft),
+    box-shadow 400ms var(--ease-out-soft);
 }
 
 .section-seam-stem {
   display: block;
   width: 1px;
-  height: 0.55rem;
+  height: 0.4rem;
   margin-top: 1px;
   background: linear-gradient(
     to bottom,
-    color-mix(in oklab, var(--color-champagne) 70%, transparent),
+    color-mix(in oklab, var(--color-champagne) 55%, transparent),
     transparent
   );
-  opacity: 0.85;
+  opacity: 0.7;
   transition:
-    height 420ms var(--ease-out-soft),
-    opacity 420ms var(--ease-out-soft);
+    height 400ms var(--ease-out-soft),
+    opacity 400ms var(--ease-out-soft);
 }
 
 @media (min-width: 768px) {
   .section-seam-tick {
-    height: 12px;
+    height: 10px;
   }
   .section-seam-stem {
-    height: 0.7rem;
+    height: 0.55rem;
   }
 }
 
+/* Soft veil into the next block — whisper, not a slab */
 .section-seam-dissolve {
-  height: 1.5rem;
+  height: 0.85rem;
   background: linear-gradient(
     to bottom,
-    rgb(4 7 10 / 0.42) 0%,
-    rgb(4 7 10 / 0.16) 55%,
+    rgb(4 7 10 / 0.22) 0%,
     transparent 100%
   );
 }
 
 @media (min-width: 768px) {
   .section-seam-dissolve {
-    height: 1.75rem;
+    height: 1rem;
   }
 }
 
-.section-seam-wrap.is-seam-next .section-seam-tick {
-  height: 0.85rem;
-  box-shadow:
-    0 0 14px color-mix(in oklab, var(--color-champagne) 55%, transparent),
-    0 0 28px color-mix(in oklab, var(--color-pearl) 16%, transparent);
+.section-seam-whisper {
+  opacity: 0.78;
+  transition: opacity 500ms var(--ease-out-soft);
 }
 
-.section-seam-wrap.is-seam-next .section-seam-stem {
-  height: 0.85rem;
+/* Next step — calm-bright, no pulse */
+.section-seam-wrap.is-seam-next .section-seam-whisper {
   opacity: 1;
-}
-
-.section-seam-wrap.is-seam-next .section-seam-log {
-  color: color-mix(in oklab, var(--color-pearl) 78%, transparent);
 }
 
 .section-seam-wrap.is-seam-next .section-seam-whisper .font-mono {
   color: var(--color-pearl);
 }
 
+.section-seam-wrap.is-seam-next .section-seam-tick {
+  height: 0.75rem;
+  background: var(--color-champagne);
+  box-shadow: 0 0 10px color-mix(in oklab, var(--color-champagne) 38%, transparent);
+}
+
+.section-seam-wrap.is-seam-next .section-seam-stem {
+  height: 0.6rem;
+  opacity: 0.9;
+}
+
+.section-seam-wrap.is-seam-next .section-seam-hair {
+  opacity: 1;
+}
+
 @media (min-width: 768px) {
   .section-seam-wrap.is-seam-next .section-seam-tick {
-    height: 14px;
-  }
-}
-
-@media (hover: none) {
-  .section-seam-wrap.is-seam-next.is-in .section-seam-tick {
-    animation: seam-pulse 2.8s var(--ease-out-soft) infinite;
-  }
-  .section-seam-wrap.is-seam-next.is-in .section-seam-stem {
-    animation: seam-stem 2.8s var(--ease-out-soft) infinite;
-  }
-}
-
-@keyframes seam-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 10px color-mix(in oklab, var(--color-champagne) 35%, transparent);
-    filter: brightness(1);
-  }
-  50% {
-    box-shadow:
-      0 0 16px color-mix(in oklab, var(--color-champagne) 55%, transparent),
-      0 0 28px color-mix(in oklab, var(--color-pearl) 14%, transparent);
-    filter: brightness(1.12);
-  }
-}
-
-@keyframes seam-stem {
-  0%,
-  100% {
-    opacity: 0.65;
-    height: 0.55rem;
-  }
-  50% {
-    opacity: 1;
-    height: 0.9rem;
+    height: 12px;
   }
 }
 
 @media (hover: hover) and (pointer: fine) {
   .section-seam:hover .section-seam-hair,
   .section-seam:focus-visible .section-seam-hair {
-    width: 3.55rem;
+    width: 3.15rem;
     opacity: 1;
-    filter: brightness(1.18);
   }
 
   @media (min-width: 768px) {
     .section-seam:hover .section-seam-hair,
     .section-seam:focus-visible .section-seam-hair {
-      width: 7.5rem;
+      width: 6.5rem;
     }
   }
 
   .section-seam:hover .section-seam-tick,
   .section-seam:focus-visible .section-seam-tick {
-    height: 0.9rem;
-    background: color-mix(in oklab, var(--color-champagne) 78%, white);
-    box-shadow:
-      0 0 14px color-mix(in oklab, var(--color-champagne) 55%, transparent),
-      0 0 28px color-mix(in oklab, var(--color-pearl) 18%, transparent);
-    filter: brightness(1.12);
+    height: 0.8rem;
+    background: color-mix(in oklab, var(--color-champagne) 82%, white);
+    box-shadow: 0 0 12px color-mix(in oklab, var(--color-champagne) 42%, transparent);
   }
 
   .section-seam:hover .section-seam-stem,
   .section-seam:focus-visible .section-seam-stem {
-    height: 0.95rem;
+    height: 0.75rem;
     opacity: 1;
   }
 
   @media (min-width: 768px) {
     .section-seam:hover .section-seam-tick,
     .section-seam:focus-visible .section-seam-tick {
-      height: 15px;
+      height: 13px;
     }
   }
 }
 
 @media (hover: none) {
   .section-seam:active .section-seam-hair {
-    width: 3.35rem;
-    filter: brightness(1.15);
+    width: 3rem;
+    opacity: 1;
   }
 
   .section-seam:active .section-seam-tick {
-    height: 0.85rem;
-    background: color-mix(in oklab, var(--color-champagne) 78%, white);
-    box-shadow: 0 0 14px color-mix(in oklab, var(--color-champagne) 50%, transparent);
+    height: 0.75rem;
+    background: color-mix(in oklab, var(--color-champagne) 82%, white);
+    box-shadow: 0 0 10px color-mix(in oklab, var(--color-champagne) 40%, transparent);
   }
 
   .section-seam:active .section-seam-stem {
-    height: 0.9rem;
+    height: 0.7rem;
     opacity: 1;
   }
 }
 
+/* Progressive reveal — current calm-bright, past settle, ahead soft */
 main.bg-abyss > section {
   transition:
-    opacity 700ms var(--ease-out-soft),
-    filter 700ms var(--ease-out-soft);
+    opacity 750ms var(--ease-out-soft),
+    filter 750ms var(--ease-out-soft);
 }
 
-html[data-descent] main.bg-abyss > section:not(.is-descent-current) {
-  opacity: 0.72;
+html[data-descent] main.bg-abyss > section:not(.is-descent-current):not(.is-descent-past) {
+  opacity: 0.9;
+}
+
+html[data-descent] main.bg-abyss > section.is-descent-past {
+  opacity: 0.78;
 }
 
 html[data-descent] main.bg-abyss > section.is-descent-current {
@@ -295,48 +260,28 @@ html[data-descent] main.bg-abyss > section.is-descent-current {
 }
 
 html[data-descent] main.bg-abyss > section.is-descent-current .kicker {
-  color: color-mix(in oklab, var(--color-pearl) 92%, white);
+  color: color-mix(in oklab, var(--color-pearl) 90%, white);
 }
 
+/* Sparse editorial hairline — no end-dots */
 .beat-cap {
   display: flex;
   justify-content: center;
-  margin-block: clamp(1.75rem, 4vw, 2.75rem);
+  margin-block: clamp(1.5rem, 3.5vw, 2.35rem);
   pointer-events: none;
 }
 
 .beat-cap-line {
   display: block;
   height: 1px;
-  width: min(12rem, 42vw);
+  width: min(9.5rem, 36vw);
   background: linear-gradient(
     to right,
     transparent 0%,
-    color-mix(in oklab, var(--color-champagne) 55%, transparent) 18%,
-    color-mix(in oklab, var(--color-champagne) 55%, transparent) 82%,
+    color-mix(in oklab, var(--color-champagne) 42%, transparent) 22%,
+    color-mix(in oklab, var(--color-champagne) 42%, transparent) 78%,
     transparent 100%
   );
-  position: relative;
-}
-
-.beat-cap-line::before,
-.beat-cap-line::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 3px;
-  height: 3px;
-  border-radius: 999px;
-  background: color-mix(in oklab, var(--color-champagne) 70%, transparent);
-  transform: translateY(-50%);
-}
-
-.beat-cap-line::before {
-  left: 14%;
-}
-
-.beat-cap-line::after {
-  right: 14%;
 }
 
 .ledger-beat + .ledger-beat,
@@ -349,14 +294,13 @@ html[data-descent] main.bg-abyss > section.is-descent-current .kicker {
 }
 
 .depth-rail-fill {
-  box-shadow: 0 0 8px color-mix(in oklab, var(--color-pearl) 35%, transparent);
+  box-shadow: 0 0 5px color-mix(in oklab, var(--color-pearl) 22%, transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .section-seam-wrap {
     opacity: 1;
     transform: none;
-    filter: none;
   }
 
   .section-seam-tick,
@@ -373,12 +317,12 @@ html[data-descent] main.bg-abyss > section.is-descent-current .kicker {
     transition: none;
   }
 
-  html[data-descent] main.bg-abyss > section:not(.is-descent-current) {
+  html[data-descent] main.bg-abyss > section:not(.is-descent-current),
+  html[data-descent] main.bg-abyss > section.is-descent-past {
     opacity: 1;
   }
 
-  .depth-rail-fill,
-  .depth-rail-bead {
+  .depth-rail-fill {
     transition: none !important;
   }
 }
