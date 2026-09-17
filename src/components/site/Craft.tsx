@@ -92,7 +92,7 @@ export function Craft() {
       </div>
 
       <div className="cine-frame md:min-h-[82svh]">
-        <div className="cine-media">
+        <div className="cine-media image-void-feather">
           <Cinema
             key={piece.img}
             still={piece.img}
