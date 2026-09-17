@@ -12,6 +12,7 @@ import { FaviconPulse } from "@/components/site/FaviconPulse";
 import { PreloadPhotos } from "@/components/site/PreloadPhotos";
 import { Proof } from "@/components/site/Proof";
 import { Reserve } from "@/components/site/Reserve";
+import { SectionSeam } from "@/components/site/SectionSeam";
 import { SiteNav } from "@/components/site/SiteNav";
 import { Stills } from "@/components/site/Stills";
 
@@ -26,14 +27,21 @@ function Home() {
       <CursorGlow />
       <SiteNav />
       <Hero />
+      <SectionSeam meters={0} zone="SURFACE" />
       <Proof />
+      <SectionSeam meters={70} zone="REEF" />
       <Expedition />
       <Passages />
+      <SectionSeam meters={200} zone="TWILIGHT" />
       <Descend />
+      <SectionSeam meters={600} zone="DROP" />
       <Ledger />
       <Craft />
+      <SectionSeam meters={900} zone="DROP" />
       <Itinerary />
+      <SectionSeam meters={1000} zone="FRONTIER" />
       <Stills />
+      <SectionSeam meters={1140} zone="FRONTIER" />
       <Reserve />
       <Footer />
     </main>
