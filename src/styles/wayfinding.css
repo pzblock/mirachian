@@ -1,0 +1,136 @@
+/* Mirachian section wayfinding — Ivy DEFAULT + treatment 2 */
+/* —— Section wayfinding: Ivy DEFAULT depth-tick seam —— */
+.section-seam {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block: 1.25rem 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.section-seam-rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.section-seam-hair {
+  display: block;
+  height: 1px;
+  width: 52px;
+  max-width: 22vw;
+}
+
+.section-seam-hair:first-child {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in oklab, var(--color-champagne) 55%, transparent) 100%
+  );
+}
+
+.section-seam-hair:last-child {
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklab, var(--color-champagne) 55%, transparent) 0%,
+    transparent 100%
+  );
+}
+
+.section-seam-tick {
+  display: block;
+  width: 1px;
+  height: 10px;
+  flex-shrink: 0;
+  background: var(--color-champagne);
+  box-shadow: 0 0 10px color-mix(in oklab, var(--color-champagne) 35%, transparent);
+}
+
+.section-seam-meter {
+  margin-top: 0.55rem;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.section-seam-depth {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--color-pearl) 72%, transparent);
+}
+
+.section-seam-sep {
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  color: color-mix(in oklab, var(--color-pearl) 45%, transparent);
+}
+
+.section-seam-zone {
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--color-pearl) 68%, transparent);
+}
+
+.section-seam-dissolve {
+  width: 100%;
+  height: 48px;
+  margin-top: 0.85rem;
+  background: linear-gradient(
+    to bottom,
+    rgb(4 7 10 / 0.55) 0%,
+    rgb(4 7 10 / 0.22) 42%,
+    transparent 100%
+  );
+}
+
+@media (min-width: 768px) {
+  .section-seam {
+    padding-block: 1.5rem 0;
+  }
+
+  .section-seam-hair {
+    width: 108px;
+    max-width: none;
+  }
+
+  .section-seam-tick {
+    height: 11px;
+  }
+
+  .section-seam-dissolve {
+    height: 56px;
+  }
+}
+
+/* —— Treatment 2: image → void feather (no tick) —— */
+.image-void-feather {
+  position: relative;
+  isolation: isolate;
+}
+
+.image-void-feather::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 6;
+  height: 64px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgb(0 0 0 / 0.55) 48%,
+    #000 100%
+  );
+}
+
+@media (min-width: 768px) {
+  .image-void-feather::after {
+    height: 80px;
+  }
+}
