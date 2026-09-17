@@ -14,10 +14,16 @@ export const DESCENT_STATIONS = [
   { id: "reserve", meters: 1140, zone: "Frontier" },
 ] as const;
 
+/** Safe inset from the viewport's right edge (mobile + desktop). */
+function rightGuideX(width: number) {
+  const inset = Math.min(28, Math.max(14, width * 0.04));
+  return Math.max(0, width - inset);
+}
+
 /**
  * Guided descent — station observer + champagne sounding line.
- * Origin at hero top; only the scroll-drawn portion is visible (no ghost track).
- * Soft flow + tip mote. Depth language only — no arrows or pills.
+ * Far-right guide; origin at hero top; only scroll-drawn portion visible.
+ * Soft flow + tip mote + quiet "Descend" cue (fades past hero).
  */
 export function DescentPath() {
   const reduce = useReducedMotion();
@@ -25,6 +31,7 @@ export function DescentPath() {
   const drawRef = useRef<SVGLineElement>(null);
   const flowRef = useRef<SVGLineElement>(null);
   const moteRef = useRef<SVGCircleElement>(null);
+  const cueRef = useRef<HTMLParagraphElement>(null);
 
   /* Station / seam observer */
   useEffect(() => {
@@ -130,13 +137,14 @@ export function DescentPath() {
     };
   }, [reduce]);
 
-  /* Sounding line geometry + scroll-tied draw (hero-top origin; no ghost track) */
+  /* Sounding line geometry + scroll-tied draw (far-right; hero-top origin) */
   useEffect(() => {
     const host = hostRef.current;
     const draw = drawRef.current;
     const flow = flowRef.current;
     const mote = moteRef.current;
-    if (!host || !draw || !flow || !mote) return;
+    const cue = cueRef.current;
+    if (!host || !draw || !flow || !mote || !cue) return;
 
     const root = document.documentElement;
     root.dataset.sounding = "1";
@@ -145,6 +153,7 @@ export function DescentPath() {
     let firstY = 0;
     let lastY = 0;
     let cx = 0;
+    let heroBottom = 0;
     let ready = false;
 
     const anchors = () =>
@@ -174,14 +183,18 @@ export function DescentPath() {
       if (hero) {
         const hr = hero.getBoundingClientRect();
         firstY = Math.max(0, hr.top + scrollY - mainTop);
+        heroBottom = hr.bottom + scrollY - mainTop;
       } else {
         firstY = 0;
+        heroBottom = window.innerHeight;
       }
 
       const lastTick = ticks[ticks.length - 1]!;
       const lr = lastTick.getBoundingClientRect();
       lastY = lr.top + scrollY + lr.height / 2 - mainTop;
-      cx = w / 2;
+
+      // Far right of the display — not center — with a safe edge inset
+      cx = rightGuideX(w);
 
       const x = cx.toFixed(1);
       for (const line of [draw, flow]) {
@@ -189,6 +202,13 @@ export function DescentPath() {
         line.setAttribute("x2", x);
         line.setAttribute("y1", firstY.toFixed(1));
       }
+
+      host.style.setProperty("--descent-x", `${cx}px`);
+      root.style.setProperty("--descent-x", `${cx}px`);
+      root.style.setProperty(
+        "--descent-inset",
+        `${Math.max(14, w - cx).toFixed(1)}px`,
+      );
 
       ready = lastY - firstY > 40;
       host.classList.toggle("is-ready", ready);
@@ -211,6 +231,15 @@ export function DescentPath() {
       flow.setAttribute("y1", firstY.toFixed(1));
       mote.setAttribute("cx", cx.toFixed(1));
       mote.setAttribute("cy", tip.toFixed(1));
+
+      // Cue sits just left of the tip while still in the hero; fades once past it
+      const inset = Math.max(14, mainRect.width - cx);
+      cue.style.top = `${Math.max(tip - 2, firstY + 20).toFixed(1)}px`;
+      cue.style.right = `${(inset + 10).toFixed(1)}px`;
+
+      const pastHero = scrollY > Math.max(56, heroBottom * 0.52 - mainTop);
+      const cueVisible = !pastHero && p < 0.14;
+      cue.classList.toggle("is-shown", cueVisible);
 
       root.style.setProperty("--descent-progress", p.toFixed(4));
       host.style.setProperty("--descent-tip", `${tip}px`);
@@ -268,6 +297,8 @@ export function DescentPath() {
       ro.disconnect();
       delete root.dataset.sounding;
       root.style.removeProperty("--descent-progress");
+      root.style.removeProperty("--descent-x");
+      root.style.removeProperty("--descent-inset");
     };
   }, [reduce]);
 
@@ -300,6 +331,9 @@ export function DescentPath() {
         />
         <circle ref={moteRef} className="descent-sounding-mote" r="2.25" />
       </svg>
+      <p ref={cueRef} className="descent-sounding-cue">
+        Descend
+      </p>
     </div>
   );
 }
