@@ -1,5 +1,9 @@
 /* Guided descent — one quiet continuum (depth language only) */
 
+main.bg-abyss {
+  position: relative;
+}
+
 .section-seam-wrap {
   opacity: 0;
   transform: translateY(6px);
@@ -297,6 +301,122 @@ html[data-descent] main.bg-abyss > section.is-descent-current .kicker {
   box-shadow: 0 0 5px color-mix(in oklab, var(--color-pearl) 22%, transparent);
 }
 
+/* ——— Champagne sounding line (scroll-tied descent guide) ——— */
+
+.descent-sounding {
+  pointer-events: none;
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 700ms var(--ease-out-soft);
+}
+
+.descent-sounding.is-ready {
+  opacity: 1;
+}
+
+.descent-sounding-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.descent-sounding-track {
+  fill: none;
+  stroke: color-mix(in oklab, var(--color-champagne) 22%, transparent);
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+
+.descent-sounding-draw {
+  fill: none;
+  stroke: color-mix(in oklab, var(--color-champagne) 62%, transparent);
+  stroke-width: 1.15;
+  stroke-linecap: round;
+  filter: drop-shadow(
+    0 0 4px color-mix(in oklab, var(--color-champagne) 28%, transparent)
+  );
+  transition: stroke 400ms var(--ease-out-soft);
+}
+
+.descent-sounding-flow {
+  fill: none;
+  stroke: color-mix(in oklab, var(--color-champagne) 78%, white);
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-dasharray: 3 22;
+  opacity: 0.55;
+  animation: descent-sounding-flow 2.8s linear infinite;
+}
+
+.descent-sounding-mote {
+  fill: color-mix(in oklab, var(--color-champagne) 88%, white);
+  opacity: 0.72;
+  filter: drop-shadow(
+    0 0 6px color-mix(in oklab, var(--color-champagne) 45%, transparent)
+  );
+  animation: descent-mote-breathe 2.4s var(--ease-out-soft) infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.descent-sounding.is-seam-hot .descent-sounding-draw {
+  stroke: color-mix(in oklab, var(--color-champagne) 78%, white);
+  filter: drop-shadow(
+    0 0 7px color-mix(in oklab, var(--color-champagne) 40%, transparent)
+  );
+}
+
+.descent-sounding.is-seam-hot .descent-sounding-mote {
+  opacity: 0.95;
+  filter: drop-shadow(
+    0 0 9px color-mix(in oklab, var(--color-champagne) 55%, transparent)
+  );
+}
+
+@keyframes descent-sounding-flow {
+  to {
+    stroke-dashoffset: -25;
+  }
+}
+
+@keyframes descent-mote-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.12);
+  }
+}
+
+/* Seams + line = one continuum: soften local stems (global line carries descent) */
+html[data-sounding] .section-seam-stem {
+  opacity: 0.35;
+  height: 0.28rem;
+}
+
+html[data-sounding] .section-seam-wrap.is-seam-next .section-seam-stem {
+  opacity: 0.55;
+}
+
+html[data-sounding] .section-seam-tick {
+  position: relative;
+  z-index: 1;
+}
+
+/* Next-seam cue gently brightens the shared continuum */
+html[data-sounding] .section-seam-wrap.is-seam-next .section-seam-tick {
+  box-shadow:
+    0 0 10px color-mix(in oklab, var(--color-champagne) 42%, transparent),
+    0 0 1px color-mix(in oklab, var(--color-champagne) 70%, transparent);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .section-seam-wrap {
     opacity: 1;
@@ -324,5 +444,28 @@ html[data-descent] main.bg-abyss > section.is-descent-current .kicker {
 
   .depth-rail-fill {
     transition: none !important;
+  }
+
+  .descent-sounding,
+  .descent-sounding.is-ready {
+    opacity: 1;
+    transition: none;
+  }
+
+  .descent-sounding-flow,
+  .descent-sounding-mote {
+    animation: none !important;
+  }
+
+  .descent-sounding-flow {
+    opacity: 0;
+  }
+
+  .descent-sounding-mote {
+    opacity: 0.7;
+  }
+
+  .descent-sounding--static .descent-sounding-draw {
+    transition: none;
   }
 }
