@@ -152,9 +152,7 @@ export function Ledger() {
         </dl>
       </div>
 
-      <BeatCap className="mx-auto max-w-6xl px-5 md:px-8" />
-
-      <div className="mx-auto max-w-6xl px-5 pb-20 pt-4 md:px-8 md:pb-24 md:pt-6">
+      <div className="mx-auto max-w-6xl px-5 pb-20 pt-8 md:px-8 md:pb-24 md:pt-10">
         <Reveal>
           <Sounding mark="488" title="The Valbanera, 1919">
             In September 1919 the Spanish steamship Valbanera — sometimes called
