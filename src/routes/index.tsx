@@ -29,21 +29,21 @@ function Home() {
       <SiteNav />
       <DescentPath />
       <Hero />
-      <SectionSeam step="01" meters={0} zone="SURFACE" next="proof" />
+      <SectionSeam meters={0} zone="Surface" next="proof" />
       <Proof />
-      <SectionSeam step="02" meters={70} zone="REEF" next="voyage" />
+      <SectionSeam meters={70} zone="Reef" next="voyage" />
       <Expedition />
       <Passages />
-      <SectionSeam step="03" meters={200} zone="TWILIGHT" next="descend" />
+      <SectionSeam meters={200} zone="Twilight" next="descend" />
       <Descend />
-      <SectionSeam step="04" meters={600} zone="DROP" next="ledger" />
+      <SectionSeam meters={600} zone="Drop" next="ledger" />
       <Ledger />
       <Craft />
-      <SectionSeam step="05" meters={900} zone="DROP" next="day" />
+      <SectionSeam meters={900} zone="Drop" next="day" />
       <Itinerary />
-      <SectionSeam step="06" meters={1000} zone="FRONTIER" next="stills" />
+      <SectionSeam meters={1000} zone="Frontier" next="stills" />
       <Stills />
-      <SectionSeam step="07" meters={1140} zone="FRONTIER" next="reserve" />
+      <SectionSeam meters={1140} zone="Frontier" next="reserve" />
       <Reserve />
       <Footer />
     </main>
